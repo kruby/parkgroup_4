@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140106135825) do
+ActiveRecord::Schema.define(version: 20140123192416) do
+
+  create_table "assets", force: true do |t|
+    t.string   "description"
+    t.integer  "user_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "attachments", force: true do |t|
+    t.string   "attachable_type"
+    t.integer  "attachable_id"
+    t.string   "description"
+    t.string   "image_size"
+    t.integer  "priority"
+    t.integer  "asset_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contents", force: true do |t|
     t.integer  "resource_id"
@@ -19,13 +41,22 @@ ActiveRecord::Schema.define(version: 20140106135825) do
     t.integer  "parent_id"
     t.string   "navlabel"
     t.boolean  "active"
-    t.boolean  "admin"
     t.boolean  "redirect"
-    t.integer  "position"
-    t.string   "controller_name"
-    t.string   "category",            default: "Admin"
     t.string   "controller_redirect"
     t.string   "action_redirect"
+    t.integer  "position"
+    t.string   "controller_name"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hours", force: true do |t|
+    t.string   "description"
+    t.decimal  "number",      precision: 10, scale: 0
+    t.date     "date"
+    t.integer  "user_id"
+    t.integer  "relation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,8 +73,8 @@ ActiveRecord::Schema.define(version: 20140106135825) do
   create_table "pages", force: true do |t|
     t.string   "name"
     t.string   "title"
-    t.text     "body"
     t.string   "headline"
+    t.text     "body"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -57,6 +88,59 @@ ActiveRecord::Schema.define(version: 20140106135825) do
     t.integer  "parent_id"
     t.integer  "user_id"
     t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "preferences", force: true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "relations", force: true do |t|
+    t.string   "company"
+    t.string   "address"
+    t.string   "postno"
+    t.string   "city"
+    t.text     "log"
+    t.string   "category"
+    t.string   "responsible"
+    t.text     "phone"
+    t.datetime "next_action"
+    t.integer  "lock_version"
+    t.integer  "user_id"
+    t.string   "type"
+    t.integer  "search_lock"
+    t.string   "homepage"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "remember_token"
+    t.datetime "remember_token_expires_at"
+    t.boolean  "active"
+    t.string   "category"
+    t.string   "blogname"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vouchers", force: true do |t|
+    t.string   "description"
+    t.decimal  "number",      precision: 10, scale: 0
+    t.integer  "relation_id"
+    t.date     "date"
+    t.integer  "user_id"
+    t.integer  "hourly_rate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

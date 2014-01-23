@@ -1,4 +1,18 @@
 KrubyRails4::Application.routes.draw do
+  resources :preferences
+
+  resources :vouchers
+
+  resources :users
+
+  resources :relations
+
+  resources :hours
+
+  resources :attachments
+
+  resources :assets
+
   resources :contents
 
   resources :menus

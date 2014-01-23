@@ -4,7 +4,7 @@ class CreateMenus < ActiveRecord::Migration
       t.string :name
       t.string :title
       t.text :body
-      t.boolean :active, :default => nil
+      t.boolean :active
 
       t.timestamps
     end

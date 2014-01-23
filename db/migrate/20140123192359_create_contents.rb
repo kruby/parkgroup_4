@@ -6,14 +6,12 @@ class CreateContents < ActiveRecord::Migration
       t.integer :parent_id
       t.string :navlabel
       t.boolean :active
-      t.boolean :admin
       t.boolean :redirect
-      t.integer :position
-      t.string :controller_name
-      t.string :category, :default => "Admin"
       t.string :controller_redirect
       t.string :action_redirect
-      
+      t.integer :position
+      t.string :controller_name
+      t.string :category
 
       t.timestamps
     end

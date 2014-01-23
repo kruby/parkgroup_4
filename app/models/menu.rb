@@ -14,7 +14,6 @@ class Menu < ActiveRecord::Base
     c.resource = self #fordi jeg bruger after_create kan jeg bruge self til at få id fra den aktuelle post
     c.active = self.active
     c.navlabel = self.name
-    c.admin = true
     c.save
     c.controller_name = self.name.downcase
     c.save

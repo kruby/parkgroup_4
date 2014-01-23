@@ -1,0 +1,43 @@
+<div class="container">
+
+	<h1>Viser vouchers</h1>
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="visible-lg">Description</th>
+					<th class="visible-lg">Number</th>
+					<th class="visible-lg">Relation</th>
+					<th class="visible-lg">Date</th>
+					<th class="visible-lg">User</th>
+					<th class="visible-lg">Hourly rate</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @vouchers.each do |voucher| %>
+					<tr>
+						<td class="visible-lg"><%= voucher.description %></td>
+						<td class="visible-lg"><%= voucher.number %></td>
+						<td class="visible-lg"><%= voucher.relation_id %></td>
+						<td class="visible-lg"><%= voucher.date %></td>
+						<td class="visible-lg"><%= voucher.user_id %></td>
+						<td class="visible-lg"><%= voucher.hourly_rate %></td>
+						<td colspan="3" class="right">
+							<div class="btn-group">
+								<%= link_to 'Vis', voucher, class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Ret', edit_voucher_path(voucher), class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Slet', voucher, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
+							</div>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	
+	<%= link_to 'Ny Voucher', new_voucher_path %>
+
+</div>

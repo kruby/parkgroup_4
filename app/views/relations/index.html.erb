@@ -1,0 +1,61 @@
+<div class="container">
+
+	<h1>Viser relations</h1>
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="visible-lg">Company</th>
+					<th class="visible-lg">Address</th>
+					<th class="visible-lg">Postno</th>
+					<th class="visible-lg">City</th>
+					<th class="visible-lg">Log</th>
+					<th class="visible-lg">Category</th>
+					<th class="visible-lg">Responsible</th>
+					<th class="visible-lg">Phone</th>
+					<th class="visible-lg">Next action</th>
+					<th class="visible-lg">Lock version</th>
+					<th class="visible-lg">User</th>
+					<th class="visible-lg">Type</th>
+					<th class="visible-lg">Search lock</th>
+					<th class="visible-lg">Homepage</th>
+					<th class="visible-lg">Email</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @relations.each do |relation| %>
+					<tr>
+						<td class="visible-lg"><%= relation.company %></td>
+						<td class="visible-lg"><%= relation.address %></td>
+						<td class="visible-lg"><%= relation.postno %></td>
+						<td class="visible-lg"><%= relation.city %></td>
+						<td class="visible-lg"><%= relation.log %></td>
+						<td class="visible-lg"><%= relation.category %></td>
+						<td class="visible-lg"><%= relation.responsible %></td>
+						<td class="visible-lg"><%= relation.phone %></td>
+						<td class="visible-lg"><%= relation.next_action %></td>
+						<td class="visible-lg"><%= relation.lock_version %></td>
+						<td class="visible-lg"><%= relation.user_id %></td>
+						<td class="visible-lg"><%= relation.type %></td>
+						<td class="visible-lg"><%= relation.search_lock %></td>
+						<td class="visible-lg"><%= relation.homepage %></td>
+						<td class="visible-lg"><%= relation.email %></td>
+						<td colspan="3" class="right">
+							<div class="btn-group">
+								<%= link_to 'Vis', relation, class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Ret', edit_relation_path(relation), class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Slet', relation, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
+							</div>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	
+	<%= link_to 'Ny Relation', new_relation_path %>
+
+</div>
