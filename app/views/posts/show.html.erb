@@ -1,0 +1,44 @@
+<div class="container">
+	
+	<p id="notice"><%= notice %></p>
+
+	<p>
+		<strong>Title:</strong>
+		<%= @post.title %>
+	</p>
+
+	<p>
+		<strong>Body:</strong>
+		<%= @post.body %>
+	</p>
+
+	<p>
+		<strong>Author:</strong>
+		<%= @post.author %>
+	</p>
+
+	<p>
+		<strong>Priority:</strong>
+		<%= @post.priority %>
+	</p>
+
+	<p>
+		<strong>Parent:</strong>
+		<%= @post.parent_id %>
+	</p>
+
+	<p>
+		<strong>User:</strong>
+		<%= @post.user_id %>
+	</p>
+
+	<p>
+		<strong>Active:</strong>
+		<%= @post.active %>
+	</p>
+
+
+	<%= link_to 'Ret', edit_post_path(@post) %>
+	<%= link_to 'Tilbage', posts_path %>
+
+</div>

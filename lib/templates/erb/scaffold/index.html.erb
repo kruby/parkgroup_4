@@ -1,0 +1,37 @@
+<div class="container">
+
+	<h1>Viser <%= plural_table_name %></h1>
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+					<th class="visible-lg"><%= attribute.human_name %></th>
+<% end -%>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+					<tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+						<td class="visible-lg"><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+<% end -%>
+						<td colspan="3" class="right">
+							<div class="btn-group">
+								<%%= link_to 'Vis', <%= singular_table_name %>, class: 'btn btn-default btn-xs' %>
+								<%%= link_to 'Ret', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-default btn-xs' %>
+								<%%= link_to 'Slet', <%= singular_table_name %>, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
+							</div>
+						</td>
+					</tr>
+				<%% end %>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	
+	<%%= link_to 'Ny <%= human_name %>', new_<%= singular_table_name %>_path %>
+
+</div>

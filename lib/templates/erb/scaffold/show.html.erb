@@ -1,0 +1,17 @@
+<div class="container">
+	
+    <p id="notice"><%%= notice %></p>
+
+    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+    <p>
+        <strong><%= attribute.human_name %>:</strong>
+        <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+    </p>
+
+    <% end -%>
+
+    <div class="btn-group">
+        <%%= link_to 'Ret', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-default btn-xs'%>
+        <%%= link_to 'Tilbage', <%= index_helper %>_path, class: 'btn btn-default btn-xs' %>
+    </div>
+</div>

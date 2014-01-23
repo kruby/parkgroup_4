@@ -1,0 +1,138 @@
+$kruby-blue-100: #6facdc;
+//$kruby-blue-100: #44744c;
+
+$kruby-95:lighten($kruby-blue-100, 5%);
+$kruby-90:lighten($kruby-blue-100, 10%);
+$kruby-85:lighten($kruby-blue-100, 15%);
+$kruby-80:lighten($kruby-blue-100, 20%);
+$kruby-75:lighten($kruby-blue-100, 25%);
+$kruby-70:lighten($kruby-blue-100, 30%);
+$kruby-65:lighten($kruby-blue-100, 35%);
+$kruby-60:lighten($kruby-blue-100, 40%);
+$kruby-55:lighten($kruby-blue-100, 45%);
+$kruby-50:lighten($kruby-blue-100, 50%);
+$kruby-45:lighten($kruby-blue-100, 55%);
+$kruby-40:lighten($kruby-blue-100, 60%);
+//$kruby-blue-medium: #93bee3;
+//$kruby-blue-light: #C9E9FF;
+
+
+.container .jumbotron {
+    background-color: $kruby-75;
+}
+
+.alert {
+    border-radius: 0px;
+}
+
+label {
+    margin-bottom: 2px;
+}
+.btn-info {
+    background-color: $kruby-blue-100;
+    border-color: $kruby-80;
+    &:hover {
+        background-color: darken($kruby-blue-100, 10%);
+    }
+    a {
+        color: #FFF;
+        &:visited   {
+            color: #FFF;   
+        }
+    }
+}
+ 
+
+a:active {
+    color: $kruby-blue-100;   
+}
+
+.navbar {
+    border-radius: 0px;
+    li a:visited {
+        color: #000;
+    }
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: $kruby-blue-100;
+}
+
+.navbar-inverse {
+    background-color: $kruby-95;
+    border: 0px;
+    border-top: 1px solid #FFF;
+    &:hover {
+        color: $kruby-95;
+    }
+    &:visited {
+        color: $kruby-85;
+    }
+    &:active {
+        color: $kruby-85;
+    }
+    .navbar-nav .open a {
+        &:focus {
+            background-color: $kruby-90;
+        }
+        &:visited {
+            background-color: $kruby-90;
+        }
+    }
+    .navbar-nav li a {
+        color: #FFF;
+        &:hover {
+            background-color: $kruby-90;   
+        }
+    }
+    .navbar-nav li .dropdown-menu {
+        background-color: $kruby-blue-100;
+        a:hover {
+            background-color: $kruby-90;
+        }
+    }
+    .navbar-nav .active a {
+        background-color: $kruby-90;
+        &:hover {
+            background-color: $kruby-85;
+        }
+        &:focus {
+            background-color: $kruby-90;
+        }
+    }       
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #FFF;
+    &:hover {
+        background-color: $kruby-90;   
+    } 
+    &:active {
+        background-color: $kruby-90;   
+    }
+    &:visited {
+        background-color: $kruby-90;   
+    } 
+}
+
+li.dropdown, li.open {
+    background-color: $kruby-95;
+}
+
+header {
+    background-color: $kruby-blue-100;
+    /*	background-image: url(kruby-background_sky.jpg);*/
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+    background-color: #FFF;
+}
+
+
+.navbar-inverse .navbar-collapse {
+    border-color: #FFF;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: $kruby-blue-100;
+}

@@ -1,0 +1,41 @@
+<div class="container">
+
+	<h1>Viser <%= t :pages %></h1>
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="visible-lg">Name</th>
+					<th class="visible-lg">Title</th>
+					<th class="visible-lg">Body</th>
+					<th class="visible-lg">Headline</th>
+					<th class="visible-lg center">Aktiv</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @pages.each do |page| %>
+					<tr>
+						<td class="visible-lg"><%= page.name %></td>
+						<td class="visible-lg"><%= page.title %></td>
+						<td class="visible-lg"><%= truncate(page.body, length: 50) %></td>
+						<td class="visible-lg"><%= page.headline %></td>
+						<td class="visible-lg center"><%= link_to page.active == true ? '√' : '–', page_active_path(page.id) %></td>
+						<td colspan="3" class="right">
+							<div class="btn-group">
+								<%= link_to 'Vis', page, class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Ret', edit_page_path(page), class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Slet', page, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
+							</div>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	
+	<%= link_to 'Ny Page', new_page_path %>
+
+</div>
