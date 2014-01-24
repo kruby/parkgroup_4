@@ -1,16 +1,15 @@
 <div class="container">
 
-	<h1>Viser hours</h1>
+	<h1>Viser timer</h1>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="visible-lg">Description</th>
-					<th class="visible-lg">Number</th>
-					<th class="visible-lg">Number</th>
-					<th class="visible-lg">Date</th>
-					<th class="visible-lg">User</th>
-					<th class="visible-lg">Relation</th>
+					<th class="visible-lg left">Af</th>
+					<th class="visible-lg left">Firma</th>
+					<th class="visible-lg">Beskrivelse</th>
+					<th class="visible-lg center">Antal</th>
+					<th class="visible-lg center">Date</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -18,12 +17,12 @@
 			<tbody>
 				<% @hours.each do |hour| %>
 					<tr>
-						<td class="visible-lg"><%= hour.description %></td>
-						<td class="visible-lg"><%= hour.number %></td>
-						<td class="visible-lg"><%= hour.number %></td>
-						<td class="visible-lg"><%= hour.date %></td>
-						<td class="visible-lg"><%= hour.user_id %></td>
-						<td class="visible-lg"><%= hour.relation_id %></td>
+						<td class="visible-lg left"><%= User.find(hour.user_id).blogname %></td>
+						<td class="visible-lg left"><%= truncate(Relation.find(hour.relation_id).company, length: 20) %></td>
+						<td class="visible-lg"><%= truncate(hour.description, length: 60) %></td>
+						<td class="visible-lg center"><%= hour.number %></td>
+						<td class="visible-lg center"><%= l hour.date, format: :nice %></td>
+
 						<td colspan="3" class="right">
 							<div class="btn-group">
 								<%= link_to 'Vis', hour, class: 'btn btn-default btn-xs' %>

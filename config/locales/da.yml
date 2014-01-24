@@ -3,3 +3,71 @@ da:
     contents: "indholdsstyring"
     id: "id"
     pages: "sider"
+    company: "firmanavn"
+    address: "adresse"
+    postno: "postnr."
+    city: "by"
+    category: "kategori"
+    responsible: "ansvarlig"
+    phone: "tlf."
+    next_action: "næste kontakt"
+    user_id: "bruger ID"
+    type: "type"
+    homepage: "www"
+    email: "email"
+    date:
+        order:
+          - :day
+          - :month
+          - :year
+        abbr_day_names:
+        - :Søn
+        - :Man
+        - :Tir
+        - :Ons
+        - :Tor
+        - :Fre
+        - :Lør
+        abbr_month_names:
+        - 
+        - :Jan
+        - :Feb
+        - :Mar
+        - :Apr
+        - :May
+        - :Jun
+        - :Jul
+        - :Aug
+        - :Sep
+        - :Okt
+        - :Nov
+        - :Dec
+        day_names:
+        - :Søndag
+        - :Mandag
+        - :Tirsdag
+        - :Onsdag
+        - :Torsdag
+        - :Fredag
+        - :Lørdag
+        formats:
+            birth: '%d.%m.'
+            default: '%D-%M-%Y'
+            long: '%d %B, %Y'
+            month_and_year: '%b %Y'
+            short: '%b %d'
+            nice: '%d.%m.%Y'
+        month_names:
+        - 
+        - :Januar
+        - :Februar
+        - :Marts
+        - :April
+        - :Maj
+        - :Juni
+        - :Juli
+        - :August
+        - :September
+        - :Oktober
+        - :November
+        - :December

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123192416) do
+ActiveRecord::Schema.define(version: 20140124100109) do
 
   create_table "assets", force: true do |t|
     t.string   "description"
