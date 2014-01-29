@@ -2,7 +2,7 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   before_filter :current_controller #Findes i application_controller.rb
-  #before_filter :logged_in_as_admin?
+  before_filter :logged_in_as_admin?
   
   # GET /contents
   # GET /contents.xml

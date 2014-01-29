@@ -1,16 +1,19 @@
 <% @level_2_main = level_1.children %>
 <% unless @level_2_main.nil? %>
 	<% @level_2_main.each do |level_2| -%>
+	<% @no_route = 'No route ' + level_2.navlabel %>
 		<ul>
 			<li class="user_navlabel">
 				<% if level_2.redirect? %>
-						<%= link_to level_2.navlabel, {:controller => level_2.controller_redirect, :action => level_2.action_redirect, :id => level_2.resource_id } %>
+						<%#= link_to level_2.navlabel, {:controller => level_2.controller_redirect, :action => level_2.action_redirect, :id => level_2.resource_id } %>
+						<%= link_to(level_2.navlabel, '/'+ level_2.controller_redirect.to_s + '/' + level_2.action_redirect.to_s) rescue link_to @no_route.html_safe %>
 				<% else %>
 					<!-- Her tages specielt hensyn til forsiden, der ikke skal vises som -->
 					<% if level_2.controller_name == 'forside'%>
 						<li><%= link_to level_2.controller_name.mb_chars.capitalize, root_url %>
 					<% else %>
-						<%= link_to level_2.navlabel, {:controller => level_2.controller_name} %>
+						<%#= link_to level_2.navlabel, {:controller => level_2.controller_name} %>
+						<%= link_to(level_2.navlabel, '/'+ level_2.controller_name.to_s) rescue link_to @no_route.html_safe %>
 						<!-- Alle admin sider ledes videre til deres index i views -->
 					<% end %>
 				<% end %>

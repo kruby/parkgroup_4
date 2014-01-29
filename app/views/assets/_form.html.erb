@@ -1,4 +1,6 @@
-<%= form_for(@asset, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+<%= form_for(@asset, html: {class: 'form-horizontal', role: 'form', multipart: true}) do |f| %>
+<%= f.hidden_field(:user_id, value: current_user.id) %>
+
 <% if @asset.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@asset.errors.count, "error") %> forhindrede denne asset fra at blive vist:</h2>
@@ -11,41 +13,48 @@
 <% end %>
 
 <div class="form-group">
+	<%= f.label :upload, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.file_field :photo, class: 'form-control' %>
+	</div>
+</div>
+
+<div class="form-group">
 	<%= f.label :description, class: 'col-sm-2 control-label' %>
 	<div class="col-sm-10">	
 		<%= f.text_field :description, class: 'form-control' %>
 	</div>
 </div>
-<div class="form-group">
+<!-- <div class="form-group">
 	<%= f.label :user_id, class: 'col-sm-2 control-label' %>
 	<div class="col-sm-10">	
 		<%= f.number_field :user_id, class: 'form-control' %>
 	</div>
-</div>
-<div class="form-group">
+</div> -->
+<!-- <div class="form-group">
 	<%= f.label :photo_file_name, class: 'col-sm-2 control-label' %>
 	<div class="col-sm-10">	
 		<%= f.text_field :photo_file_name, class: 'form-control' %>
 	</div>
-</div>
-<div class="form-group">
+</div> -->
+<!-- <div class="form-group">
 	<%= f.label :photo_content_type, class: 'col-sm-2 control-label' %>
 	<div class="col-sm-10">	
 		<%= f.text_field :photo_content_type, class: 'form-control' %>
 	</div>
-</div>
-<div class="form-group">
+</div> -->
+<!-- <div class="form-group">
 	<%= f.label :photo_file_size, class: 'col-sm-2 control-label' %>
 	<div class="col-sm-10">	
 		<%= f.number_field :photo_file_size, class: 'form-control' %>
 	</div>
-</div>
-<div class="form-group">
+</div> -->
+<!-- <div class="form-group">
 	<%= f.label :photo_updated_at, class: 'col-sm-2 control-label' %>
 	<div class="col-sm-10">	
 		<%= f.datetime_select :photo_updated_at, class: 'form-control' %>
 	</div>
-</div>
+</div> -->
 
 <div class='form-group'>
 	<div class="actions col-sm-offset-2 col-sm-10">

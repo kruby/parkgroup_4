@@ -1,5 +1,8 @@
 class AttachmentsController < ApplicationController
   before_action :set_attachment, only: [:show, :edit, :update, :destroy]
+  
+  before_filter :current_controller #Findes i application_controller.rb
+  before_filter :logged_in_as_admin?
 
   # GET /attachments
   # GET /attachments.json

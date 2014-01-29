@@ -1,43 +1,77 @@
-<div class="container">
+<div class='container'>
+	<div class='table-responsive'>
 
-	<h1>Viser assets</h1>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th class="visible-lg">Description</th>
-					<th class="visible-lg">User</th>
-					<th class="visible-lg">Photo file name</th>
-					<th class="visible-lg">Photo content type</th>
-					<th class="visible-lg">Photo file size</th>
-					<th class="visible-lg">Photo updated at</th>
-					<th colspan="3"></th>
-				</tr>
-			</thead>
+		<h1>Liste over uploadede filer</h1>
+		
+		<div class="btn-group">
+			 <%= link_to 'Ny upload', new_asset_path, class: 'btn btn-default btn-xs' %>
+		</div>
+		<br><br>
+		<%= form_tag edit_multiple_assets_path do %>
+		<table class='table table-striped table-hover'>
+			<tr>
+				<th class='pos'>ID</th>
+				<th class='pos'>Navn</th>
+				<th>Beskrivelse</th>
+				<th>Filnavn</th>
+				<th class='pos'>Type</th>
+				<th class='pos'>Mb</th>
+				<th class='pos'>Opdat.</th>
+				<th class='pos'>Opdat.</th>
+				<th class='col-sm-1'>Foto</th>
+				<th>Handling</th>
+			</tr>
 
-			<tbody>
-				<% @assets.each do |asset| %>
-					<tr>
-						<td class="visible-lg"><%= asset.description %></td>
-						<td class="visible-lg"><%= asset.user_id %></td>
-						<td class="visible-lg"><%= asset.photo_file_name %></td>
-						<td class="visible-lg"><%= asset.photo_content_type %></td>
-						<td class="visible-lg"><%= asset.photo_file_size %></td>
-						<td class="visible-lg"><%= asset.photo_updated_at %></td>
-						<td colspan="3" class="right">
-							<div class="btn-group">
-								<%= link_to 'Vis', asset, class: 'btn btn-default btn-xs' %>
-								<%= link_to 'Ret', edit_asset_path(asset), class: 'btn btn-default btn-xs' %>
-								<%= link_to 'Slet', asset, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
-							</div>
-						</td>
-					</tr>
-				<% end %>
-			</tbody>
+			<% for asset in @assets %>
+			<% @thumb =  asset.photo.url(:thumb) %>
+			<% @image_show = asset.photo.url(:original)%>
+			<% @title = asset.description + ' (ID - ' + asset.id.to_s + ')' %>
+			<tr>
+				<td><%= asset.id %></td>
+				<td><%= User.find(asset.user_id).blogname rescue nil %></td>
+				<td><%= truncate(asset.description, length: 10) %></td>
+				<td><%= asset.photo_file_name %></td>
+				<td><%= asset.photo_content_type %></td>
+				<td><%= number_with_precision(asset.photo_file_size / 1000000.0, 2) rescue nil %></td>
+				<td><%= nice_date(asset.updated_at) rescue nil %></td>
+				<td><%= nice_date(asset.photo_updated_at) rescue nil %></td>
+				<!-- <td><%#= link_to image_tag(@image), asset, :class => 'thumb'%></td> -->
+				<td class='thumb' width='20px'><%= link_to image_tag(@thumb,{class: 'img-thumbnail', width: "30px" }), @image_show, {class: 'fancybox-button', rel: 'fancybox-button', title: @title}%></td>
+				<td colspan='3' class='right'>
+					<div class='btn-group'>
+						<%= link_to 'Vis', asset, class: 'btn btn-default btn-xs' %>
+						<%= link_to 'Ret', edit_asset_path(asset), class: 'btn btn-default btn-xs' %>
+						<%= link_to 'Slet', asset, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
+					</div>
+				</td>
+    
+			</tr>
+			<% end %>
 		</table>
-	</div>
-	<br>
-	
-	<%= link_to 'Ny Asset', new_asset_path %>
 
+
+		<% end %>
+		<br />
+
+
+	</div>
 </div>
+
+
+<% content_for :javascript do %>
+
+<script>
+$(document).ready(function() {
+	$('.fancybox-button').fancybox({
+		prevEffect		: 'none',
+		nextEffect		: 'none',
+		closeBtn		: false,
+		helpers		: {
+			title	: { type : 'inside' },
+			buttons	: {}
+		}
+	});
+});
+</script>
+
+<% end %>

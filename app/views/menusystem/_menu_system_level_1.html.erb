@@ -1,22 +1,15 @@
 <!-- @tabs kommer fra application.rb -->
-<% @tabs.each do |level_1| -%> 
-
+<% @tabs.each do |level_1| -%>
+<% @no_route = 'No route ' + level_1.navlabel %>
 		<li class="admin_navlabel">
-		
 			<% if level_1.redirect? %>
-			
-					<%= link_to level_1.navlabel, {:controller => level_1.controller_redirect, :action => level_1.action_redirect, :id => level_1.resource_id} %>
-			
+				<%#= link_to level_1.navlabel, {:controller => level_1.controller_redirect, :action => level_1.action_redirect, :id => level_1.resource_id} %>
+				<%= link_to(level_1.navlabel, '/'+ level_1.controller_redirect.to_s + '/' + level_1.action_redirect.to_s) rescue link_to @no_route.html_safe %>
 			<% else %>
-		
-				<%= link_to level_1.navlabel, :controller => level_1.controller_name, :product_id => nil %>
+				<%#= link_to level_1.navlabel, :controller => level_1.controller_name, :product_id => nil %>
+				<%= link_to(level_1.navlabel, '/'+ level_1.controller_name.to_s) rescue link_to @no_route.html_safe %>
 					<!-- PRODUCT_ID => NIL ER FOR AT SIKRE AT MAN KAN KOMME DIREKTE TIL TEXTLINES NÅR MAN HAR REDIGERET I PRODUCTS. -->
 					<!-- DET GØR IKKE NOGET FOR DE ANDRE LINKS, AT DEN BRUGES DER OGSÅ -->			
 			<% end %>
-	
 			<%= render :partial => "menusystem/system_level_2", :locals => {:level_1 => level_1} %>
-			
-		
 <% end -%>
-
-

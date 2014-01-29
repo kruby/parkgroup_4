@@ -1,5 +1,8 @@
 class RelationsController < ApplicationController
   before_action :set_relation, only: [:show, :edit, :update, :destroy]
+  
+  before_filter :current_controller #Findes i application_controller.rb
+  before_filter :logged_in_as_admin? #Findes i application_controller.rb
 
   # GET /relations
   # GET /relations.json

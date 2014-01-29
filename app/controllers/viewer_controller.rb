@@ -14,6 +14,8 @@ class ViewerController < ApplicationController
     @headline = @page.headline rescue 'Indhold følger snarest'
 
     @posts = Post.forside_blogs_active.all(:limit => 6)
+    
+    render 'forside'
 
   end
 

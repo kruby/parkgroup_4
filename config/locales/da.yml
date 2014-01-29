@@ -57,6 +57,8 @@ da:
             month_and_year: '%b %Y'
             short: '%b %d'
             nice: '%d.%m.%Y'
+            year: '%Y'
+            month: '%B'
         month_names:
         - 
         - :Januar

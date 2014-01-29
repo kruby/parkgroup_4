@@ -1,0 +1,43 @@
+<div class="container">
+
+	<h1>Viser assets</h1>
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="visible-lg">Description</th>
+					<th class="visible-lg">User</th>
+					<th class="visible-lg">Photo file name</th>
+					<th class="visible-lg">Photo content type</th>
+					<th class="visible-lg">Photo file size</th>
+					<th class="visible-lg">Photo updated at</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @assets.each do |asset| %>
+					<tr>
+						<td class="visible-lg"><%= asset.description %></td>
+						<td class="visible-lg"><%= asset.user_id %></td>
+						<td class="visible-lg"><%= asset.photo_file_name %></td>
+						<td class="visible-lg"><%= asset.photo_content_type %></td>
+						<td class="visible-lg"><%= asset.photo_file_size %></td>
+						<td class="visible-lg"><%= asset.photo_updated_at %></td>
+						<td colspan="3" class="right">
+							<div class="btn-group">
+								<%= link_to 'Vis', asset, class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Ret', edit_asset_path(asset), class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Slet', asset, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
+							</div>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	
+	<%= link_to 'Ny Asset', new_asset_path %>
+
+</div>

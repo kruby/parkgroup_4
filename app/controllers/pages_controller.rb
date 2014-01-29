@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+  
+  before_filter :current_controller #Findes i application_controller.rb
+  before_filter :logged_in_as_admin?
 
   # GET /pages
   # GET /pages.json

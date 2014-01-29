@@ -1,16 +1,18 @@
-<% @system_menu.each do |level_1| -%>
-<% @no_route = 'No route ' + level_1.navlabel %>
+<% @system_menu.each do |level_0| -%>
+<% @no_route = 'No route ' + level_0.navlabel %>
 <li>
-	<% if level_1.redirect? %>
-	<%= link_to level_1.navlabel, {controller: level_1.controller_redirect, action: level_1.action_redirect} rescue link_to @no_route.html_safe %>
+	<% if level_0.redirect? %>
+	<%#= link_to level_0.navlabel, {controller: level_0.controller_redirect, action: level_0.action_redirect} rescue link_to @no_route.html_safe %>
+	<%= link_to(level_0.navlabel, '/'+ level_0.controller_redirect.to_s + '/' + level_0.action_redirect.to_s) rescue link_to @no_route.html_safe %>
 	<% else %>
-		<% if level_1.controller_name == 'forside'%>
-		<%= link_to level_1.controller_name.mb_chars.capitalize, root_url %>
+		<% if level_0.controller_name == 'forside'%>
+		<%= link_to level_0.controller_name.mb_chars.capitalize, root_url %>
 		<% else %>
-		<%= link_to level_1.navlabel, {controller: level_1.controller_name} rescue link_to @no_route.html_safe %>
+		<%#= link_to level_0.navlabel, {controller: level_0.controller_name} rescue link_to @no_route.html_safe %>
+		<%= link_to(level_0.navlabel, '/'+ level_0.controller_name.to_s) rescue link_to @no_route.html_safe %>
 		<!-- Alle admin sider ledes videre til deres index i views -->
 		<% end %>
 	<% end %>
-	<%#= render :partial => "menusystem/menu_public_level_2", :locals => {:level_1 => level_1} %>
+	<%#= render :partial => "menusystem/menu_public_level_2", :locals => {:level_0 => level_0} %>
 </li>
 <% end -%>

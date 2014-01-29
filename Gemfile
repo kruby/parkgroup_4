@@ -10,6 +10,15 @@ gem 'mysql2'
 # gem 'mysql'
 gem 'acts_as_tree'
 gem 'i18n'
+gem "ransack"
+gem "bcrypt-ruby", :require => "bcrypt"
+gem "paperclip"
+gem 'mini_magick'
+
+# Fancybox - kommerciel licens
+gem 'fancybox2-rails', '~> 0.2.4'
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.1'
 

@@ -5,31 +5,38 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
+					<th></th>
 					<th class="visible-lg">Name</th>
 					<th class="visible-lg">Email</th>
-					<th class="visible-lg">Remember token</th>
-					<th class="visible-lg">Remember token expires at</th>
+					<!-- <th class="visible-lg">Remember token</th>
+					<th class="visible-lg">Remember token expires at</th> -->
 					<th class="visible-lg">Active</th>
 					<th class="visible-lg">Category</th>
 					<th class="visible-lg">Blogname</th>
-					<th class="visible-lg">Password hash</th>
-					<th class="visible-lg">Password salt</th>
+					<!-- <th class="visible-lg">Password hash</th>
+					<th class="visible-lg">Password salt</th> -->
 					<th colspan="3"></th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<% @users.each do |user| %>
+				<% @thumb =  user.avatar.url(:thumb) %>
+				<% @image_show = user.avatar.url(:original)%>
+				<% @title = user.name + ' (ID - ' + user.id.to_s + ')' %>
 					<tr>
+						<td>
+							<%#= link_to image_tag(@thumb,{class: 'img-thumbnail', width: "30px" }), @image_show, {class: 'fancybox-button', rel: 'fancybox-button', title: @title}%>
+							<%= link_to image_tag(@thumb, {class: 'img-thumbnail', width: "30px" }), @image_show, {class: 'fancybox-button', rel: 'fancybox-button', title: @title} %></td>
 						<td class="visible-lg"><%= user.name %></td>
 						<td class="visible-lg"><%= user.email %></td>
-						<td class="visible-lg"><%= user.remember_token %></td>
-						<td class="visible-lg"><%= user.remember_token_expires_at %></td>
+						<!-- <td class="visible-lg"><%= user.remember_token %></td>
+						<td class="visible-lg"><%= user.remember_token_expires_at %></td> -->
 						<td class="visible-lg"><%= user.active %></td>
 						<td class="visible-lg"><%= user.category %></td>
 						<td class="visible-lg"><%= user.blogname %></td>
-						<td class="visible-lg"><%= user.password_hash %></td>
-						<td class="visible-lg"><%= user.password_salt %></td>
+						<!-- <td class="visible-lg"><%= user.password_hash %></td>
+						<td class="visible-lg"><%= user.password_salt %></td> -->
 						<td colspan="3" class="right">
 							<div class="btn-group">
 								<%= link_to 'Vis', user, class: 'btn btn-default btn-xs' %>
@@ -47,3 +54,22 @@
 	<%= link_to 'Ny User', new_user_path %>
 
 </div>
+
+
+<% content_for :javascript do %>
+
+<script>
+$(document).ready(function() {
+	$('.fancybox-button').fancybox({
+		prevEffect		: 'none',
+		nextEffect		: 'none',
+		closeBtn		: false,
+		helpers		: {
+			title	: { type : 'inside' },
+			buttons	: {}
+		}
+	});
+});
+</script>
+
+<% end %>

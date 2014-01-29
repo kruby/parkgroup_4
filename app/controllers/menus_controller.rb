@@ -1,7 +1,7 @@
 class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
   before_filter :current_controller #Findes i application_controller.rb
-  #before_filter :logged_in_as_admin?
+  before_filter :logged_in_as_admin?
   
   
   def menus_data

@@ -1,6 +1,9 @@
 class AssetsController < ApplicationController
   before_action :set_asset, only: [:show, :edit, :update, :destroy]
 
+  before_filter :current_controller #Findes i application_controller.rb
+  before_filter :logged_in_as_admin?
+
   # GET /assets
   # GET /assets.json
   def index
@@ -69,6 +72,6 @@ class AssetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def asset_params
-      params.require(:asset).permit(:description, :user_id, :photo_file_name, :photo_content_type, :photo_file_size, :photo_updated_at)
+      params.require(:asset).permit(:description, :user_id, :photo)
     end
 end

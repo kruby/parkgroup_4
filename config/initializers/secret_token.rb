@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-KrubyRails4::Application.config.secret_key_base = '649ca92eee919aabe88bb390e08b6bd6e5fdeb87eab08d020bb51302e90be993021877ba3fac1befe22ee1a7aaa3c06c6d070e1098eea33d5582dd03a44b9180'
+KrubyRails4::Application.config.secret_key_base = '9f365948ff43a98457a97a8aa96d6d5103132e595212c5b6d5a6b1201dfd0ab3aad51688cb15d192f924f2c48ebd8aad5720d2cfb595c9061b10ec488c033a9f'

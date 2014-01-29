@@ -9,4 +9,9 @@ module ApplicationHelper
     @r == nil ? true : false
   end
   
+  def delimiter number
+    number_with_delimiter(number.to_d, :locale => :da)
+  end
+  
+  
 end
