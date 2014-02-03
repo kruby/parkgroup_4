@@ -1,15 +1,17 @@
-<% unless @assets.count < 3 #only do this unless @assets is less than 3 %>
+<% unless @assets.count < 1 #only do this unless @assets is less than 3 %>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class=""></li>
-			<li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<% @counter_1 = 0 %>
+			<% @assets.each do |asset| %>
+				<li data-target="#myCarousel" data-slide-to="<%= @counter_1 %>" class=""></li>
+			<% @counter_1 = @counter_1 + 1%>
+			<% end %>
 		</ol>
 		<div class="carousel-inner">
-			<% @counter = 0 %>
+			<% @counter_2 = 0 %>
 			<% @assets.each do |asset| %>
-			<div class="item <%= @counter == 1 ? 'active' : '' %>">
+			<div class="item <%= @counter_2 == 0 ? 'active' : '' %>">
 				<%= image_tag(asset.photo.url(:original))%>
 				<div class="container">
 					<div class="carousel-caption">
@@ -19,7 +21,7 @@
 					</div>
 				</div>
 			</div>
-			<% @counter = @counter + 1%>
+			<% @counter_2 = @counter_2 + 1%>
 			<% end %>
 		</div>
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>

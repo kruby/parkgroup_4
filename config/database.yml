@@ -23,6 +23,15 @@ old_development:
   password: kf1737
   socket: /tmp/mysql.sock
 
+production:
+  adapter: mysql2
+  encoding: utf8
+  host: db01.mysql.vm.brightbox.net
+  username: krsgrd
+  password: Ee9Gohchai4i
+  database: krsgrd_kruby_rails_4_production
+  
+
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
@@ -35,9 +44,3 @@ test:
   username: root
   password: kf1737
   socket: /tmp/mysql.sock
-
-production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000

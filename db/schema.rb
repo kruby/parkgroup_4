@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131110042) do
+ActiveRecord::Schema.define(version: 20140203210226) do
 
   create_table "assets", force: true do |t|
     t.string   "description"
@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 20140131110042) do
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "body"
-    t.string   "author"
     t.integer  "priority"
     t.integer  "parent_id"
     t.integer  "user_id"

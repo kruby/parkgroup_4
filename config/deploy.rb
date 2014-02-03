@@ -8,7 +8,9 @@ require 'brightbox/passenger'
 set :application, "kruby_rails_4"
 
 # Primary domain name of your application. Used in the Apache configs
-set :domain, "krsgrd-003.vm.brightbox.net"
+set :domain, "www.rails4.kruby.dk"
+
+set :domain_aliases, "rails4.kruby.dk"
 
 ## List of servers
 server "krsgrd-003.vm.brightbox.net", :app, :web, :db, :primary => true

@@ -23,7 +23,7 @@ class ViewerController < ApplicationController
   def forside
 
     @page = Page.find_by_name('Forside')
-    @posts = Post.all(limit: 6)
+    @posts = Post.latest.activated.limit(6)
     @assets = Asset.forside_fotos
     
     #   

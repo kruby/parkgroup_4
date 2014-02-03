@@ -147,7 +147,6 @@ def new_post(old_posts)
 		post_new.attributes = {
 			:title => post_old.title,
 			:body => post_old.body,
-			:author => post_old.author,
 			:priority => post_old.priority,
 			:parent_id => post_old.parent_id,
 			:user_id => post_old.user_id,

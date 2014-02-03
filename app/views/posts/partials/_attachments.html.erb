@@ -19,7 +19,7 @@
 
 			<tr>
 				<td class="visible-lg visible-md visible-sm visible-xs" id='images'>
-					<%= link_to image_tag(@image, :alt => @description), @image_show, {class: "fancybox-button", rel: "fancybox-button", title: Asset.find(attachment.asset_id).description} %>
+					<%= link_to image_tag(@image, :alt => @description), @image_show, {class: "fancybox-button", rel: "fancybox-button", title: Asset.find(attachment.asset_id).description} rescue nil %>
 				</td>
 				<td class="text-center visible-lg visible-md visible-sm"><%= attachment.attachable_type %></td>
 				<td class="visible-lg visible-md visible-sm visible-xs"><%= truncate(@description, length: 20) %></td>

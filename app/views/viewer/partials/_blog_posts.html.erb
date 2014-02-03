@@ -15,7 +15,7 @@
 							<% @alt = Asset.find(attachment.asset_id).description rescue nil %>
 							<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil %>
 							<% @image_show = Asset.find(attachment.asset_id).photo.url(:original) rescue nil %> 
-							<%= link_to image_tag(@image, {class: 'img-thumbnail', height: '20px', alt: @alt}), @image_show, {class: 'fancybox-button thumb pull-right', rel: @group, title: Asset.find(attachment.asset_id).description} rescue nil %>
+							<%= link_to image_tag(@image, {class: 'img-thumbnail forside', alt: @alt}), @image_show, {class: 'fancybox-button thumb pull-right', rel: @group, title: Asset.find(attachment.asset_id).description} rescue nil %>
 							<!-- HER HAR VI BRUGT POST.ID TIL AT GØRE GRUPPEN AF FOTOS UNIK, SOM DET OGSÅ SES NEDERST I JAVASCRIPT I GROUP -->
 						<% end %>
 					</h3>
