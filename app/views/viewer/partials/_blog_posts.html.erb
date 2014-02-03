@@ -1,0 +1,52 @@
+<div class="panel-group" id="accordion">
+	<% @counter = 0 %>
+	<% for post in @posts %>
+	<% @counter = @counter + 1 %>
+	<div class="panel panel-default blog_posts">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=@counter%>">
+					<h3><%= post.title %>
+						<span class="date_and_author text-muted pull-right visible-sm visible-md visible-lg">
+							<%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <%= User.find(post.user_id).blogname rescue 'Kruby' %>
+						</span>
+						<% post.attachments.each do |attachment| %>
+							<% @group = 'group'+post.id.to_s %>
+							<% @alt = Asset.find(attachment.asset_id).description rescue nil %>
+							<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil %>
+							<% @image_show = Asset.find(attachment.asset_id).photo.url(:original) rescue nil %> 
+							<%= link_to image_tag(@image, {class: 'img-thumbnail', height: '20px', alt: @alt}), @image_show, {class: 'fancybox-button thumb pull-right', rel: @group, title: Asset.find(attachment.asset_id).description} rescue nil %>
+							<!-- HER HAR VI BRUGT POST.ID TIL AT GØRE GRUPPEN AF FOTOS UNIK, SOM DET OGSÅ SES NEDERST I JAVASCRIPT I GROUP -->
+						<% end %>
+					</h3>
+				</a>
+			</h4>
+		</div>
+		<div id="collapse_<%=@counter%>" class="panel-collapse collapse">
+			<div class="panel-body">
+				<%= raw textilize(post.body) %>
+			</div>
+		</div>
+	</div>
+	<% end%>	
+</div>
+
+
+<% content_for :javascript do %>
+
+	<script>
+        $(document).ready(function() {
+			$(".fancybox-button").fancybox({
+				prevEffect		: 'none',
+				nextEffect		: 'none',
+				closeBtn		: false,
+				helpers			: {
+				title			: { type : 'inside' },
+				buttons			: {}
+				}
+			});
+		});
+    </script>
+
+<% end %>
+

@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129173128) do
+ActiveRecord::Schema.define(version: 20140131110042) do
 
   create_table "assets", force: true do |t|
     t.string   "description"
+    t.string   "caption"
     t.integer  "user_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"

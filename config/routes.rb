@@ -1,4 +1,5 @@
 KrubyRails4::Application.routes.draw do
+
   resources :preferences
 
   resources :vouchers
@@ -32,6 +33,9 @@ KrubyRails4::Application.routes.draw do
       delete 'destroy_from_post'
     end
   end
+	
+  get '/attachments/destroy_from_post/:id/:post_id' => 'attachments#destroy_from_post', :as => :destroy_from_post
+	
 
   resources :assets do
     collection do
@@ -41,19 +45,20 @@ KrubyRails4::Application.routes.draw do
     end
   end
 
-  resources :contents
+  get '/assets/add_to_post/:id' => 'assets#add_to_post', :as => :add_to_post
 
   resources :menus
 
   resources :posts
+  get '/bloggen' => 'posts#blog', :as => :bloggen
+  get 'posts/active/:id' => 'posts#active', as: :post_active
+	
 
   resources :contents  
   get 'contents/active/:id' => 'contents#active', as: :content_active
   get 'contents/admin/:id' => 'contents#admin', as: :content_admin
   get 'contents/redirect/:id' => 'contents#redirect', as: :content_redirect
   get 'contents/change_category/:id' => 'contents#change_category', as: :change_category
-
-  resources :menus, :relations
 
   resources :pages
   get 'pages/active/:id' => 'pages#active', as: :page_active

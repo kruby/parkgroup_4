@@ -6,31 +6,31 @@
 			<thead>
 				<tr>
 					<th>Title</th>
-					<th class="visible-lg">Body</th>
-					<th class="visible-lg">Author</th>
-					<th class="visible-lg">Priority</th>
-					<th class="visible-lg">Parent</th>
-					<th class="visible-lg">User</th>
-					<th class="visible-lg">Aktiv</th>
+					<th class="visible-lg visible-md visible-sm">Body</th>
+					<th class="text-center visible-lg visible-md visible-sm">Author</th>
+					<th class="text-center visible-lg visible-md visible-sm">Priority</th>
+					<!-- <th class="text-center visible-lg visible-md visible-sm">Parent</th> -->
+					<!-- <th class="text-center visible-lg visible-md visible-sm">User</th> -->
+					<th class="text-center">Aktiv</th>
 					<!-- <th class="visible-lg">Oprettet</th> -->
-					<th colspan="3"></th>
+					<th colspan="3" width="110px"></th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<% @posts.each do |post| %>
 					<tr>
-						<td><%= post.title %></td>
-						<td class="visible-lg"><%= truncate(post.body, length: 50) %></td>
-						<td class="visible-lg"><%= post.author %></td>
-						<td class="visible-lg"><%= post.priority %></td>
-						<td class="visible-lg"><%= post.parent_id %></td>
-						<td class="visible-lg"><%= post.user_id %></td>
-						<td class="visible-lg"><%= post.active %></td>
+						<td><%= truncate(post.title, length: 20) %></td>
+						<td class="visible-lg visible-md visible-sm"><%= truncate(post.body, length: 30) %></td>
+						<td class="text-center visible-lg visible-md visible-sm"><%= User.find(post.user_id).blogname %></td>
+						<td class="text-center visible-lg visible-md visible-sm"><%= post.priority %></td>
+						<!-- <td class="text-center visible-lg visible-md visible-sm"><%= post.parent_id %></td> -->
+						<!-- <td class="text-center visible-lg visible-md visible-sm"><%= post.user_id %></td> -->
+						<td class="text-center"><%= link_to post.active == true ? '√' : '–', post_active_path(post.id) %></td>
 						<!-- <td class="visible-lg"><%= nice_date(post.created_at) %></td> -->
-						<td colspan="3" class="right">
+						<td colspan="3" class="right col-sm-2">
 							<div class="btn-group">
-								<%= link_to 'Vis', post, class: 'btn btn-default btn-xs' %>
+								<%#= link_to 'Vis', post, class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Ret', edit_post_path(post), class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Slet', post, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
 							</div>

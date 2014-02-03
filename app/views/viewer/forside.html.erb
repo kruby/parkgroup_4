@@ -1,11 +1,12 @@
 <!-- Vi opdeler med content_for så vi kan styre hvad der bliver indsat hvor i viewer.html.erb under layouts -->
 <% content_for :head do %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Kruby on Rails 4 and Ruby 2" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Kruby on Rails 4 and Ruby 2" %>">
-    <%= stylesheet_link_tag "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><%= content_for?(:title) ? yield(:title) : "Bootstrap Test" %></title>
+	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Bootstrap Test" %>">
+	<link href="/assets/mini.gif" rel="shortcut icon"/>
+	<%= stylesheet_link_tag "application", media: "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
 <% end%>
 
 <% content_for :body do %>
@@ -14,9 +15,13 @@
 		<%= render 'menusystem/navigation' %>
 	</header>
 	<main role="main">
-	   <%= render 'viewer/partials/messages' %>
+		<%= render 'viewer/partials/messages' %>
 	</main>
 	<div class="container">
-		<%= render 'viewer/partials/content'%>
+		<h1 class="forside">Velkommen til Kruby <small class="forside">kreativ webudvikling i skyen</small></h1><br>
+		<%= render 'viewer/partials/carousel'%><br>
+		<%= raw textilize(@content) %><br>
+		<h2>Bloggen</h2>
+		<%= render 'viewer/partials/blog_posts'%>
 	</div>
 <% end %>

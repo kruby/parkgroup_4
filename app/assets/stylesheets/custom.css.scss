@@ -16,123 +16,176 @@ $kruby-40:lighten($kruby-blue-100, 60%);
 //$kruby-blue-medium: #93bee3;
 //$kruby-blue-light: #C9E9FF;
 
+.img-thumbnail {
+	margin-left: 5px;
+}
+
+div.btn-group {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+
+div.table-responsive {
+	margin-top: 20px;
+}
+
+h1.forside {
+	font-size: 3vw;
+}
+small.forside {
+	font-size: 2vw;
+}
+
+.carousel-inner > .item > img { margin: 0 auto; }
+
+div.carousel-caption h1 {
+	font-size: 3vw;
+}
+.carousel-inner {
+	height: auto;
+}
+
+div.panel.panel-default.blog_posts {
+	margin-bottom: 10px;
+}
+
+div.panel.panel-default.blog_posts h3 {
+	margin-top: 6px;
+	margin-bottom: 8px;
+}
+
+.date_and_author {
+	font-size: 12px;
+	margin-top: 10px;
+	margin-left: 10px;
+	font-weight: normal;
+}
+
+
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
 
 .container .jumbotron {
-    background-color: $kruby-75;
+	background-color: $kruby-75;
 }
 
 .alert {
-    border-radius: 0px;
+	border-radius: 0px;
 }
 
 label {
-    margin-bottom: 2px;
+	margin-bottom: 2px;
 }
 .btn-info {
-    background-color: $kruby-blue-100;
-    border-color: $kruby-80;
-    &:hover {
-        background-color: darken($kruby-blue-100, 10%);
-    }
-    a {
-        color: #FFF;
-        &:visited   {
-            color: #FFF;   
-        }
-    }
+	background-color: $kruby-blue-100;
+	border-color: $kruby-80;
+	&:hover {
+		background-color: darken($kruby-blue-100, 10%);
+	}
+	a {
+		color: #FFF;
+		&:visited   {
+			color: #FFF;   
+		}
+	}
 }
  
 
 a:active {
-    color: $kruby-blue-100;   
+	color: $kruby-blue-100;   
 }
 
 .navbar {
-    border-radius: 0px;
-    li a:visited {
-        color: #000;
-    }
+	margin-bottom: 1px;
+	border-radius: 0px;
+	li a:visited {
+		color: #000;
+	}
 }
 
 .navbar-inverse .navbar-toggle {
-    border-color: $kruby-blue-100;
+	border-color: $kruby-blue-100;
 }
 
 .navbar-inverse {
-    background-color: $kruby-95;
-    border: 0px;
-    border-top: 1px solid #FFF;
-    &:hover {
-        color: $kruby-95;
-    }
-    &:visited {
-        color: $kruby-85;
-    }
-    &:active {
-        color: $kruby-85;
-    }
-    .navbar-nav .open a {
-        &:focus {
-            background-color: $kruby-90;
-        }
-        &:visited {
-            background-color: $kruby-90;
-        }
-    }
-    .navbar-nav li a {
-        color: #FFF;
-        &:hover {
-            background-color: $kruby-90;   
-        }
-    }
-    .navbar-nav li .dropdown-menu {
-        background-color: $kruby-blue-100;
-        a:hover {
-            background-color: $kruby-90;
-        }
-    }
-    .navbar-nav .active a {
-        background-color: $kruby-90;
-        &:hover {
-            background-color: $kruby-85;
-        }
-        &:focus {
-            background-color: $kruby-90;
-        }
-    }       
+	background-color: $kruby-95;
+	border: 0px;
+	border-top: 1px solid #FFF;
+	&:hover {
+		color: $kruby-95;
+	}
+	&:visited {
+		color: $kruby-85;
+	}
+	&:active {
+		color: $kruby-85;
+	}
+	.navbar-nav .open a {
+		&:focus {
+			background-color: $kruby-90;
+		}
+		&:visited {
+			background-color: $kruby-90;
+		}
+	}
+	.navbar-nav li a {
+		color: #FFF;
+		&:hover {
+			background-color: $kruby-90;   
+		}
+	}
+	.navbar-nav li .dropdown-menu {
+		background-color: $kruby-blue-100;
+		a:hover {
+			background-color: $kruby-90;
+		}
+	}
+	.navbar-nav .active a {
+		background-color: $kruby-90;
+		&:hover {
+			background-color: $kruby-85;
+		}
+		&:focus {
+			background-color: $kruby-90;
+		}
+	}       
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
-    color: #FFF;
-    &:hover {
-        background-color: $kruby-90;   
-    } 
-    &:active {
-        background-color: $kruby-90;   
-    }
-    &:visited {
-        background-color: $kruby-90;   
-    } 
+	color: #FFF;
+	&:hover {
+		background-color: $kruby-90;   
+	} 
+	&:active {
+		background-color: $kruby-90;   
+	}
+	&:visited {
+		background-color: $kruby-90;   
+	} 
 }
 
 li.dropdown, li.open {
-    background-color: $kruby-95;
+	background-color: $kruby-95;
 }
 
 header {
-    background-color: $kruby-blue-100;
-    /*	background-image: url(kruby-background_sky.jpg);*/
+	background-color: $kruby-blue-100;
+	/*	background-image: url(kruby-background_sky.jpg);*/
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
-    background-color: #FFF;
+	background-color: #FFF;
 }
 
 
 .navbar-inverse .navbar-collapse {
-    border-color: #FFF;
+	border-color: #FFF;
 }
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-    background-color: $kruby-blue-100;
+	background-color: $kruby-blue-100;
 }
+
+

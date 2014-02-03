@@ -9,11 +9,12 @@ class ViewerController < ApplicationController
       @page = Page.find(params[:id]) || Page.find_by_name('Forside')
     end
     
-    @pagetitle = 'Kruby - ' + @page.title rescue 'Indhold følger snarest'
+    # @pagetitle = 'Kruby - ' + @page.title rescue 'Indhold følger snarest'
     @content = @page.body rescue 'Indhold følger snarest'
-    @headline = @page.headline rescue 'Indhold følger snarest'
+    # @headline = @page.headline rescue 'Indhold følger snarest'
 
-    @posts = Post.forside_blogs_active.all(:limit => 6)
+    @posts = Post.all(limit: 6)
+    @assets = Asset.forside_fotos
     
     render 'forside'
 
@@ -22,11 +23,12 @@ class ViewerController < ApplicationController
   def forside
 
     @page = Page.find_by_name('Forside')
-    @posts = Post.all(:limit => 6)
+    @posts = Post.all(limit: 6)
+    @assets = Asset.forside_fotos
     
     #   
     # @pagetitle = @page.title rescue 'Indhold følger snarest'
-    # @content = @page.body rescue 'Indhold følger snarest'
+    @content = @page.body rescue 'Indhold følger snarest'
     # @headline = @page.headline rescue 'Indhold følger snarest'
     # @posts = Post.forside_blogs_active.all(:limit => 10) rescue nil
     # 

@@ -5,7 +5,7 @@ require 'brightbox/passenger'
 
 # The name of your application.  Used for deployment directory and filenames
 # and Apache configs. Should be unique on the Brightbox
-set :application, "myapp"
+set :application, "kruby_rails_4"
 
 # Primary domain name of your application. Used in the Apache configs
 set :domain, "krsgrd-003.vm.brightbox.net"

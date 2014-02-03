@@ -23,6 +23,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @attachments = Attachment.find_all_by_attachable_id(params[:id])
   end
 
   # POST /posts
@@ -64,6 +65,11 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+	
+  def active
+    active_or_not(params[:id],'post', 'active')
+    redirect_to action: 'index'
+  end	
 
   private
     # Use callbacks to share common setup or constraints between actions.

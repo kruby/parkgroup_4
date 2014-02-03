@@ -2,6 +2,7 @@ class CreateAssets < ActiveRecord::Migration
   def change
     create_table :assets do |t|
       t.string :description
+      t.string :caption
       t.integer :user_id
       t.string :photo_file_name
       t.string :photo_content_type
