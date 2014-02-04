@@ -78,6 +78,8 @@ end
 # set :local_shared_dirs, %w(public/upload)
 # set :local_shared_files, %w(config/database.yml)
 
+load 'deploy/assets'
+
 ## Global Shared Area
 # These are the list of files and directories that you want
 # to share between all releases of your application across all servers.
@@ -125,6 +127,10 @@ end
 # don't need this if you are using a different SCM system. Note that
 # ptys stop shell startup scripts from running.
 default_run_options[:pty] = true
+
+
+set :mongrel_port, 9600
+
 
 ## Logrotation
 # Where the logs are stored. Defaults to <shared_path>/log
