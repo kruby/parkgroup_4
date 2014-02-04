@@ -4,7 +4,7 @@
 
 	<div class="row">
 		<div class="col-lg-4">
-		<%= search_form_for @q do |f| %>
+		<%= search_form_for @search do |f| %>
 			<%= f.label :relation_company_cont, 'Firma' %> 
 			<div class="input-group"> 
 				<%= f.text_field :relation_company_cont, :size => 16, class: 'form-control' %>
