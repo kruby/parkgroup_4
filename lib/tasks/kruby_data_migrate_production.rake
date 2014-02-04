@@ -3,7 +3,11 @@
 # Skal placeres i dit rails projekt under stien lib/tasks
 # Kan manuelt startes med kommandoen $ rake migrate_old_data direkte i terminal programmet
 
-task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_users, :old_vouchers ]
+#BRUGES FØRSTE GANG (HUSK AT UDKOMMENTERE VALIDERING AF PASSWORD I USER.RB)
+task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_users ]
+
+#HEREFTER BRUGES DENNE PGA. USER.RB'S VALIDERING AF PASSWORD
+#task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers ]
 
 # Alle data i den nye database bliver slettet her
 task :delete_all_in_new => :environment do
@@ -32,8 +36,12 @@ task :delete_all_in_new => :environment do
 	del = Relation.all.count
 	Relation.destroy_all
 	puts "Ialt slettet #{del}"
-	del = User.all.count
-	User.destroy_all
+	if User.all.count > 0
+		del = 'Ingen brugere slettet'
+	else
+		del = User.all.count
+		User.destroy_all
+	end
 	puts "Ialt slettet #{del}"
 	del = Voucher.all.count
 	Voucher.destroy_all
@@ -281,6 +289,37 @@ def new_relation(old_relations)
 	end
 end
 
+task :old_vouchers => :environment do
+	desc "Overfører de gamle poster fra voucher til den ny database"
+	Voucher.establish_connection :old_production
+	@old_vouchers = Voucher.all
+	@old_vouchers.each do |voucher|
+		puts "Navnet på 'voucher' er: #{voucher.description}"
+	end
+	puts "----------------------------------"
+	new_voucher(@old_vouchers)
+end
+
+def new_voucher(old_vouchers)
+	Voucher.establish_connection :production
+	Voucher.destroy_all
+	old_vouchers.each do |voucher_old|
+		voucher_new = Voucher.new
+		voucher_new.attributes = {
+			:description => voucher_old.description,
+			:number => voucher_old.number,
+			:relation_id => voucher_old.relation_id,
+			:date => voucher_old.date,
+			:user_id => voucher_old.user_id,
+			:hourly_rate => voucher_old.hourly_rate
+		}
+		voucher_new.id = voucher_old.id
+		voucher_new.save!
+	end
+end
+
+
+# SKAL IKKE KALDES NÅR DATA ER FLYTTET OVER FØRSTE GANG
 task :old_users => :environment do
 	desc "Overfører de gamle poster fra user til den ny database"
 	User.establish_connection :old_production
@@ -313,33 +352,3 @@ def new_user(old_users)
 		user_new.save!
 	end
 end
-
-task :old_vouchers => :environment do
-	desc "Overfører de gamle poster fra voucher til den ny database"
-	Voucher.establish_connection :old_production
-	@old_vouchers = Voucher.all
-	@old_vouchers.each do |voucher|
-		puts "Navnet på 'voucher' er: #{voucher.description}"
-	end
-	puts "----------------------------------"
-	new_voucher(@old_vouchers)
-end
-
-def new_voucher(old_vouchers)
-	Voucher.establish_connection :production
-	Voucher.destroy_all
-	old_vouchers.each do |voucher_old|
-		voucher_new = Voucher.new
-		voucher_new.attributes = {
-			:description => voucher_old.description,
-			:number => voucher_old.number,
-			:relation_id => voucher_old.relation_id,
-			:date => voucher_old.date,
-			:user_id => voucher_old.user_id,
-			:hourly_rate => voucher_old.hourly_rate
-		}
-		voucher_new.id = voucher_old.id
-		voucher_new.save!
-	end
-end
-
