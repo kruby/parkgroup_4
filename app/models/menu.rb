@@ -1,9 +1,5 @@
 class Menu < ActiveRecord::Base
-  
-  # establish_connection :old_development
-  # 
-  # establish_connection :development
-  
+    
   has_one :content, :as => :resource, :dependent => :destroy
   
   after_create :make_content
