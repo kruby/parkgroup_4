@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><%= content_for?(:title) ? yield(:title) : "Bootstrap Test" %></title>
-	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Bootstrap Test" %>">
-    <link href="/assets/mini.gif" rel="shortcut icon"/>
-	<%= stylesheet_link_tag "application", media: "all" %>
-	<%= javascript_include_tag "application" %>
-	<%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Kruby on Rails 4 and Ruby 2" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Kruby on Rails 4 and Ruby 2" %>">
+	<link href="/assets/mini.gif" rel="shortcut icon"/>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
 	<header>

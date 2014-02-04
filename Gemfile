@@ -19,7 +19,7 @@ gem 'mini_magick'
 gem 'RedCloth', :require => 'redcloth'
 
 # Fancybox - kommerciel licens
-gem 'fancybox2-rails', '~> 0.2.4'
+gem 'fancybox2-rails', '~> 0.2.6'
 
 
 # Use SCSS for stylesheets

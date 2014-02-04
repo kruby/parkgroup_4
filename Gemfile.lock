@@ -152,7 +152,7 @@ DEPENDENCIES
   bcrypt-ruby
   bootstrap-sass (~> 3.0.3.0)
   coffee-rails (~> 4.0.1)
-  fancybox2-rails (~> 0.2.4)
+  fancybox2-rails (~> 0.2.6)
   i18n
   jbuilder (~> 1.2)
   jquery-rails

@@ -36,7 +36,7 @@
 				<td><%= nice_date(asset.updated_at) rescue nil %></td>
 				<td><%= nice_date(asset.photo_updated_at) rescue nil %></td>
 				<!-- <td><%#= link_to image_tag(@image), asset, :class => 'thumb'%></td> -->
-				<td class='thumb text-center' width='20px'><%= link_to image_tag(@thumb,{class: 'img-thumbnail', width: '30px' }), @image_show, {class: 'fancybox-button', rel: 'fancybox-button', title: @title}%></td>
+				<td class='thumb text-center' width='20px'><%= link_to image_tag(@thumb,{class: 'img-thumbnail', width: '30px' }), @image_show, {class: 'fancybox-button', rel: 'gallery', title: @title}%></td>
 				<td colspan='3' class='text-right'>
 					<div class='btn-group'>
 						<%#= link_to 'Vis', asset, class: 'btn btn-default btn-xs' %>
