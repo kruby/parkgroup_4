@@ -7,7 +7,7 @@
 #task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_users ]
 
 #HEREFTER BRUGES DENNE PGA. USER.RB'S VALIDERING AF PASSWORD
-task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers ]
+task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_attachments, :old_hours, :old_relations, :old_vouchers ]
 
 # Alle data i den nye database bliver slettet her
 task :delete_all_in_new => :environment do
