@@ -26,6 +26,15 @@ set :repository, "."
 set :scm, :none
 set :deploy_via, :copy
 
+namespace :deploy do
+ namespace :rake_tasks do
+   task :singleton, :roles => :db, :only => {:primary => true} do
+     run rake_task("db:create")
+     run rake_task("migrate_old_data_production")
+   end
+ end
+end
+
 ### Other options you can set ###
 # Comma separated list of additional domains for Apache
 # set :domain_aliases, "www.example.com,dev.example.com"

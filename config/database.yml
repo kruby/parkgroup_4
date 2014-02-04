@@ -32,6 +32,14 @@ production:
   database: krsgrd_kruby_rails_4_production
   
 
+old_production:
+  adapter: mysql2
+  encoding: utf8
+  host: db01.mysql.vm.brightbox.net
+  username: krsgrd
+  password: Ee9Gohchai4i
+  database: krsgrd_kruby_production_utf8
+
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
