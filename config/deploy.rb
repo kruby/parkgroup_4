@@ -22,9 +22,10 @@ set(:deploy_to) { File.join("", "home", user, application) }
 # the local directory.  You should probably change this if you use
 # another repository, like git or subversion.
 
-set :repository, "."
-set :scm, :none
+set :repository, "git@github.com:kruby/kruby_rails_4.git"
+set :scm, :git
 set :deploy_via, :copy
+set :branch, "master"
 
 namespace :deploy do
  namespace :rake_tasks do
