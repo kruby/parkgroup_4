@@ -3,54 +3,46 @@
 # Skal placeres i dit rails projekt under stien lib/tasks
 # Kan manuelt startes med kommandoen $ rake migrate_old_data direkte i terminal programmet
 
-#BRUGES FØRSTE GANG (HUSK AT UDKOMMENTERE VALIDERING AF PASSWORD I USER.RB)
-#task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_users ]
-
-#HEREFTER BRUGES DENNE PGA. USER.RB'S VALIDERING AF PASSWORD
-task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers ]
+task :migrate_old_data_development => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_users, :old_vouchers ]
 
 # Alle data i den nye database bliver slettet her
 task :delete_all_in_new => :environment do
-	ActiveRecord::Base.establish_connection :production
+	ActiveRecord::Base.establish_connection :development
 	del = Page.all.count
 	Page.destroy_all
-	puts "Ialt slettet i Page #{del}"
+	puts "Ialt slettet #{del}"
 	del = Menu.all.count
 	Menu.destroy_all
-	puts "Ialt slettet i Menu #{del}"
+	puts "Ialt slettet #{del}"
 	del = Content.all.count
 	Content.destroy_all
-	puts "Ialt slettet i Content #{del}"
+	puts "Ialt slettet #{del}"
 	del = Post.all.count
 	Post.destroy_all
-	puts "Ialt slettet i Post #{del}"
+	puts "Ialt slettet #{del}"
 	del = Asset.all.count
 	Asset.destroy_all
-	puts "Ialt slettet i Asset #{del}"
+	puts "Ialt slettet #{del}"
 	del = Attachment.all.count
 	Attachment.destroy_all
-	puts "Ialt slettet i Attachment #{del}"
+	puts "Ialt slettet #{del}"
 	del = Hour.all.count
 	Hour.destroy_all
-	puts "Ialt slettet i Hour #{del}"
+	puts "Ialt slettet #{del}"
 	del = Relation.all.count
 	Relation.destroy_all
-	puts "Ialt slettet i Relation #{del}"
-	if User.all.count > 0
-		del = 'INGEN'
-	else
-		del = User.all.count
-		User.destroy_all
-	end
-	puts "Ialt slettet i User #{del}"
+	puts "Ialt slettet #{del}"
+	del = User.all.count
+	User.destroy_all
+	puts "Ialt slettet #{del}"
 	del = Voucher.all.count
 	Voucher.destroy_all
-	puts "Ialt slettet i Voucher #{del}"
+	puts "Ialt slettet #{del}"
 end
 
 task :old_menus => :environment do
 	desc "Overfører de gamle poster fra menus til den ny database"
-	Menu.establish_connection :old_production
+	Menu.establish_connection :old_development
 	@old_menus = Menu.all
 	@old_menus.each do |menu|
 		puts "Navnet på 'menu' er: #{menu.name}"
@@ -60,7 +52,7 @@ task :old_menus => :environment do
 end
 
 def new_menus(old_menus)
-	Menu.establish_connection :production
+	Menu.establish_connection :development
 	old_menus.each do |menu_old|
 		menu_new = Menu.new
 		menu_new.attributes = {
@@ -76,7 +68,7 @@ end
 
 task :old_pages => :environment do
 	desc "Overfører de gamle poster fra pages til den ny database"
-	Page.establish_connection :old_production
+	Page.establish_connection :old_development
 	@old_pages = Page.all
 	@old_pages.each do |page|
 		puts "Navnet på 'page' er: #{page.name}"
@@ -86,7 +78,7 @@ task :old_pages => :environment do
 end
 
 def new_pages(old_pages)
-	Page.establish_connection :production
+	Page.establish_connection :development
 	old_pages.each do |page_old|
 		page_new = Page.new
 		page_new.attributes = {
@@ -103,7 +95,7 @@ end
 
 task :old_content => :environment do
 	desc "Overfører de gamle poster fra content til den ny database"
-	Content.establish_connection :old_production
+	Content.establish_connection :old_development
 	@old_content = Content.all
 	@old_content.each do |content|
 		puts "Navnet på 'content' er: #{content.navlabel}"
@@ -113,7 +105,7 @@ task :old_content => :environment do
 end
 
 def new_content(old_content)
-	Content.establish_connection :production
+	Content.establish_connection :development
 	Content.destroy_all
 	old_content.each do |content_old|
 		content_new = Content.new
@@ -138,7 +130,7 @@ end
 
 task :old_posts => :environment do
 	desc "Overfører de gamle poster fra post til den ny database"
-	Post.establish_connection :old_production
+	Post.establish_connection :old_development
 	@old_posts = Post.all
 	@old_posts.each do |post|
 		puts "Navnet på 'post' er: #{post.title}"
@@ -148,7 +140,7 @@ task :old_posts => :environment do
 end
 
 def new_post(old_posts)
-	Post.establish_connection :production
+	Post.establish_connection :development
 	Post.destroy_all
 	old_posts.each do |post_old|
 		post_new = Post.new
@@ -167,7 +159,7 @@ end
 
 task :old_assets => :environment do
 	desc "Overfører de gamle poster fra asset til den ny database"
-	Asset.establish_connection :old_production
+	Asset.establish_connection :old_development
 	@old_assets = Asset.all
 	@old_assets.each do |asset|
 		puts "Navnet på 'asset' er: #{asset.description}"
@@ -177,7 +169,7 @@ task :old_assets => :environment do
 end
 
 def new_asset(old_assets)
-	Asset.establish_connection :production
+	Asset.establish_connection :development
 	Asset.destroy_all
 	old_assets.each do |asset_old|
 		asset_new = Asset.new
@@ -195,7 +187,7 @@ end
 
 task :old_attachments => :environment do
 	desc "Overfører de gamle poster fra attachment til den ny database"
-	Attachment.establish_connection :old_production
+	Attachment.establish_connection :old_development
 	@old_attachments = Attachment.all
 	@old_attachments.each do |attachment|
 		puts "Navnet på 'attachment' er: #{attachment.description}"
@@ -205,7 +197,7 @@ task :old_attachments => :environment do
 end
 
 def new_attachment(old_attachments)
-	Attachment.establish_connection :production
+	Attachment.establish_connection :development
 	Attachment.destroy_all
 	old_attachments.each do |attachment_old|
 		attachment_new = Attachment.new
@@ -225,7 +217,7 @@ end
 
 task :old_hours => :environment do
 	desc "Overfører de gamle poster fra hour til den ny database"
-	Hour.establish_connection :old_production
+	Hour.establish_connection :old_development
 	@old_hours = Hour.all
 	@old_hours.each do |hour|
 		puts "Navnet på 'hour' er: #{hour.description}"
@@ -235,7 +227,7 @@ task :old_hours => :environment do
 end
 
 def new_hour(old_hours)
-	Hour.establish_connection :production
+	Hour.establish_connection :development
 	Hour.destroy_all
 	old_hours.each do |hour_old|
 		hour_new = Hour.new
@@ -253,7 +245,7 @@ end
 
 task :old_relations => :environment do
 	desc "Overfører de gamle poster fra relation til den ny database"
-	Relation.establish_connection :old_production
+	Relation.establish_connection :old_development
 	@old_relations = Relation.all
 	@old_relations.each do |relation|
 		puts "Navnet på 'relation' er: #{relation.company}"
@@ -263,7 +255,7 @@ task :old_relations => :environment do
 end
 
 def new_relation(old_relations)
-	Relation.establish_connection :production
+	Relation.establish_connection :development
 	Relation.destroy_all
 	old_relations.each do |relation_old|
 		relation_new = Relation.new
@@ -289,40 +281,9 @@ def new_relation(old_relations)
 	end
 end
 
-task :old_vouchers => :environment do
-	desc "Overfører de gamle poster fra voucher til den ny database"
-	Voucher.establish_connection :old_production
-	@old_vouchers = Voucher.all
-	@old_vouchers.each do |voucher|
-		puts "Navnet på 'voucher' er: #{voucher.description}"
-	end
-	puts "----------------------------------"
-	new_voucher(@old_vouchers)
-end
-
-def new_voucher(old_vouchers)
-	Voucher.establish_connection :production
-	Voucher.destroy_all
-	old_vouchers.each do |voucher_old|
-		voucher_new = Voucher.new
-		voucher_new.attributes = {
-			:description => voucher_old.description,
-			:number => voucher_old.number,
-			:relation_id => voucher_old.relation_id,
-			:date => voucher_old.date,
-			:user_id => voucher_old.user_id,
-			:hourly_rate => voucher_old.hourly_rate
-		}
-		voucher_new.id = voucher_old.id
-		voucher_new.save!
-	end
-end
-
-
-# SKAL IKKE KALDES NÅR DATA ER FLYTTET OVER FØRSTE GANG
 task :old_users => :environment do
 	desc "Overfører de gamle poster fra user til den ny database"
-	User.establish_connection :old_production
+	User.establish_connection :old_development
 	@old_users = User.all
 	@old_users.each do |user|
 		puts "Navnet på 'user' er: #{user.name}"
@@ -332,7 +293,7 @@ task :old_users => :environment do
 end
 
 def new_user(old_users)
-	User.establish_connection :production
+	User.establish_connection :development
 	User.destroy_all
 	old_users.each do |user_old|
 		user_new = User.new
@@ -352,3 +313,33 @@ def new_user(old_users)
 		user_new.save!
 	end
 end
+
+task :old_vouchers => :environment do
+	desc "Overfører de gamle poster fra voucher til den ny database"
+	Voucher.establish_connection :old_development
+	@old_vouchers = Voucher.all
+	@old_vouchers.each do |voucher|
+		puts "Navnet på 'voucher' er: #{voucher.description}"
+	end
+	puts "----------------------------------"
+	new_voucher(@old_vouchers)
+end
+
+def new_voucher(old_vouchers)
+	Voucher.establish_connection :development
+	Voucher.destroy_all
+	old_vouchers.each do |voucher_old|
+		voucher_new = Voucher.new
+		voucher_new.attributes = {
+			:description => voucher_old.description,
+			:number => voucher_old.number,
+			:relation_id => voucher_old.relation_id,
+			:date => voucher_old.date,
+			:user_id => voucher_old.user_id,
+			:hourly_rate => voucher_old.hourly_rate
+		}
+		voucher_new.id = voucher_old.id
+		voucher_new.save!
+	end
+end
+
