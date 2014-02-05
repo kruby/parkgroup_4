@@ -6,7 +6,9 @@ KrubyRails4::Application.routes.draw do
 
 	resources :users
 
-	resources :relations
+	resources :relations do
+		resources :hours
+	end
 
 	# resources :hours, except: :edit
 	# get '/timeliste' => 'hours#timeliste', as: :timeliste
@@ -14,12 +16,13 @@ KrubyRails4::Application.routes.draw do
 	
 	resources :hours, except: :edit do
 		collection do
-			get '/timeliste' => 'hours#timeliste', as: :timeliste
-			get '/monthly' => 'hours#monthly', as: :monthly
 			match 'search' => 'hours#search', via: [:get, :post], as: :search
 		end
 	end
   
+	get '/timeliste' => 'hours#timeliste', as: :timeliste
+	get '/monthly' => 'hours#monthly', as: :monthly
+
 	get 'hours/years_show/:relation_id' => 'hours#show_years', as: :show_years
 	get 'hours/months_show/:relation_id/:year' => 'hours#show_months', as: :show_months
 	get 'hours/months/days_show/:relation_id/:month' => 'hours#show_days', as: :show_days
