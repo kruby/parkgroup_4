@@ -24,14 +24,14 @@ class HoursController < ApplicationController
     end
     if session[:relation_id]
       @relation = Relation.find(session[:relation_id])
-      @search = @relation.hours.search(params[:q])
+      @q = @relation.hours.search(params[:q])
       #@q = Hours.search(params[:relation_id])
       #@hours = Hour.find_by_relation_id(params[:relation_id])
-      @hours = @search.result.all
+      @hours = @q.result.all
     else
-      @search = Hour.search(params[:q])
+      @q = Hour.search(params[:q])
       # @hours = @q.result.reorder('relation_id ASC, date DESC').all
-      @hours = @search.result.joins(:relation).reorder('company ASC').all
+      @hours = @q.result.joins(:relation).reorder('company ASC').all
       # Project.joins(:customer).order('customers.name')
     end
     #@search = Hour.search(params[:search])

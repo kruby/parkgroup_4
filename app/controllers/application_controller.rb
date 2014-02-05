@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 	before_filter :set_search
 
 	def set_search
-		@search=Hour.search(params[:q])
+		@q = Hour.search(params[:q])
 	end
   
   helper_method :active
