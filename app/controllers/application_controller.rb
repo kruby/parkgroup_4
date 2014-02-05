@@ -2,6 +2,12 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+	
+	before_filter :set_search
+
+	def set_search
+		@search=Hour.search(params[:q])
+	end
   
   helper_method :active
   helper_method :route_exists

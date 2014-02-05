@@ -18,6 +18,9 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admininstration <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<%= render :partial => "menusystem/menu_system_level_0" %>
+					<li>
+						<%= link_to(Rails::VERSION::STRING + ' - ' + RUBY_VERSION, 'http://guides.rubyonrails.org/')%>
+					</li>
 				</ul>
 			</li>
 		</ul>
