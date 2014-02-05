@@ -7,7 +7,16 @@
 #task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_users ]
 
 #HEREFTER BRUGES DENNE PGA. USER.RB'S VALIDERING AF PASSWORD
-task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_attachments, :old_hours, :old_relations, :old_vouchers ]
+#task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_attachments, :old_hours, :old_relations, :old_vouchers ]
+
+task :migrate_old_data_production => [ :delete_all_in_hours, :old_hours ]
+
+task :delete_all_in_hours => :environment do
+	ActiveRecord::Base.establish_connection :production
+	del = Hour.all.count
+	Hour.destroy_all
+	puts "Ialt slettet i Hour #{del}"
+end
 
 # Alle data i den nye database bliver slettet her
 task :delete_all_in_new => :environment do

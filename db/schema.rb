@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203210226) do
+ActiveRecord::Schema.define(version: 20140205182115) do
 
   create_table "assets", force: true do |t|
     t.string   "description"
@@ -47,14 +47,14 @@ ActiveRecord::Schema.define(version: 20140203210226) do
     t.string   "action_redirect"
     t.integer  "position"
     t.string   "controller_name"
-    t.string   "category"
+    t.string   "category",            default: "Admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "hours", force: true do |t|
     t.string   "description"
-    t.decimal  "number",      precision: 10, scale: 0
+    t.decimal  "number",      precision: 10, scale: 2
     t.date     "date"
     t.integer  "user_id"
     t.integer  "relation_id"
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 20140203210226) do
 
   create_table "vouchers", force: true do |t|
     t.string   "description"
-    t.decimal  "number",      precision: 10, scale: 0
+    t.decimal  "number",      precision: 10, scale: 2
     t.integer  "relation_id"
     t.date     "date"
     t.integer  "user_id"
