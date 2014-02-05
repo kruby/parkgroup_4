@@ -6,11 +6,6 @@ class HoursController < ApplicationController
 	before_filter :logged_in_as_admin?, :except => ['timeliste', 'show_months_public', 'hide_months_public', 'show_days_public', 'hide_days_public']
     
 	def search
-		ransack_search
-		render :index
-	end
-	
-	def ransack_search
 		unless params[:relation_id]
 			session[:relation_id] = nil
 			session[:show_years] = nil
@@ -25,19 +20,12 @@ class HoursController < ApplicationController
 			@q = Hour.search(params[:q])
 			@hours = @q.result.joins(:relation).reorder('company ASC').all
 		end
+		render :index
 	end
     
-	# def find_all
-	# 	session[:relation_id] = nil
-	# 	session[:show_years] = nil
-	# 	session[:year] = nil
-	# 	session[:month] = nil
-	# 	redirect_to :action => 'search'
-	# end
 	# GET /hours
 	# GET /hours.xml
 	def index
-		ransack_search
 		unless params[:relation_id]
 			session[:relation_id] = nil
 			session[:show_years] = nil
@@ -51,6 +39,10 @@ class HoursController < ApplicationController
 		else
 			@q = Hour.search(params[:q])
 			@hours = @q.result.joins(:relation).reorder('company ASC').all
+		end    
+		respond_to do |format|
+			format.html # index.html.erb
+			format.xml  { render :xml => @hours }
 		end
 	end
   

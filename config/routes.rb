@@ -27,7 +27,6 @@ KrubyRails4::Application.routes.draw do
 	get 'hours/months_show/:relation_id/:year' => 'hours#show_months', as: :show_months
 	get 'hours/months/days_show/:relation_id/:month' => 'hours#show_days', as: :show_days
 	get 'hours/relations/:relation_id/edit/:id' => 'hours#edit', as: :edit_hour
-	get 'hours/find_all/:id' => 'hours#find_all', as: :find_alle
 	get 'hours/years_hide/:relation_id' => 'hours#hide_years', as: :hide_years
 	get 'hours/months_hide/:relation_id' => 'hours#hide_months', as: :hide_months
 	get 'hours/months/days_hide/:relation_id' => 'hours#hide_days', as: :hide_days
