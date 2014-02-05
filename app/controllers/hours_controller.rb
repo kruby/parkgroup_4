@@ -6,26 +6,26 @@ class HoursController < ApplicationController
 	before_filter :logged_in_as_admin?, :except => ['timeliste', 'show_months_public', 'hide_months_public', 'show_days_public', 'hide_days_public']
     
 	def search
-		index
+		ransack_search
 		render :index
 	end
 	
-	# def ransack_search
-	# 	unless params[:relation_id]
-	# 		session[:relation_id] = nil
-	# 		session[:show_years] = nil
-	# 		session[:year] = nil
-	# 		session[:month] = nil
-	# 	end
-	# 	if session[:relation_id]
-	# 		@relation = Relation.find(session[:relation_id])
-	# 		@q = @relation.hours.search(params[:q])
-	# 		@hours = @q.result.all
-	# 	else
-	# 		@q = Hour.search(params[:q])
-	# 		@hours = @q.result.joins(:relation).reorder('company ASC').all
-	# 	end
-	# end
+	def ransack_search
+		unless params[:relation_id]
+			session[:relation_id] = nil
+			session[:show_years] = nil
+			session[:year] = nil
+			session[:month] = nil
+		end
+		if session[:relation_id]
+			@relation = Relation.find(session[:relation_id])
+			@q = @relation.hours.search(params[:q])
+			@hours = @q.result.all
+		else
+			@q = Hour.search(params[:q])
+			@hours = @q.result.joins(:relation).reorder('company ASC').all
+		end
+	end
     
 	# def find_all
 	# 	session[:relation_id] = nil
@@ -36,8 +36,8 @@ class HoursController < ApplicationController
 	# end
 	# GET /hours
 	# GET /hours.xml
-
 	def index
+		ransack_search
 		unless params[:relation_id]
 			session[:relation_id] = nil
 			session[:show_years] = nil
