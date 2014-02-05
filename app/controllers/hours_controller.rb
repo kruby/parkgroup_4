@@ -27,7 +27,7 @@ class HoursController < ApplicationController
       @search = @relation.hours.search(params[:q])
       #@q = Hours.search(params[:relation_id])
       #@hours = Hour.find_by_relation_id(params[:relation_id])
-      @hours = @q.result.all
+      @hours = @search.result.all
     else
       @search = Hour.search(params[:q])
       # @hours = @q.result.reorder('relation_id ASC, date DESC').all
