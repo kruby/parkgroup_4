@@ -27,14 +27,14 @@ set :scm, :git
 set :deploy_via, :copy
 set :branch, "master"
 
-namespace :deploy do
- namespace :rake_tasks do
-   task :singleton, :roles => :db, :only => {:primary => true} do
-     run rake_task("db:create")
-     run rake_task("migrate_old_data_production")
-   end
- end
-end
+# namespace :deploy do
+#  namespace :rake_tasks do
+#    task :singleton, :roles => :db, :only => {:primary => true} do
+#      run rake_task("db:create")
+#      run rake_task("migrate_old_data_production")
+#    end
+#  end
+# end
 
 ### Other options you can set ###
 # Comma separated list of additional domains for Apache
