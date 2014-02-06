@@ -15,7 +15,7 @@ class HoursController < ApplicationController
 			session[:show_years] = true
 			@relation = Relation.find(params[:relation_id])
 			@q = @relation.hours.search(params[:q])
-			@hours = @q.result.all
+			@hours = @q.result.joins(:relation).reorder('company ASC').all
 		else
 			@q = Hour.search(params[:q])
 			@hours = @q.result.joins(:relation).reorder('company ASC').all
@@ -35,7 +35,7 @@ class HoursController < ApplicationController
 			session[:show_years] = true
 			@relation = Relation.find(params[:relation_id])
 			@q = @relation.hours.search(params[:q])
-			@hours = @q.result.all
+			@hours = @q.result.joins(:relation).reorder('company ASC').all
 		else
 			@q = Hour.search(params[:q])
 			@hours = @q.result.joins(:relation).reorder('company ASC').all
