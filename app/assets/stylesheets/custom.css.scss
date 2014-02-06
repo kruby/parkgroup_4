@@ -16,6 +16,31 @@ $kruby-40:lighten($kruby-blue-100, 60%);
 //$kruby-blue-medium: #93bee3;
 //$kruby-blue-light: #C9E9FF;
 
+span.year {
+	padding-left: 10%;
+}
+
+span.year_link {
+	padding-right: 10%;
+}
+
+span.month {
+	padding-left: 12%;
+}
+
+span.month_link {
+	padding-right: 20%;
+}
+
+span.hour {
+	padding-left: 15%;
+}
+
+span.hour_date {
+	padding-right: 40%;
+}
+
+
 
 img.forside.img-thumbnail {
 	margin-left: 5px;
