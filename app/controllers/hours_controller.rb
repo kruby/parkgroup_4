@@ -6,50 +6,34 @@ class HoursController < ApplicationController
 	before_filter :logged_in_as_admin?, :except => ['timeliste', 'show_months_public', 'hide_months_public', 'show_days_public', 'hide_days_public']
     
 	def search
-		unless params[:relation_id]
-			session[:relation_id] = nil
-			session[:show_years] = nil
-			session[:year] = nil
-			session[:month] = nil
-		end
-		if session[:relation_id]
-			@relation = Relation.find(session[:relation_id])
-			@q = @relation.hours.search(params[:q])
-			@hours = @q.result.all
-		else
-			@q = Hour.search(params[:q])
-			@hours = @q.result.joins(:relation).reorder('company ASC').all
-		end
+		index
 		render :index
 	end
     
 	# GET /hours
 	# GET /hours.xml
 	def index
-		unless params[:relation_id]
+		# 	unless params[:relation_id]
 			session[:relation_id] = nil
 			session[:show_years] = nil
 			session[:year] = nil
 			session[:month] = nil
-		end
-		if session[:relation_id]
-			@relation = Relation.find(session[:relation_id])
+		# end
+		if params[:relation_id]
+			session[:relation_id] = params[:relation_id]
+			session[:show_years] = true
+			@relation = Relation.find(params[:relation_id])
 			@q = @relation.hours.search(params[:q])
 			@hours = @q.result.all
 		else
 			@q = Hour.search(params[:q])
 			@hours = @q.result.joins(:relation).reorder('company ASC').all
-		end    
-		respond_to do |format|
-			format.html # index.html.erb
-			format.xml  { render :xml => @hours }
 		end
 	end
   
 	def monthly
 		# @hours = Hour.reorder('date ASC').all
 		@hours = Hour.last_3_years(Time.now).reorder('date ASC')
-
 	end
   
 	def show_years
