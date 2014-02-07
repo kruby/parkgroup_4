@@ -5,20 +5,20 @@
 	<div class="panel panel-default blog_posts">
 		<div class="panel-heading">
 			<h4 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=@counter%>">
-					<h3><%= post.title %>
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=@counter%>" class="link_forside">
+					<h3 class="forside-header"><%= post.title %>
 						<span class="date_and_author text-muted pull-right visible-sm visible-md visible-lg">
 							<%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <%= User.find(post.user_id).blogname rescue 'Kruby' %>
 						</span>
-						<% post.attachments.each do |attachment| %>
-							<% @group = 'group'+post.id.to_s %>
-							<% @alt = Asset.find(attachment.asset_id).description rescue nil %>
-							<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil %>
-							<% @image_show = Asset.find(attachment.asset_id).photo.url(:original) rescue nil %> 
-							<%= link_to image_tag(@image, {class: 'img-thumbnail forside', alt: @alt}), @image_show, {class: 'fancybox-button thumb pull-right', rel: @group, title: Asset.find(attachment.asset_id).description} rescue nil %>
-							<!-- HER HAR VI BRUGT POST.ID TIL AT GØRE GRUPPEN AF FOTOS UNIK, SOM DET OGSÅ SES NEDERST I JAVASCRIPT I GROUP -->
-						<% end %>
-					</h3>
+					</h3>	
+					<% post.attachments.each do |attachment| %>
+						<% @group = 'group'+post.id.to_s %>
+						<% @alt = Asset.find(attachment.asset_id).description rescue nil %>
+						<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil %>
+						<% @image_show = Asset.find(attachment.asset_id).photo.url(:original) rescue nil %> 
+						<%= link_to image_tag(@image, {class: 'img-thumbnail forside-img', alt: @alt}), @image_show, {class: 'fancybox-button', rel: @group, title: Asset.find(attachment.asset_id).description} rescue nil %>
+			
+					<% end %>
 				</a>
 			</h4>
 		</div>

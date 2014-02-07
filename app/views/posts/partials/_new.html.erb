@@ -1,41 +1,44 @@
-
-
-<%= form_for(@post) do |f| %>
+<%= form_for(@post, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
 <%= f.hidden_field(:user_id, :value => current_user.id) %>
-<h1>Nyt indlæg til bloggen
-	<%= f.submit "[Opret]", :class => 'button' %><%= link_to '[Vis]', @post %> <%= link_to '[Tilbage]', bloggen_path %>
-	
-	</h1>
+<h1>
+	Nyt indlæg til bloggen
+	<div class="btn-group">
+		<%= f.submit "Opret", class: 'btn btn-default btn-xs' %>
+		<%= link_to 'Tilbage', posts_path, class: 'btn btn-default btn-xs' %>
+	</div>
+</h1>
 
-	<%= error_messages_for :post %>
+<%= render :partial => "posts/partials/errors", local: @post %>
 
-	<!-- 
-		<div class="drop_down_3">
-			<p>
-		    <b>Priority</b><br />
-		    <%#= f.select (:priority, [
-										['1', '1'], 
-										['2', '2'],
-										['3', '3'],
-										['4', '4'],
-										['5', '5']
-										], { :include_blank => true, :selected => '1' } ) %>
-		  </p>
-		</div>
-		</div> -->
-
-	  <p>
-	    <b>Title</b><br />
-	    <%= f.text_field :title %>
-	  </p>
-
-	  <p>
-	    <b>Body</b><br />
-	    <%= f.text_area :body, :size => '60x18' %>
-	  </p>
+<!-- 
+	<div class="drop_down_3">
+	<p>
+	<b>Priority</b><br />
+	<%#= f.select (:priority, [
+	['1', '1'], 
+	['2', '2'],
+	['3', '3'],
+	['4', '4'],
+	['5', '5']
+	], { :include_blank => true, :selected => '1' } ) %>
+	</p>
+	</div>
+	</div> -->
 
 
+<div class="form-group">
+	<%= f.label :titel, class: 'col-sm-1 control-label' %>
+	<div class="col-sm-11">	
+		<%= f.text_field :title, class: 'form-control' %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :indhold, class: 'col-sm-1 control-label' %>
+	<div class="col-sm-11">	
+		<%= f.text_area :body, class: 'form-control', rows: '10' %>
+	</div>
+</div>
 
 
-
-	<% end %>
+<% end %>

@@ -1,4 +1,9 @@
 class Post < ActiveRecord::Base
+	
+  default_scope { order('created_at DESC') }        
+	
+  validates_presence_of :title
+	
 	has_many :attachments, :as => :attachable
 	has_many :subpages, :class_name => 'Post', :foreign_key => 'parent_id', :dependent => :destroy
   

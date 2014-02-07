@@ -1,22 +1,20 @@
 <div class="container">
-
 	<h1>Viser <%= t :pages %></h1>
-	<div class="btn-group">
-		<%= link_to 'Ny Page', new_page_path, class: 'btn btn-default btn-xs' %><br>
+	<div class="btn-group index">
+		<%= link_to 'Ny indholdsside', new_page_path, class: 'btn btn-default btn-xs' %>
 	</div>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="visible-lg visible-md visible-sm visible-xs">Name</th>
-					<th class="visible-lg visible-md visible-sm">Title</th>
-					<th class="visible-lg visible-md">Body</th>
-					<th class="visible-lg visible-md">Headline</th>
+					<th class="visible-lg visible-md visible-sm visible-xs">Navn</th>
+					<th class="visible-lg visible-md visible-sm">Titel</th>
+					<th class="visible-lg visible-md">Indhold</th>
+					<th class="visible-lg visible-md">Overskrift</th>
 					<th class="visible-lg visible-md center visible-sm visible-xs">Aktiv</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
-
 			<tbody>
 				<% @pages.each do |page| %>
 					<tr>
@@ -24,8 +22,14 @@
 						<td class="visible-lg visible-md visible-sm"><%= page.title %></td>
 						<td class="visible-lg visible-md"><%= truncate(page.body, length: 50) %></td>
 						<td class="visible-lg visible-md"><%= page.headline %></td>
-						<td class="visible-lg visible-md visible-sm visible-xs center"><%= link_to page.active == true ? '√' : '–', page_active_path(page.id) %></td>
-						<td colspan="3" class="right">
+						<td class="visible-lg visible-md visible-sm visible-xs center">
+							<% if page.active == true %>
+								<%= link_to('+', page_active_path(page.id), {class: 'btn btn-xs btn-default activated'}) %>
+							<% else %>
+								<%= link_to('-', page_active_path(page.id), {class: 'btn btn-xs btn-default passified'}) %>
+							<% end %>
+						</td>
+						<td colspan="3" class="text-right">
 							<div class="btn-group">
 								<%#= link_to 'Vis', page, class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Ret', edit_page_path(page), class: 'btn btn-default btn-xs' %>
@@ -37,5 +41,4 @@
 			</tbody>
 		</table>
 	</div>
-	<br>
 </div>

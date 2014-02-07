@@ -65,7 +65,7 @@ class ContentsController < ApplicationController
     respond_to do |format|
       if @content.update(content_params)
         format.html { redirect_to :action => 'edit'}
-        flash[:notice] = 'Content was successfully updated.' 
+        flash[:notice] = 'Indholdet blev opdateret.' 
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

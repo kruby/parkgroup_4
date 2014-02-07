@@ -1,4 +1,6 @@
 $kruby-blue-100: #6facdc;
+$kruby-green-100:#40a236;
+$kruby-red-100:#ba1f2c;
 //$kruby-blue-100: #44744c;
 
 $kruby-95:lighten($kruby-blue-100, 5%);
@@ -15,6 +17,25 @@ $kruby-45:lighten($kruby-blue-100, 55%);
 $kruby-40:lighten($kruby-blue-100, 60%);
 //$kruby-blue-medium: #93bee3;
 //$kruby-blue-light: #C9E9FF;
+
+
+a.activated, a.passified {
+	width: 25px;
+}
+
+a.activated {
+	background-color: lighten($kruby-green-100, 40%);
+}
+
+a.passified {
+	background-color: lighten($kruby-red-100, 40%);
+}
+
+
+a {
+	color: #333333;
+	text-decoration: none;
+}
 
 span.year {
 	padding-left: 10%;
@@ -40,21 +61,48 @@ span.hour_date {
 	padding-right: 40%;
 }
 
-
-
-img.forside.img-thumbnail {
-	margin-left: 5px;
-	height: 30px;
+img.forside-img.img-thumbnail {
+	margin-right: 3px;
+	height: 24px;
+	padding: 2px;
 }
 
-div.btn-group {
-	margin-top: 10px;
-	margin-bottom: 20px;
+h3.forside-header {
+	font-size: 3vw;
+}
+
+h4.panel-title a.link_forside {
+	text-decoration: none;
+}
+
+h4.panel-title a.link_forside:hover {
+	text-decoration: none;
+	color:$kruby-90;
+}
+
+h4.panel-title a.link_forside:visited {
+	text-decoration: none;
+	color:#333333;
+}
+h4.panel-title a.forside:active {
+	text-decoration: none;
+	color:#333333;
+}
+
+td div.btn-group {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+
+div.btn-group.index {
+	margin-top: 8px;
+	margin-bottom: 8px;
 }
 
 
 div.table-responsive {
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 h1.forside {
