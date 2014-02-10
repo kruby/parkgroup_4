@@ -1,37 +1,7 @@
-<% @month_hours = Hour.customer(hour.relation_id).month_hours(hour.date) %>
-
-<tr>
-	<!-- <th>ID</th> -->
-	<!-- <th>Bruger</th> -->
-	<!-- <th><%#= sort_link @q, :relation_company, 'Relation', :default_order => :desc  %></th> -->
-	<th colspan=6 width='245'><span class="hour">Beskrivelse</span></th>
-	<th colspan=3 class='text-center'>Ant.</th>
-	<th colspan=3 class='text-right'><span class="hour_date">Dato</span><%#= sort_link @q, :relation_company_and_date, 'Dato', :default_order => :desc  %></th>
-	<!-- <th class="center"></th> -->
+<tr class="row-fluid">
+	<td colspan=6 class="text-left hour">
+		<%= hour.description %>
+	</td>
+	<td colspan=3 class='text-center'><%= number_with_delimiter(hour.number, locale: :da) %></td>
+	<td colspan=3 class='text-right'><span class="hour_date"><%= nice_date(hour.date) rescue nil %></span></td>
 </tr>
-	
-<% for hour in @month_hours %>
-	<% if session[:hour_id] == hour.id.to_s %>
-
-	<% @hour = hour %>
-	<%= render partial: "hours/partials/hour_edit" %>
-
-	<% else %>	
-
-	<tr>
-		<td colspan=6><span class="hour"><%= hour.description %></span></td>
-		<td colspan=3 class='text-center'><%= number_with_delimiter(hour.number, locale: :da) %></td>
-		<td colspan=3 class='text-right'><span class="hour_date"><%= nice_date(hour.date) rescue nil %></span></td>
-		<!-- <td class='center'>
-			<%# if current_user.id == hour.user_id %>
-			<%#= link_to '[Ret]', edit_hour_path(hour, :relation_id => session[:relation_id], :q => params[:q]) %>
-			<%#= link_to '[Slet]', hour, :confirm => 'Er du sikker?', :method => :delete %>
-			<%# end %>
-			<%#= link_to '[Vis]', hour %>
-			</td> -->
-		</tr>
-
-	<% end %>
-<% end %>
-
-

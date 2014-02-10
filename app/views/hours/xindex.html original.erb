@@ -4,7 +4,7 @@
 
 	<div class="row">
 		<div class="col-lg-4">
-			<!-- <%= search_form_for @q, url: search_hours_path, html: { method: :post } do |f| %>
+			<%= search_form_for @q, url: search_hours_path, html: { method: :post } do |f| %>
 			<%= f.label :relation_company_cont, 'Firma' %> 
 			<div class="input-group"> 
 				<%= f.text_field :relation_company_cont, size: 16, class: 'form-control' %>
@@ -12,7 +12,7 @@
 					<%= f.submit "Søg", :class => 'btn btn-default' %>
 				</span>
 			</div>
-			<% end %> -->
+			<% end %>
 		</div>
 	</div>
 	<br>
@@ -58,12 +58,18 @@
 				<th colspan="4" class='text-right' >Status</th>
 			</tr>
 
-			<% for relation in @relations_with_hours %>
-			<% @relation = Relation.find(relation.id)%>
+			<% for hour in @hours %>
+
+			<% @relation = Relation.find(hour.relation_id) %>
+			<% @relation_id = hour.relation_id %>
+		
+			<% if @relation_id != @relation_id_previous %>
+
+			<% @relation_id_previous = @relation_id %>
 			<tr>
 				<td colspan="4">
 					<div id="voucher_customer">
-						<%= link_to Relation.find(relation.id).company, show_years_path(relation_id: relation.id, q: params[:q]), class: 'name'%>
+						<%= link_to @relation.company, show_years_path(relation_id: @relation_id, q: params[:q]), class: 'name'%>
 					</div>
 				</td>
 				<td colspan="4" class="text-center">
@@ -87,11 +93,10 @@
 					</div>
 				</td>
 			</tr>
-				<% if relation.id.to_s == params[:relation_id] %>
-					<% for year in @years %>
-						<%= render partial: "hours/partials/years_specified", locals: {relation: relation, year: year} %>
-					<% end %>
-				<% end %>
+			<% end %>
+			<% if session[:show_years] == true %>
+			<%= render partial: "hours/partials/years_specified", locals: {hour: hour} %>
+			<% end %>
 			<% end %>
 		</table>
 	</div>

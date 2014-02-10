@@ -1,33 +1,12 @@
-<% @year = l hour.date, format: :year %>
-<%# @year_number = hour.date.month %>
-<!-- l betyder at vi bruger I18 på hour.date og formatet :year under :date delen i da.yml filen -->
-		
-<% if @year != @year_previous %>
+<% @link_text = year.to_s + ' - ' + number_with_delimiter(relation.hours.year_hours(year).sum(:number), locale: :da) rescue nil %>	
+<tr class="row-fluid">
+	<td colspan="12" class="text-left year">
+		<%= link_to @link_text, show_months_path(relation_id: params[:relation_id], year: year, q: params[:q]) %>
+	</td>
+</tr>
 
-	<% @year_previous = @year %>
-	
-		<tr class="row-fluid">
-			<td colspan="6" class="text-left">
-				<span class='year'>
-					<%= @year %> - <%= number_with_delimiter(@relation.hours.year_hours(hour.date).sum(:number), locale: :da) rescue nil %>
-				</span>
-			</td>
-			<td colspan="6" class='text-right'>
-					<span class='year_link'>
-						<% if session[:relation_id] == hour.relation_id.to_s and session[:year] == @year.to_s %>
-							<%= link_to '[Skjul]', hide_months_path(relation_id: session[:relation_id], q: params[:q]) %>
-						<% else %>
-							<%= link_to '[Vis]', show_months_path(relation_id: session[:relation_id], year: @year, q: params[:q]) %>
-						<% end %>
-					</span>
-			</td>
-		</tr>
-		
-<% end %>
-
-
-<% if session[:relation_id] == hour.relation_id.to_s and session[:year] == @year.to_s %>
-
-	<%= render partial: "hours/partials/months_specified", locals: {hour: hour} %>
-
+<% if relation.id.to_s == params[:relation_id] and params[:year] == year.to_s %>
+	<% for month_date in @month_dates %>
+		<%= render partial: "hours/partials/months_specified", locals: {relation: relation, year: year, month_date: month_date} %>
+	<% end %>
 <% end %>

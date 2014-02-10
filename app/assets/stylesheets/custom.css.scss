@@ -37,24 +37,24 @@ a {
 	text-decoration: none;
 }
 
-span.year {
-	padding-left: 10%;
+tr.row-fluid td.year {
+	padding-left: 5%;
 }
 
 span.year_link {
 	padding-right: 10%;
 }
 
-span.month {
-	padding-left: 12%;
+tr.row-fluid td.month {
+	padding-left: 6%;
 }
 
 span.month_link {
 	padding-right: 20%;
 }
 
-span.hour {
-	padding-left: 15%;
+tr.row-fluid td.hour, tr.row-fluid th.hour {
+	padding-left: 7%;
 }
 
 span.hour_date {

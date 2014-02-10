@@ -1,34 +1,19 @@
-<% @month_name = l hour.date, format: :month %>
-<% @month_number = hour.date.month %>
-<!-- l betyder at vi bruger I18 på hour.date og formatet :month under :date delen i da.yml filen -->
-		
-<% if @month_number != @month_previous %>
-
-<% @month_previous = @month_number %>
-
-<tr>
-	<td colspan=6>
-		<span class='month'>
-			<%= @month_name.capitalize %> - <%= number_with_delimiter(@relation.hours.month_hours(hour.date).sum(:number), locale: :da) rescue nil %>
-		</span>
-	</td>
-	<td colspan=6 class='text-right'>
-		<span class='month_link'>
-			<% if session[:relation_id] == hour.relation_id.to_s and session[:month] == @month_number.to_s %>
-				<%= link_to '[Skjul]', hide_days_path(relation_id: session[:relation_id], q: params[:q]) %>
-			<% else %>
-				<%= link_to '[Vis]', show_days_path(relation_id: session[:relation_id], month: @month_number, q: params[:q]) %>
-			<% end %>
-		</span>
+<% @link_text = I18n.l(month_date, format: :month) + ' - ' + number_with_delimiter(Hour.customer(relation.id).month_hours(month_date).sum(:number), locale: :da) %>
+<tr class="row-fluid">
+	<td colspan=12 class="text-left month">
+			<%= link_to @link_text, show_days_path(relation.id, year: year, month: month_date.month, q: params[:q]) %>
 	</td>
 </tr>
 
-<% if session[:relation_id] == hour.relation_id.to_s and session[:month] == @month_number.to_s %>		
-	<%= render partial: 'hours/partials/days_specified', locals: {hour: hour} %>
-<% end %>	
-				
-	
-
+<% if relation.id.to_s == params[:relation_id] and params[:year] == year.to_s and params[:month] == month_date.month.to_s %>
+	<tr class="row-fluid">
+		<th colspan=6 class="text-left hour">
+			Beskrivelse
+		</th>
+		<th colspan=3 class='text-center'>Ant.</th>
+		<th colspan=3 class='text-right'><span class="hour_date">Dato</span><%#= sort_link @q, :relation_company_and_date, 'Dato', :default_order => :desc  %></th>
+	</tr>
+	<% for hour in @hours %>
+		<%= render partial: 'hours/partials/days_specified', locals: {hour: hour} %>
+	<% end %>
 <% end %>
-
-

@@ -26,14 +26,14 @@ class Post < ActiveRecord::Base
 		order('priority asc')
 	end
 	
-	def self.search(search, page)
-		paginate  :per_page => 10, :page => page,
-		:conditions => ['parent_id is NULL'],
-		#:conditions => "active = 1 and name like '%#{search}%'", #De 2 nedenfor sammenskrevet til 1 linie og med AND
-		#:conditions => ['active = ?', 1],
-		#:conditions => ['name like ?', "%#{search}%"],
-		:order => 'created_at DESC'
-	end
+	# def self.search(search, page)
+	# 	paginate  :per_page => 10, :page => page,
+	# 	:conditions => ['parent_id is NULL'],
+	# 	#:conditions => "active = 1 and name like '%#{search}%'", #De 2 nedenfor sammenskrevet til 1 linie og med AND
+	# 	#:conditions => ['active = ?', 1],
+	# 	#:conditions => ['name like ?', "%#{search}%"],
+	# 	:order => 'created_at DESC'
+	# end
   
   
 end
