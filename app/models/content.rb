@@ -15,18 +15,18 @@ class Content < ActiveRecord::Base
   scope :category_public, -> { where(category: 'public')}
   
   
-  scope :public_pages, self.no_parent.active.category_public.sort_position
-  scope :user_pages, self.no_parent.active.category_user.sort_position
-  scope :editor_pages, self.no_parent.active.category_editor.sort_position
-  scope :admin_pages, self.no_parent.active.category_admin.sort_position
+  scope :public_pages, -> { where(self.no_parent.active.category_public.sort_position) }
+  scope :user_pages, -> { where(self.no_parent.active.category_user.sort_position) }
+  scope :editor_pages, -> { where(self.no_parent.active.category_editor.sort_position) }
+  scope :admin_pages, -> { where(self.no_parent.active.category_admin.sort_position) }
 
   #scope :admin_pages, :conditions => ["parent_id IS NULL and active and category = 'admin'", true], :order => 'position'
   #scope :editor_pages, :conditions => ["parent_id IS NULL and active and category = 'editor'", true], :order => 'position'
   #scope :user_pages, :conditions => ["parent_id IS NULL and active and category = 'user'", true], :order => 'position'
   #scope :public_pages, :conditions => ["parent_id IS NULL and active and category = 'public' ", true], :order => 'position'
   
-  scope :system_menu, self.no_parent.active.category_admin.sort_position
-  scope :public_menu, self.no_parent.active.category_public.sort_position
+  scope :system_menu, -> { where(self.no_parent.active.category_admin.sort_position) }
+  scope :public_menu, -> { where(self.no_parent.active.category_public.sort_position) }
     
   #scope :main_menu, :conditions => ["parent_id IS NULL and active and category = 'public' ", true], :order => 'position, created_at'
   

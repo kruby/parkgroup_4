@@ -31,7 +31,7 @@ class HoursController < ApplicationController
 	
 	# GET /hours
 	# GET /hours.xml
-	def index
+	def index		
 		@relations_with_hours = Relation.joins(:hours).uniq.order(company: :asc)
 	end
 
@@ -146,33 +146,33 @@ class HoursController < ApplicationController
 
 
 
-	def hide_years
-		if params[:relation_id]
-			session[:show_years] = nil
-			session[:year] = nil
-			session[:month] = nil
-			@relation = Relation.find(params[:relation_id])
-			@q = @relation.hours.search(params[:q])
-		else
-			@q = Hour.search(params[:q])
-		end
-		@hours = @q.result.reorder('relation_id DESC, date DESC').all
-		render(:action => 'index')
-	end
+	# def hide_years
+	# 	if params[:relation_id]
+	# 		session[:show_years] = nil
+	# 		session[:year] = nil
+	# 		session[:month] = nil
+	# 		@relation = Relation.find(params[:relation_id])
+	# 		@q = @relation.hours.search(params[:q])
+	# 	else
+	# 		@q = Hour.search(params[:q])
+	# 	end
+	# 	@hours = @q.result.reorder('relation_id DESC, date DESC').all
+	# 	render(:action => 'index')
+	# end
   
   
-	def hide_months
-		#session[:relation_id] = nil
-		session[:year] = nil
-		if params[:relation_id]
-			@relation = Relation.find(params[:relation_id])
-			@q = @relation.hours.search(params[:q])
-		else
-			@q = Hour.search(params[:q])
-		end
-		@hours = @q.result.reorder('relation_id DESC, date DESC').all
-		render(:action => 'index')
-	end
+	# def hide_months
+	# 	#session[:relation_id] = nil
+	# 	session[:year] = nil
+	# 	if params[:relation_id]
+	# 		@relation = Relation.find(params[:relation_id])
+	# 		@q = @relation.hours.search(params[:q])
+	# 	else
+	# 		@q = Hour.search(params[:q])
+	# 	end
+	# 	@hours = @q.result.reorder('relation_id DESC, date DESC').all
+	# 	render(:action => 'index')
+	# end
   
 	# def show_days
 	# 	if params[:month]
@@ -188,18 +188,18 @@ class HoursController < ApplicationController
 	# 	render(:action => 'index')
 	# end
   
-	def hide_days
-		session[:month] = nil
-		if params[:relation_id]
-			@relation = Relation.find(params[:relation_id])
-			@q = @relation.hours.search(params[:q])    
-		else
-			@q = Hour.search(params[:q])
-		end  
-		@hours = @q.result.reorder('relation_id DESC, date DESC').all
-		render(:action => 'index')
-	end
-  
+	# def hide_days
+	# 	session[:month] = nil
+	# 	if params[:relation_id]
+	# 		@relation = Relation.find(params[:relation_id])
+	# 		@q = @relation.hours.search(params[:q])    
+	# 	else
+	# 		@q = Hour.search(params[:q])
+	# 	end  
+	# 	@hours = @q.result.reorder('relation_id DESC, date DESC').all
+	# 	render(:action => 'index')
+	# end
+	#   
 	def show_months_public
 		session[:month] = nil
 		if params[:relation_id]

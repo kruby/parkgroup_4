@@ -10,10 +10,10 @@ class User < ActiveRecord::Base
   
   #attr_accessible :email, :password, :password_confirmation, :blogname, :name, :category, :active, :relation_id
     
-  scope :admin, where("category = ?", "Admin")
-  scope :editor, where("category = ?", 'Editor')
-  scope :user, where("category = ?", 'User')
-  scope :with_relation_id, where('relation_id IS NOT NULL')
+  scope :admin, -> { where("category = ?", "Admin") }
+  scope :editor, -> { where("category = ?", 'Editor') }
+  scope :user, -> { where("category = ?", 'User') }
+  scope :with_relation_id, -> { where('relation_id IS NOT NULL') }
   
   
   attr_accessor :password
