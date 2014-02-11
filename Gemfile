@@ -12,15 +12,15 @@ gem 'mysql2'
 # gem 'mysql'
 gem 'acts_as_tree'
 gem 'i18n'
-# gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip"
 gem 'mini_magick'
 gem 'RedCloth', :require => 'redcloth'
+gem "brightbox"
 
 # Fancybox - kommerciel licens
 gem 'fancybox2-rails', '~> 0.2.6'
-
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.1'
@@ -59,7 +59,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
