@@ -12,7 +12,7 @@ gem 'mysql2'
 # gem 'mysql'
 gem 'acts_as_tree'
 gem 'i18n'
-gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+# gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip"
 gem 'mini_magick'
