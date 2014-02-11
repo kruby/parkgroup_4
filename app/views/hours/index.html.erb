@@ -3,20 +3,6 @@
 	<h1>Time registrering</h1>
 
 	<div class="row">
-		<div class="col-lg-4">
-			<!-- <%= search_form_for @q, url: search_hours_path, html: { method: :post } do |f| %>
-			<%= f.label :relation_company_cont, 'Firma' %> 
-			<div class="input-group"> 
-				<%= f.text_field :relation_company_cont, size: 16, class: 'form-control' %>
-				<span class="input-group-btn">   
-					<%= f.submit "Søg", :class => 'btn btn-default' %>
-				</span>
-			</div>
-			<% end %> -->
-		</div>
-	</div>
-	<br>
-	<div class="row">
 		<div class="col-lg-3">
 			<div class="timer">
 				<% @v_last_year_1 = Voucher.last_year_first_6_months(Time.now - 1.year).sum(:number) %>

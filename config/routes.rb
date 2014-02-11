@@ -14,11 +14,14 @@ KrubyRails4::Application.routes.draw do
 	# get '/timeliste' => 'hours#timeliste', as: :timeliste
 	# get '/monthly' => 'hours#monthly', as: :monthly
 	
-	resources :hours, except: :edit do
-		collection do
-			match 'search' => 'hours#search', via: [:get, :post], as: :search
-		end
-	end
+	
+	resources :hours, except: :edit
+	
+	# resources :hours, except: :edit do
+	# 	collection do
+	# 		match 'search' => 'hours#search', via: [:get, :post], as: :search
+	# 	end
+	# end
   
 	get '/timeliste' => 'hours#timeliste', as: :timeliste
 	get '/monthly' => 'hours#monthly', as: :monthly
