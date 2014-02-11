@@ -17,7 +17,7 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip"
 gem 'mini_magick'
 gem 'RedCloth', :require => 'redcloth'
-gem "brightbox"
+#gem "brightbox"
 
 # Fancybox - kommerciel licens
 gem 'fancybox2-rails', '~> 0.2.6'
