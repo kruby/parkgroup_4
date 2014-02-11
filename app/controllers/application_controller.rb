@@ -215,7 +215,3 @@ class ApplicationController < ActionController::Base
 
   
 end
-#GAMMELT
-#@subpages = Page.subpages
-#@admin = Page.public_pages
-#@pages = Page.main_pages
