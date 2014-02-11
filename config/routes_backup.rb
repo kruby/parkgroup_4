@@ -9,6 +9,7 @@ KrubyRails4::Application.routes.draw do
   resources :relations
 
   resources :hours, except: :edit
+	
   get '/timeliste' => 'hours#timeliste', as: :timeliste
   get '/monthly' => 'hours#monthly', as: :monthly
   
