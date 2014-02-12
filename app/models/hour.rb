@@ -1,15 +1,15 @@
 class Hour < ActiveRecord::Base
-  belongs_to :relation
+  belongs_to :partner
   belongs_to :user
   
-  #default_scope order('relation_id DESC, date DESC')
-  #default_scope { order('relation_id DESC, date DESC') }        
+  #default_scope order('partner_id DESC, date DESC')
+  #default_scope { order('partner_id DESC, date DESC') }        
   
-  #scope :timeliste, lambda { |relation_id| where(:relation_id => relation_id) }
-  scope :timeliste, ->(relation_id) {where(relation_id: relation_id)}
+  #scope :timeliste, lambda { |partner_id| where(:partner_id => partner_id) }
+  scope :timeliste, ->(partner_id) {where(partner_id: partner_id)}
   
-  #scope :customer, lambda { |relation_id| where(:relation_id => relation_id) }
-  scope :customer, ->(relation_id) {where(relation_id: relation_id)}
+  #scope :customer, lambda { |partner_id| where(:partner_id => partner_id) }
+  scope :customer, ->(partner_id) {where(partner_id: partner_id)}
   
   #scope :month_hours, lambda { |this_month| where("date BETWEEN '#{this_month.to_datetime.beginning_of_month}' AND '#{this_month.to_datetime.end_of_month}'") }
   scope :month_hours, ->(this_month_date) {where("date BETWEEN '#{this_month_date.to_date.beginning_of_month}' AND '#{this_month_date.to_date.end_of_month}'") }

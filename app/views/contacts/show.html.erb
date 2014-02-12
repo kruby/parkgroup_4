@@ -1,0 +1,60 @@
+<div class="container">
+	
+    <p id="notice"><%= notice %></p>
+
+        <p>
+        <strong>Name:</strong>
+        <%= @contact.name %>
+    </p>
+
+        <p>
+        <strong>Address:</strong>
+        <%= @contact.address %>
+    </p>
+
+        <p>
+        <strong>Postno:</strong>
+        <%= @contact.postno %>
+    </p>
+
+        <p>
+        <strong>City:</strong>
+        <%= @contact.city %>
+    </p>
+
+        <p>
+        <strong>Log:</strong>
+        <%= @contact.log %>
+    </p>
+
+        <p>
+        <strong>Description:</strong>
+        <%= @contact.description %>
+    </p>
+
+        <p>
+        <strong>Log:</strong>
+        <%= @contact.log %>
+    </p>
+
+        <p>
+        <strong>Phone:</strong>
+        <%= @contact.phone %>
+    </p>
+
+        <p>
+        <strong>Email:</strong>
+        <%= @contact.email %>
+    </p>
+
+        <p>
+        <strong>Partner:</strong>
+        <%= @contact.partner_id %>
+    </p>
+
+    
+    <div class="btn-group">
+        <%= link_to 'Ret', edit_contact_path(@contact), class: 'btn btn-default btn-xs'%>
+        <%= link_to 'Tilbage', contacts_path, class: 'btn btn-default btn-xs' %>
+    </div>
+</div>

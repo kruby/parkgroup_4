@@ -5,7 +5,7 @@ class CreateHours < ActiveRecord::Migration
       t.decimal :number
       t.date :date
       t.integer :user_id
-      t.integer :relation_id
+      t.integer :partner_id
 
       t.timestamps
     end

@@ -1,14 +1,41 @@
 KrubyRails4::Application.routes.draw do
 
+	resources :contacts
+
+	resources :partners do
+		resources :hours
+	end
+
+	get '/klip' => 'partners#all_partner_hours', as: :all_partner_hours
+
+	get '/timeliste' => 'partners#timeliste', as: :timeliste
+	get '/monthly' => 'partners#monthly', as: :monthly
+
+	get 'partners/years_show/:partner_id' => 'partners#show_years', as: :show_years
+	get 'partners/months_show/:partner_id/:year' => 'partners#show_months', as: :show_months
+	get 'partners/months/days_show/:partner_id/:year/:month' => 'partners#show_days', as: :show_days
+	get 'partners/partners/:partner_id/edit/:id' => 'partners#edit', as: :edit_hour
+	get 'partners/years_hide/:partner_id' => 'partners#hide_years', as: :hide_years
+	get 'partners/months_hide/:partner_id' => 'partners#hide_months', as: :hide_months
+	get 'partners/months/days_hide/:partner_id' => 'partners#hide_days', as: :hide_days
+  
+	# PUBLIC
+	get 'partners/months_show_public/:partner_id/:year' => 'partners#show_months_public', as: :show_months_public
+	get 'partners/months/days_show_public/:partner_id/:month' => 'partners#show_days_public', as: :show_days_public
+	get 'partners/months_hide_public/:partner_id' => 'partners#hide_months_public', as: :hide_months_public
+	get 'partners/months/days_hide_public/:partner_id' => 'partners#hide_days_public', as: :hide_days_public
+
 	resources :preferences
 
 	resources :vouchers
 
 	resources :users
 
-	resources :relations do
-		resources :hours
-	end
+	resources :relations
+	
+	# resources :relations do
+	# 	resources :hours
+	# end
 
 	# resources :hours, except: :edit
 	# get '/timeliste' => 'hours#timeliste', as: :timeliste
@@ -22,24 +49,7 @@ KrubyRails4::Application.routes.draw do
 	# 		match 'search' => 'hours#search', via: [:get, :post], as: :search
 	# 	end
 	# end
-  
-	get '/timeliste' => 'hours#timeliste', as: :timeliste
-	get '/monthly' => 'hours#monthly', as: :monthly
-
-	get 'hours/years_show/:relation_id' => 'hours#show_years', as: :show_years
-	get 'hours/months_show/:relation_id/:year' => 'hours#show_months', as: :show_months
-	get 'hours/months/days_show/:relation_id/:year/:month' => 'hours#show_days', as: :show_days
-	get 'hours/relations/:relation_id/edit/:id' => 'hours#edit', as: :edit_hour
-	get 'hours/years_hide/:relation_id' => 'hours#hide_years', as: :hide_years
-	get 'hours/months_hide/:relation_id' => 'hours#hide_months', as: :hide_months
-	get 'hours/months/days_hide/:relation_id' => 'hours#hide_days', as: :hide_days
-  
-	# PUBLIC
-	get 'hours/months_show_public/:relation_id/:year' => 'hours#show_months_public', as: :show_months_public
-	get 'hours/months/days_show_public/:relation_id/:month' => 'hours#show_days_public', as: :show_days_public
-	get 'hours/months_hide_public/:relation_id' => 'hours#hide_months_public', as: :hide_months_public
-	get 'hours/months/days_hide_public/:relation_id' => 'hours#hide_days_public', as: :hide_days_public
-  
+ 
 
 	resources :attachments do
 		collection do

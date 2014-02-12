@@ -1,0 +1,33 @@
+<div class="container">
+	<h1>Viser partners</h1>
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="">Navn</th>
+					<th class="text-center">Kategori</th>
+					<th class="text-center">Ansvar</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @partners.each do |partner| %>
+					<tr>
+						<td class=""><%= partner.name %></td>
+						<td class="text-center"><%= partner.category %></td>
+						<td class="text-center"><%= partner.responsible %></td>
+						<td colspan="3" class="text-right">
+							<div class="btn-group">
+								<%#= link_to 'Vis', partner, class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Ret', edit_partner_path(partner), class: 'btn btn-default btn-xs' %>
+								<%= link_to 'Slet', partner, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
+							</div>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<%= link_to 'Ny Partner', new_partner_path %>
+</div>

@@ -2,14 +2,14 @@
 
 <div id="admin_liste">
 	
-<h1>Timeliste for <%= @relation.company %></h1>
+<h1>Timeliste for <%= @partner.company %></h1>
 
 <div id="voucher_status">
 	<span id="voucher_headline">Klippekort status: </span>
 	<span id="voucher_text">
-		(<%= @relation.vouchers.sum(:number) rescue nil %> 
-		- <%= @relation.hours.sum(:number) rescue nil %>
-		= <% @result = @relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %>
+		(<%= @partner.vouchers.sum(:number) rescue nil %> 
+		- <%= @partner.hours.sum(:number) rescue nil %>
+		= <% @result = @partner.vouchers.sum(:number) - @partner.hours.sum(:number) rescue nil %>
 		<% if @result < 0 %>
 			<span id='voucher_red'> <%= @result %> klip mangler</span>) 
 		<% else %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205182115) do
+ActiveRecord::Schema.define(version: 90000000000002) do
 
   create_table "assets", force: true do |t|
     t.string   "description"
@@ -32,6 +32,20 @@ ActiveRecord::Schema.define(version: 20140205182115) do
     t.string   "image_size"
     t.integer  "priority"
     t.integer  "asset_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "postno"
+    t.string   "city"
+    t.text     "log"
+    t.string   "description"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "partner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140205182115) do
     t.decimal  "number",      precision: 10, scale: 2
     t.date     "date"
     t.integer  "user_id"
-    t.integer  "relation_id"
+    t.integer  "partner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -77,6 +91,26 @@ ActiveRecord::Schema.define(version: 20140205182115) do
     t.string   "headline"
     t.text     "body"
     t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "partners", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "postno"
+    t.string   "city"
+    t.text     "log"
+    t.string   "category"
+    t.string   "responsible"
+    t.text     "info"
+    t.datetime "next_action"
+    t.integer  "lock_version"
+    t.integer  "user_id"
+    t.integer  "search_lock"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "homepage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -141,7 +175,7 @@ ActiveRecord::Schema.define(version: 20140205182115) do
   create_table "vouchers", force: true do |t|
     t.string   "description"
     t.decimal  "number",      precision: 10, scale: 2
-    t.integer  "relation_id"
+    t.integer  "partner_id"
     t.date     "date"
     t.integer  "user_id"
     t.integer  "hourly_rate"

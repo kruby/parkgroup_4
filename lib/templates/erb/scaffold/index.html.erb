@@ -1,6 +1,9 @@
 <div class="container">
 
 	<h1>Viser <%= plural_table_name %></h1>
+	<div class="btn-group index">
+		<%%= link_to 'Ny <%= human_name %>', new_<%= singular_table_name %>_path, class: 'btn btn-default btn-xs' %>
+	</div>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
@@ -18,7 +21,7 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
 						<td class="visible-lg"><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
-						<td colspan="3" class="right">
+						<td colspan="3" class="text-right">
 							<div class="btn-group">
 								<%%= link_to 'Vis', <%= singular_table_name %>, class: 'btn btn-default btn-xs' %>
 								<%%= link_to 'Ret', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-default btn-xs' %>
@@ -30,8 +33,4 @@
 			</tbody>
 		</table>
 	</div>
-	<br>
-	
-	<%%= link_to 'Ny <%= human_name %>', new_<%= singular_table_name %>_path %>
-
 </div>

@@ -3,7 +3,9 @@
 # Skal placeres i dit rails projekt under stien lib/tasks
 # Kan manuelt startes med kommandoen $ rake migrate_old_data direkte i terminal programmet
 
-task :migrate_old_data_development => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_users, :old_vouchers ]
+#task :migrate_old_data_development => [ :old_relations_to_partners ]
+
+task :migrate_old_data_development => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_users, :old_vouchers, :old_relations_to_partners ]
 
 # Alle data i den nye database bliver slettet her
 task :delete_all_in_new => :environment do
@@ -236,7 +238,7 @@ def new_hour(old_hours)
 			:number => hour_old.number,
 			:date => hour_old.date,
 			:user_id => hour_old.user_id,
-			:relation_id => hour_old.relation_id
+			:partner_id => hour_old.relation_id
 		}
 		hour_new.id = hour_old.id
 		hour_new.save!
@@ -278,6 +280,43 @@ def new_relation(old_relations)
 		}
 		relation_new.id = relation_old.id
 		relation_new.save!
+	end
+end
+
+task :old_relations_to_partners => :environment do
+	desc "Overfører de gamle poster fra relation til den nye tabel partner i den ny database"
+	Relation.establish_connection :old_development
+	@old_relations = Relation.all
+	@old_relations.each do |relation|
+		puts "Navnet på 'partner' er: #{relation.company}"
+	end
+	puts "----------------------------------"
+	new_partner(@old_relations)
+end
+
+def new_partner(old_relations)
+	Partner.establish_connection :development
+	Partner.destroy_all
+	old_relations.each do |relation_old|
+		partner_new = Partner.new
+		partner_new.attributes = {
+			:name => relation_old.company,
+			:address => relation_old.address,
+			:postno => relation_old.postno,
+			:city => relation_old.city,
+			:log => relation_old.log,
+			:category => relation_old.category,
+			:responsible => relation_old.responsible,
+			:info => relation_old.phone,
+			:next_action => relation_old.next_action,
+			:lock_version => relation_old.lock_version,
+			:user_id => relation_old.user_id,
+			:search_lock => relation_old.search_lock,
+			:homepage => relation_old.homepage,
+			:email => relation_old.email
+		}
+		partner_new.id = relation_old.id
+		partner_new.save!
 	end
 end
 
@@ -333,7 +372,7 @@ def new_voucher(old_vouchers)
 		voucher_new.attributes = {
 			:description => voucher_old.description,
 			:number => voucher_old.number,
-			:relation_id => voucher_old.relation_id,
+			:partner_id => voucher_old.relation_id,
 			:date => voucher_old.date,
 			:user_id => voucher_old.user_id,
 			:hourly_rate => voucher_old.hourly_rate

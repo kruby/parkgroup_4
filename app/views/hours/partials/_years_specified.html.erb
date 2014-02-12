@@ -7,6 +7,6 @@
 
 <% if relation.id.to_s == params[:relation_id] and params[:year] == year.to_s %>
 	<% for month_date in @month_dates %>
-		<%= render partial: "hours/partials/months_specified", locals: {relation: relation, year: year, month_date: month_date} %>
+		<%= render partial: "partners/partials/months_specified", locals: {relation: relation, year: year, month_date: month_date} %>
 	<% end %>
 <% end %>

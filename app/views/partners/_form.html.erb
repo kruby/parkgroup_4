@@ -1,0 +1,109 @@
+<%= form_for(@partner, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+<% if @partner.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@partner.errors.count, "error") %> forhindrede denne partner fra at blive vist:</h2>
+	<ul>
+		<% @partner.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="form-group">
+	<%= f.label :name, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_field :name, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :address, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_field :address, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :postno, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_field :postno, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :city, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_field :city, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :log, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_area :log, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :category, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_field :category, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :responsible, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_field :responsible, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :info, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_area :info, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :next_action, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.datetime_select :next_action, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :lock_version, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.number_field :lock_version, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :user_id, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.number_field :user_id, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :search_lock, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.number_field :search_lock, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :phone, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_field :phone, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :email, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_field :email, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :homepage, class: 'col-sm-2 control-label' %>
+	<div class="col-sm-10">	
+		<%= f.text_field :homepage, class: 'form-control' %>
+	</div>
+</div>
+
+<div class='form-group'>
+	<div class="actions col-sm-offset-2 col-sm-10">
+		<%= f.submit('Opdater', class: 'btn btn-info btn-xs') %>
+	</div>
+</div>
+<% end %>
