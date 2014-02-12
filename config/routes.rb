@@ -14,16 +14,16 @@ KrubyRails4::Application.routes.draw do
 	get 'partners/years_show/:partner_id' => 'partners#show_years', as: :show_years
 	get 'partners/months_show/:partner_id/:year' => 'partners#show_months', as: :show_months
 	get 'partners/months/days_show/:partner_id/:year/:month' => 'partners#show_days', as: :show_days
-	get 'partners/partners/:partner_id/edit/:id' => 'partners#edit', as: :edit_hour
-	get 'partners/years_hide/:partner_id' => 'partners#hide_years', as: :hide_years
-	get 'partners/months_hide/:partner_id' => 'partners#hide_months', as: :hide_months
-	get 'partners/months/days_hide/:partner_id' => 'partners#hide_days', as: :hide_days
+	# get 'partners/partners/:partner_id/edit/:id' => 'partners#edit', as: :edit_hour
+	# get 'partners/years_hide/:partner_id' => 'partners#hide_years', as: :hide_years
+	# get 'partners/months_hide/:partner_id' => 'partners#hide_months', as: :hide_months
+	# get 'partners/months/days_hide/:partner_id' => 'partners#hide_days', as: :hide_days
   
 	# PUBLIC
 	get 'partners/months_show_public/:partner_id/:year' => 'partners#show_months_public', as: :show_months_public
 	get 'partners/months/days_show_public/:partner_id/:month' => 'partners#show_days_public', as: :show_days_public
-	get 'partners/months_hide_public/:partner_id' => 'partners#hide_months_public', as: :hide_months_public
-	get 'partners/months/days_hide_public/:partner_id' => 'partners#hide_days_public', as: :hide_days_public
+	# get 'partners/months_hide_public/:partner_id' => 'partners#hide_months_public', as: :hide_months_public
+	# get 'partners/months/days_hide_public/:partner_id' => 'partners#hide_days_public', as: :hide_days_public
 
 	resources :preferences
 
@@ -41,8 +41,8 @@ KrubyRails4::Application.routes.draw do
 	# get '/timeliste' => 'hours#timeliste', as: :timeliste
 	# get '/monthly' => 'hours#monthly', as: :monthly
 	
-	
-	resources :hours, except: :edit
+	resources :hours
+	#resources :hours, except: :edit
 	
 	# resources :hours, except: :edit do
 	# 	collection do

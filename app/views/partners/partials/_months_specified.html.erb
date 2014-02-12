@@ -10,10 +10,11 @@
 		<th colspan=6 class="text-left hour">
 			Beskrivelse
 		</th>
-		<th colspan=3 class='text-center'>Ant.</th>
-		<th colspan=3 class='text-right'><span class="hour_date">Dato</span><%#= sort_link @q, :partner_company_and_date, 'Dato', :default_order => :desc  %></th>
+		<th colspan=1 class='text-center'>Ant.</th>
+		<th colspan=1 class='text-right'><span class="hour_date">Dato</span><%#= sort_link @q, :partner_company_and_date, 'Dato', :default_order => :desc  %></th>
+		<th colspan=3 class='text-right'></th>
 	</tr>
 	<% for hour in @hours %>
-		<%= render partial: 'hours/partials/days_specified', locals: {hour: hour} %>
+		<%= render partial: 'partners/partials/days_specified', locals: {hour: hour} %>
 	<% end %>
 <% end %>
