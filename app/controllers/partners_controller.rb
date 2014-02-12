@@ -3,7 +3,6 @@ class PartnersController < ApplicationController
   
 	before_filter :current_controller #Findes i application_controller.rb
 	before_filter :logged_in_as_admin? #Findes i application_controller.rb
-	
 
 	# GET /partners
 	# GET /partners.json
@@ -66,7 +65,8 @@ class PartnersController < ApplicationController
 	end
 	
 	def all_partner_hours
-		@partners = Partner.all
+		#@partners = Partner.all
+		@partners = Partner.all.joins(:hours).uniq.order(name: :asc)
 	end
 
 	def show_years
