@@ -7,9 +7,9 @@
 #task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_users ]
 
 #HEREFTER BRUGES DENNE PGA. USER.RB'S VALIDERING AF PASSWORD
-#task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_attachments, :old_hours, :old_relations, :old_vouchers ]
+task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_relations_to_partners ]
 
-task :migrate_old_data_production => [ :delete_all_in_hours, :old_hours, :old_relations_to_partners ]
+#task :migrate_old_data_production => [ :delete_all_in_hours, :old_hours, :old_relations_to_partners ]
 
 task :delete_all_in_hours => :environment do
 	ActiveRecord::Base.establish_connection :production
