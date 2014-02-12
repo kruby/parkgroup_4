@@ -4,10 +4,10 @@
 # Kan manuelt startes med kommandoen $ rake migrate_old_data direkte i terminal programmet
 
 #BRUGES FØRSTE GANG (HUSK AT UDKOMMENTERE VALIDERING AF PASSWORD I USER.RB)
-#task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_users ]
+task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_assets, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_users, :old_relations_to_partners ]
 
 #HEREFTER BRUGES DENNE PGA. USER.RB'S VALIDERING AF PASSWORD
-task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_relations_to_partners ]
+#task :migrate_old_data_production => [ :delete_all_in_new, :old_pages, :old_menus, :old_content, :old_posts, :old_attachments, :old_hours, :old_relations, :old_vouchers, :old_relations_to_partners ]
 
 #task :migrate_old_data_production => [ :delete_all_in_hours, :old_hours, :old_relations_to_partners ]
 
