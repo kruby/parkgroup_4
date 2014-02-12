@@ -27,16 +27,16 @@ set :scm, :git
 set :deploy_via, :copy
 set :branch, "master"
 
-# namespace :deploy do
-#  namespace :rake_tasks do
-#    task :singleton, :roles => :db, :only => {:primary => true} do
-#      run rake_task("db:create")
-#      run rake_task("migrate_old_data_production")
-# 		 #HUSK at denne rake task ligger i lib/tasks og filen hedder kruby_data_migrate_production.rake
-# 		 #Den tilsvarende til development skal omdøbes til .xrake for ikke at ligge i vejen når du deploy'er
-#    end
-#  end
-# end
+namespace :deploy do
+ namespace :rake_tasks do
+   task :singleton, :roles => :db, :only => {:primary => true} do
+     run rake_task("db:create")
+     run rake_task("migrate_old_data_production")
+		 #HUSK at denne rake task ligger i lib/tasks og filen hedder kruby_data_migrate_production.rake
+		 #Den tilsvarende til development skal omdøbes til .xrake for ikke at ligge i vejen når du deploy'er
+   end
+ end
+end
 
 ### Other options you can set ###
 # Comma separated list of additional domains for Apache
