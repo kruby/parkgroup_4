@@ -46,33 +46,35 @@
 			<%= @relations_size %>
 			<% for relation in @relations %>
 			<% @relation = Relation.find(relation.id)%>
-			<tr>
-				<td colspan="4">
-					<div id="voucher_customer">
-						<%= link_to Relation.find(relation.id).company, show_years_path(relation_id: relation.id, q: params[:q]), class: 'name'%>
-					</div>
-				</td>
-				<td colspan="4" class="text-center">
-					<div id="voucher_calc">
-						<span id="voucher_text">
-							(<%= delimiter(@relation.vouchers.sum(:number)) rescue nil %> 
-							- <%= delimiter(@relation.hours.sum(:number)) rescue nil %>)
-						</span>
-					</div>
-				</td>
-				<td colspan="4" class="text-right">
-					<div id="voucher_status">
-						<span id="voucher_text">
-							<% @result = @relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %>
-							<% if @result < 0 %>
-							<span id='voucher_red'> <%= delimiter(@result) %></span> 
-							<% else %>
-							<span id='voucher_green'> <%= delimiter(@result) %></span> 
-							<% end %>
-						</span>
-					</div>
-				</td>
-			</tr>
+			<% if relation.hours.size > 0 %>
+				<tr>
+					<td colspan="4">
+						<div id="voucher_customer">
+							<%= link_to Relation.find(relation.id).company, show_years_path(relation_id: relation.id, q: params[:q]), class: 'name'%>
+						</div>
+					</td>
+					<td colspan="4" class="text-center">
+						<div id="voucher_calc">
+							<span id="voucher_text">
+								(<%= delimiter(@relation.vouchers.sum(:number)) rescue nil %> 
+								- <%= delimiter(@relation.hours.sum(:number)) rescue nil %>)
+							</span>
+						</div>
+					</td>
+					<td colspan="4" class="text-right">
+						<div id="voucher_status">
+							<span id="voucher_text">
+								<% @result = @relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %>
+								<% if @result < 0 %>
+								<span id='voucher_red'> <%= delimiter(@result) %></span> 
+								<% else %>
+								<span id='voucher_green'> <%= delimiter(@result) %></span> 
+								<% end %>
+							</span>
+						</div>
+					</td>
+				</tr>
+			<% end %>
 				<% if relation.id.to_s == params[:relation_id] %>
 					<% for year in @years %>
 						<%= render partial: "hours/partials/years_specified", locals: {relation: relation, year: year} %>

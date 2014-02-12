@@ -33,7 +33,8 @@ class HoursController < ApplicationController
 	# GET /hours.xml
 	def index
 		@relations_size = Relation.all.size
-		@relations = Relation.all.joins(:hours).uniq.order(company: :asc)
+		@relations = Relation.all
+		#@relations = Relation.all.joins(:hours).uniq.order(company: :asc)
 	end
 
 	# def index
@@ -79,7 +80,7 @@ class HoursController < ApplicationController
 		#@relations_with_hours = Relation.joins(:hours).uniq.order(company: :asc)
 		# Finder en af hver relation der har timer koblet på
 		@relation = Relation.find(params[:relation_id])
-		@relations_with_hours = [] << @relation
+		@relations = [] << @relation
 		# Finder den aktuelle relation
 		find_years(@relation)
 		# Finder den aktuelle relations timer og kun den første fra hvert år
@@ -115,8 +116,7 @@ class HoursController < ApplicationController
 	def show_months
 		#@relations_with_hours = Relation.joins(:hours).uniq.order(company: :asc)
 		@relation = Relation.find(params[:relation_id])
-		@relations_with_hours = [] << @relation
-		#@relations_with_hours << @relation
+		@relations = [] << @relation
 		find_years(@relation)
 		find_months(@relation, params[:year])
 		render(:action => 'index')
@@ -138,7 +138,7 @@ class HoursController < ApplicationController
 
 	def show_days
 		@relation = Relation.find(params[:relation_id])
-		@relations_with_hours = [] << @relation
+		@relations = [] << @relation
 		find_years(@relation)
 		find_months(@relation, params[:year])
 		@hours = Hour.customer(@relation.id).month_hours(Date.new(params[:year].to_i,params[:month].to_i)).order(date: :asc) 
