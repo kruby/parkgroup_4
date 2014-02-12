@@ -31,8 +31,9 @@ class HoursController < ApplicationController
 	
 	# GET /hours
 	# GET /hours.xml
-	def index		
-		@relations_with_hours = Relation.all.joins(:hours).uniq.order(company: :asc)
+	def index
+		@relations_size = Relation.all.size
+		@relations = Relation.all.joins(:hours).uniq.order(company: :asc)
 	end
 
 	# def index

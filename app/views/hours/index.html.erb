@@ -43,8 +43,8 @@
 				<th colspan="4" class='text-center' >Købt/Brugt</th>
 				<th colspan="4" class='text-right' >Status</th>
 			</tr>
-
-			<% for relation in @relations_with_hours %>
+			<%= @relations_size %>
+			<% for relation in @relations %>
 			<% @relation = Relation.find(relation.id)%>
 			<tr>
 				<td colspan="4">

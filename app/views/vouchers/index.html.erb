@@ -5,12 +5,11 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="visible-lg">Description</th>
-					<th class="visible-lg">Number</th>
+					<th class="visible-lg text-right">Timer</th>
 					<th class="visible-lg">Relation</th>
-					<th class="visible-lg">Date</th>
-					<th class="visible-lg">User</th>
-					<th class="visible-lg">Hourly rate</th>
+					<th class="visible-lg">Dato</th>
+					<th class="visible-lg">Ansvarlig</th>
+					<th class="visible-lg">Timesats</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -18,11 +17,13 @@
 			<tbody>
 				<% @vouchers.each do |voucher| %>
 					<tr>
-						<td class="visible-lg"><%= voucher.description %></td>
-						<td class="visible-lg"><%= voucher.number %></td>
-						<td class="visible-lg"><%= voucher.relation_id %></td>
-						<td class="visible-lg"><%= voucher.date %></td>
-						<td class="visible-lg"><%= voucher.user_id %></td>
+						<td class="visible-lg text-right"><%= number_with_precision(voucher.number, precision: 0) %></td>
+						<td class="visible-lg"><%= link_to(truncate(Relation.find(voucher.relation_id).company, length: 20), edit_relation_path(voucher.relation_id)) %></td>
+						<td class="visible-lg"><%= nice_date(voucher.date) %></td>
+						<td class="visible-lg">
+							<% @user_id = Relation.find(voucher.relation_id).user_id %>
+							<%= User.find(@user_id.to_i).name rescue nil %>
+						</td>
 						<td class="visible-lg"><%= voucher.hourly_rate %></td>
 						<td colspan="3" class="right">
 							<div class="btn-group">
