@@ -7,7 +7,7 @@ class HoursController < ApplicationController
 	# GET /hours
 	# GET /hours.json
 	def index
-		@hours = Hour.all
+		@wtfs = Hour.all
 	end
 	
 	# def index
