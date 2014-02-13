@@ -1,21 +1,22 @@
 class HoursController < ApplicationController
 	before_action :set_hour, only: [:show, :edit, :update, :destroy]
-  
+
 	before_filter :current_controller #Findes i application_controller.rb
 	before_filter :logged_in_as_admin? #Findes i application_controller.rb
 
 	# GET /hours
 	# GET /hours.json
 	def index
+		#@hours = Hour.all.order(date: :desc)
 		@hours = Hour.all
 	end
-	
+
+
 	# def index
 	#   @q = Hour.search(params[:q])
-	#   @hours = @q.result.order(name: :asc)
+	#   @hours = @q.result.order(date: :desc)
 	# end
 	
-
 	# GET /hours/1
 	# GET /hours/1.json
 	def show
@@ -34,7 +35,6 @@ class HoursController < ApplicationController
 	# POST /hours.json
 	def create
 		@hour = Hour.new(hour_params)
-
 		respond_to do |format|
 			if @hour.save
 				format.html { redirect_to @hour, notice: 'Hour was successfully created.' }
@@ -51,7 +51,8 @@ class HoursController < ApplicationController
 	def update
 		respond_to do |format|
 			if @hour.update(hour_params)
-				format.html { redirect_to @hour, notice: 'Hour was successfully updated.' }
+				format.html { redirect_to show_days_path(partner_id: @hour.partner_id, year: @hour.date.year, month: @hour.date.month), notice: 'Opdateringen blev gennemført.'}
+				#format.html { redirect_to @hour, notice: 'Hour was successfully updated.' }
 				format.json { head :no_content }
 			else
 				format.html { render action: 'edit' }
@@ -69,7 +70,12 @@ class HoursController < ApplicationController
 			format.json { head :no_content }
 		end
 	end
-	
+
+	def monthly
+		# @hours = Hour.reorder('date ASC').all
+		@hours = Hour.last_3_years(Time.now).reorder(date: :asc)
+	end
+
 	private
 	# Use callbacks to share common setup or constraints between actions.
 	def set_hour
