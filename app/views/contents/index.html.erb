@@ -5,16 +5,16 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="visible-lg"><%= (t :id).uppercase rescue 'ID' %></th>
-					<th class="visible-lg">Resource</th>
-					<th class="visible-lg">Resource type</th>
-					<th class="visible-lg">Parent</th>
+					<th class="visible-lg text-center"><%= (t :id).uppercase rescue 'ID' %></th>
+					<th class="visible-lg text center">Res.</th>
+					<th class="visible-lg text center">Res. type</th>
+					<th class="visible-lg text-center">Parent</th>
 					<th class="visible-lg">Navlabel</th>
-					<th class="visible-lg center">Active</th>
-					<th class="visible-lg center">Redirect</th>
-					<th class="visible-lg center">Position</th>
+					<th class="visible-lg text-center">Active</th>
+					<th class="visible-lg text-center">Redirect</th>
+					<th class="visible-lg text-center">Position</th>
 					<th class="visible-lg">Controller name</th>
-					<th class="visible-lg">Category</th>
+					<th class="visible-lg text-center">Category</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -22,19 +22,34 @@
 			<tbody>
 				<% @contents.each do |content| %>
 					<tr>
-						<td class="visible-lg"><%= content.id %></td>
-						<td class="visible-lg"><%= content.resource_id %></td>
-						<td class="visible-lg"><%= content.resource_type %></td>
-						<td class="visible-lg"><%= content.parent_id %></td>
+						<td class="visible-lg text-center"><%= content.id %></td>
+						<td class="visible-lg text-center"><%= content.resource_id %></td>
+						<td class="visible-lg text-center"><%= content.resource_type %></td>
+						<td class="visible-lg text-center"><%= content.parent_id %></td>
 						<td class="visible-lg"><%= content.navlabel %></td>
-						<td class="visible-lg center"><%= link_to content.active == true ? '√' : '–', content_active_path(content.id) %></td>
-						<td class="visible-lg center"><%= link_to content.redirect == true ? '√' : '–', content_redirect_path(content.id) %></td>
-						<td class="visible-lg"><%= content.position %></td>
+						<td class="visible-lg text-center">
+							<% if content.active == true %>
+								<%= link_to('+', content_active_path(content.id), {class: 'btn btn-xs btn-default activated'}) %>
+							<% else %>
+								<%= link_to('-', content_active_path(content.id), {class: 'btn btn-xs btn-default passified'}) %>
+							<% end %>
+						
+							<%#= link_to content.active == true ? '√' : '–', content_active_path(content.id) %>
+						</td>
+						<td class="visible-lg text-center">
+							<% if content.redirect == true %>
+								<%= link_to('+', content_redirect_path(content.id), {class: 'btn btn-xs btn-default activated'}) %>
+							<% else %>
+								<%= link_to('-', content_redirect_path(content.id), {class: 'btn btn-xs btn-default passified'}) %>
+							<% end %>
+							<%#= link_to content.redirect == true ? '√' : '–', content_redirect_path(content.id) %>
+						</td>
+						<td class="visible-lg text-center"><%= content.position %></td>
 						<td class="visible-lg"><%= content.controller_name %></td>
-						<td class="visible-lg"><%= link_to content.category, change_category_path(content.id) %></td>
-						<td colspan="3" class="right">
+						<td class="visible-lg text-center"><%= link_to content.category, change_category_path(content.id) %></td>
+						<td colspan="3" class="text-right">
 							<div class="btn-group">
-								<%= link_to 'Vis', content, class: 'btn btn-default btn-xs' %>
+								<%#= link_to 'Vis', content, class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Ret', edit_content_path(content), class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Slet', content, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
 							</div>

@@ -9,7 +9,7 @@ KrubyRails4::Application.routes.draw do
 	get '/klip' => 'partners#all_partner_hours', as: :all_partner_hours
 
 	get '/timeliste' => 'partners#timeliste', as: :timeliste
-	get '/monthly' => 'partners#monthly', as: :monthly
+	get '/monthly' => 'hours#monthly', as: :monthly
 
 	get 'partners/years_show/:partner_id' => 'partners#show_years', as: :show_years
 	get 'partners/months_show/:partner_id/:year' => 'partners#show_months', as: :show_months
@@ -30,6 +30,8 @@ KrubyRails4::Application.routes.draw do
 	resources :vouchers
 
 	resources :users
+	get 'users/active/:id' => 'users#active', as: :user_active
+	
 
 	resources :relations
 	
@@ -71,6 +73,7 @@ KrubyRails4::Application.routes.draw do
 	get '/assets/add_to_post/:id' => 'assets#add_to_post', :as => :add_to_post
 
 	resources :menus
+	get 'menus/active/:id' => 'menus#active', as: :menu_active
 
 	resources :posts
 	get '/bloggen' => 'posts#blog', :as => :bloggen

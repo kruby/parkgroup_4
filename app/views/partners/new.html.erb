@@ -1,9 +1,14 @@
 <div class="container">
-
-	<h1>Ny partner</h1>
+	
+	<div class="col-sm-offset-2 col-sm-10">
+		<h2 class="move-left">
+			Ny partner
+			<div class="btn-group">
+				<%= link_to 'Tilbage', partners_path, class: 'btn btn-default btn-xs' %>
+			</div>
+		</h2>
+	</div>
 
 	<%= render 'form' %>
-
-	<%= link_to 'Tilbage', partners_path, class: 'btn btn-default btn-xs' %>
 
 </div>

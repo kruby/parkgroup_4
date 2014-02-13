@@ -19,6 +19,9 @@
 				<ul class="dropdown-menu">
 					<%= render :partial => "menusystem/menu_system_level_0" %>
 					<li>
+						<%= link_to( 'Logoff', '/logoff')%>
+					</li>
+					<li>
 						<%= link_to(Rails::VERSION::STRING + ' - ' + RUBY_VERSION, 'http://guides.rubyonrails.org/')%>
 					</li>
 				</ul>

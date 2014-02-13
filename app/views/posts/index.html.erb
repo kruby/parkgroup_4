@@ -1,8 +1,10 @@
 <div class="container">
-	<h1>Viser <%= t :posts %></h1>
-	<div class="btn-group index">
-		<%= link_to 'Nyt indlæg', new_post_path, class: 'btn btn-default btn-xs' %>
-	</div>
+	<h2>
+		Viser <%= t :posts %>
+		<div class="btn-group index">
+			<%= link_to 'Nyt indlæg', new_post_path, class: 'btn btn-default btn-xs' %>
+		</div>
+	</h2>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>

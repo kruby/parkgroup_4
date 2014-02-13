@@ -19,6 +19,17 @@ $kruby-40:lighten($kruby-blue-100, 60%);
 //$kruby-blue-light: #C9E9FF;
 
 
+table.tabel_timer {
+	float: left;
+    margin-right: 20px;
+	width: 20%;
+}
+
+
+.move-left {
+	margin-left: -10px;
+}
+
 a.activated, a.passified {
 	width: 25px;
 }

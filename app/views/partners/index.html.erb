@@ -1,21 +1,45 @@
 <div class="container">
-	<h1>Viser partners</h1>
+	
+	<h2>Viser alle partners 
+		<div class="btn-group">
+			<%= link_to 'Ny Partner', new_partner_path, class: 'btn btn-default btn-xs' %>
+			<%= link_to 'Find alle', partners_path, class: 'btn btn-default btn-xs' %>
+		</div>
+	</h2>	
+	
+	<div class="row">
+		<div class="col-lg-4">
+			<%= search_form_for @q do |f| %>
+			<%= f.label :name_cont, "Navn indeholder" %>
+			<div class="input-group">
+				<%= f.text_field :name_cont, size: 16, class: 'form-control' %>
+				<span class="input-group-btn">
+					<%= f.submit "Søg", :class => 'btn btn-default'  %>
+				</span>
+			</div>
+			<% end %>
+		</div>
+	</div>	
+
+
+
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th class="">Navn</th>
-					<th class="text-center">Kategori</th>
-					<th class="text-center">Ansvar</th>
+					<th class="text-center visible-sm visible-md visible-lg">Kategori</th>
+					<th class="text-center visible-sm visible-md visible-lg">Ansvar</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @partners.each do |partner| %>
 					<tr>
-						<td class=""><%= partner.name %></td>
-						<td class="text-center"><%= partner.category %></td>
-						<td class="text-center"><%= partner.responsible %></td>
+						<td class="visible-sm visible-md visible-lg"><%= partner.name %></td>
+						<td class="visible-xs"><%= truncate(partner.name, length: 15) %></td>
+						<td class="text-center visible-sm visible-md visible-lg"><%= partner.category %></td>
+						<td class="text-center visible-sm visible-md visible-lg"><%= partner.responsible %></td>
 						<td colspan="3" class="text-right">
 							<div class="btn-group">
 								<%#= link_to 'Vis', partner, class: 'btn btn-default btn-xs' %>
@@ -28,6 +52,4 @@
 			</tbody>
 		</table>
 	</div>
-	<br>
-	<%= link_to 'Ny Partner', new_partner_path %>
 </div>

@@ -1,7 +1,12 @@
 module ApplicationHelper
+	#KIG EFTER DATOER I DA.YML ISTEDET
 	
 	def nice_date datoen
 		return datoen.strftime('%d.%m.%Y')
+	end
+
+	def mini_date datoen
+		return datoen.strftime('%d%m%y')
 	end
   
 	def route_exists path

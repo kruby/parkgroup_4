@@ -6,9 +6,15 @@ class PartnersController < ApplicationController
 
 	# GET /partners
 	# GET /partners.json
+	# def index
+	# 	@partners = Partner.all.order(name: :asc)
+	# end
+	
 	def index
-		@partners = Partner.all
+	  @q = Partner.search(params[:q])
+	  @partners = @q.result.order(name: :asc)
 	end
+	
 
 	# GET /partners/1
 	# GET /partners/1.json
@@ -67,7 +73,7 @@ class PartnersController < ApplicationController
 	def all_partner_hours
 		#@partners = Partner.all
 		@partners = Partner.all.joins(:hours).uniq.order(name: :asc)
-	end
+	end 
 
 	def show_years
 		#@partners_with_hours = Partner.joins(:hours).uniq.order(company: :asc)
