@@ -1,5 +1,20 @@
 <div class="container">
 
-	<%= Hour.all.size %>
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="">Navn</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @hours.each do |hour| %>
+					<tr>
+						<td class="visible-sm visible-md visible-lg"><%= hour.description %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 
 </div>
