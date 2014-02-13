@@ -11,6 +11,7 @@ class PartnersController < ApplicationController
 	# end
 	
 	def index
+		@hours = Hour.all
 	  @q = Partner.search(params[:q])
 	  @partners = @q.result.order(name: :asc)
 	end
