@@ -131,7 +131,7 @@ class ApplicationController < ActionController::Base
     @pages = Page.find(:all, :order => "id")
     @posts = Post.find(:all, :order => "id")
     @products = Product.find(:all, :order => "id")
-    @relations = Relation.find(:all, :order => "id")
+    @partners = Partner.find(:all, :order => "id")
     @users = User.find(:all, :order => "id")
     # @content_menus = Content.find(:conditions => ["controller_name = 'Menu'", true], :order => "resource_id")
     #    @content_pages = Content.find(:conditions => ["controller_name = 'Page'", true], :order => "resource_id")
