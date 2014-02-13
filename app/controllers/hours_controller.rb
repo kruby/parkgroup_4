@@ -3,15 +3,15 @@ class HoursController < ApplicationController
 
 	# GET /hours
 	# GET /hours.json
-	# def index
-	# 	@hours = Hour.all.order(date: :desc)
-	# end
-
-
 	def index
-	  @q = Hour.search(params[:q])
-	  @hours = @q.result.order(date: :desc)
+		@hours = Hour.all.order(date: :desc)
 	end
+
+
+	# def index
+	#   @q = Hour.search(params[:q])
+	#   @hours = @q.result.order(date: :desc)
+	# end
 	
 	# GET /hours/1
 	# GET /hours/1.json
