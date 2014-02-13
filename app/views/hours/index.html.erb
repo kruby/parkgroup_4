@@ -9,24 +9,24 @@
 	
 	<div class="row">
 		<div class="col-lg-4">
-			<!-- <%#= search_form_for @q do |f| %>
-			<%#= f.label :partner_name_cont, "Navn indeholder" %>
+			<%= search_form_for @q do |f| %>
+			<%= f.label :partner_name_cont, "Navn indeholder" %>
 			<div class="input-group">
-				<%#= f.text_field :partner_name_cont, size: 16, class: 'form-control' %>
+				<%= f.text_field :partner_name_cont, size: 16, class: 'form-control' %>
 				<span class="input-group-btn">
-					<%#= f.submit "Søg", :class => 'btn btn-default'  %>
+					<%= f.submit "Søg", :class => 'btn btn-default'  %>
 				</span>
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<%#= f.label :description_cont, "Beskrivelse indeholder" %>
+			<%= f.label :description_cont, "Beskrivelse indeholder" %>
 			<div class="input-group">
-				<%#= f.text_field :description_cont, size: 16, class: 'form-control' %>
+				<%= f.text_field :description_cont, size: 16, class: 'form-control' %>
 				<span class="input-group-btn">
-					<%#= f.submit "Søg", :class => 'btn btn-default'  %>
+					<%= f.submit "Søg", :class => 'btn btn-default'  %>
 				</span>
 			</div>
-			<%# end %> -->
+			<% end %>
 		</div>
 	</div>	
 	<div class="table-responsive">
@@ -34,7 +34,7 @@
 			<thead>
 				<tr>
 					<th class="visible-lg text-left">Af</th>
-					<th class="text-left"><%#= sort_link @q, :partner_name, 'Firma'%>Firma</th>
+					<th class="text-left"><%= sort_link @q, :partner_name, 'Firma'%></th>
 					<th class="text-left">Beskrivelse</th>
 					<th class="text-center">Antal</th>
 					<th class="text-center">Date</th>
