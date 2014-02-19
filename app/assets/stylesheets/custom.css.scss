@@ -1,20 +1,25 @@
+$kruby-pick-100: #ba1f2c;
 $kruby-blue-100: #6facdc;
 $kruby-green-100:#40a236;
 $kruby-red-100:#ba1f2c;
+$kruby-black:#000000;
+$kruby-grey: #333333;
+$kruby-white:#FFFFFF;
 //$kruby-blue-100: #44744c;
 
-$kruby-95:lighten($kruby-blue-100, 5%);
-$kruby-90:lighten($kruby-blue-100, 10%);
-$kruby-85:lighten($kruby-blue-100, 15%);
-$kruby-80:lighten($kruby-blue-100, 20%);
-$kruby-75:lighten($kruby-blue-100, 25%);
-$kruby-70:lighten($kruby-blue-100, 30%);
-$kruby-65:lighten($kruby-blue-100, 35%);
-$kruby-60:lighten($kruby-blue-100, 40%);
-$kruby-55:lighten($kruby-blue-100, 45%);
-$kruby-50:lighten($kruby-blue-100, 50%);
-$kruby-45:lighten($kruby-blue-100, 55%);
-$kruby-40:lighten($kruby-blue-100, 60%);
+$kruby-100:lighten($kruby-pick-100, 0%);
+$kruby-95:lighten($kruby-pick-100, 5%);
+$kruby-90:lighten($kruby-pick-100, 10%);
+$kruby-85:lighten($kruby-pick-100, 15%);
+$kruby-80:lighten($kruby-pick-100, 20%);
+$kruby-75:lighten($kruby-pick-100, 25%);
+$kruby-70:lighten($kruby-pick-100, 30%);
+$kruby-65:lighten($kruby-pick-100, 35%);
+$kruby-60:lighten($kruby-pick-100, 40%);
+$kruby-55:lighten($kruby-pick-100, 45%);
+$kruby-50:lighten($kruby-pick-100, 50%);
+$kruby-45:lighten($kruby-pick-100, 55%);
+$kruby-40:lighten($kruby-pick-100, 60%);
 //$kruby-blue-medium: #93bee3;
 //$kruby-blue-light: #C9E9FF;
 
@@ -44,7 +49,7 @@ a.passified {
 
 
 a {
-	color: #333333;
+	color: $kruby-grey;
 	text-decoration: none;
 }
 
@@ -93,11 +98,11 @@ h4.panel-title a.link_forside:hover {
 
 h4.panel-title a.link_forside:visited {
 	text-decoration: none;
-	color:#333333;
+	color:$kruby-95;
 }
 h4.panel-title a.forside:active {
 	text-decoration: none;
-	color:#333333;
+	color:$kruby-95;
 }
 
 td div.btn-group {
@@ -165,40 +170,40 @@ label {
 	margin-bottom: 2px;
 }
 .btn-info {
-	background-color: $kruby-blue-100;
+	background-color: $kruby-100;
 	border-color: $kruby-80;
 	&:hover {
-		background-color: darken($kruby-blue-100, 10%);
+		background-color: darken($kruby-100, 10%);
 	}
 	a {
-		color: #FFF;
+		color: $kruby-white;
 		&:visited   {
-			color: #FFF;   
+			color: $kruby-white;   
 		}
 	}
 }
  
 
 a:active {
-	color: $kruby-blue-100;   
+	color: $kruby-100;   
 }
 
 .navbar {
 	margin-bottom: 1px;
 	border-radius: 0px;
 	li a:visited {
-		color: #000;
+		color:$kruby-black;
 	}
 }
 
 .navbar-inverse .navbar-toggle {
-	border-color: $kruby-blue-100;
+	border-color: $kruby-100;
 }
 
 .navbar-inverse {
 	background-color: $kruby-95;
 	border: 0px;
-	border-top: 1px solid #FFF;
+	border-top: 1px solid $kruby-white;
 	&:hover {
 		color: $kruby-95;
 	}
@@ -217,13 +222,13 @@ a:active {
 		}
 	}
 	.navbar-nav li a {
-		color: #FFF;
+		color: $kruby-white;
 		&:hover {
 			background-color: $kruby-90;   
 		}
 	}
 	.navbar-nav li .dropdown-menu {
-		background-color: $kruby-blue-100;
+		background-color: $kruby-100;
 		a:hover {
 			background-color: $kruby-90;
 		}
@@ -240,7 +245,7 @@ a:active {
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
-	color: #FFF;
+	color: $kruby-white;
 	&:hover {
 		background-color: $kruby-90;   
 	} 
@@ -257,21 +262,21 @@ li.dropdown, li.open {
 }
 
 header {
-	background-color: $kruby-blue-100;
+	background-color: $kruby-100;
 	/*	background-image: url(kruby-background_sky.jpg);*/
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
-	background-color: #FFF;
+	background-color: $kruby-white;
 }
 
 
 .navbar-inverse .navbar-collapse {
-	border-color: #FFF;
+	border-color: $kruby-white;
 }
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-	background-color: $kruby-blue-100;
+	background-color: $kruby-100;
 }
 
 

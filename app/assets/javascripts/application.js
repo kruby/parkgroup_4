@@ -17,5 +17,3 @@
 //= require bootstrap
 //= require jquery.turbolinks
 //= require turbolinks
-
-
