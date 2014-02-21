@@ -1,3 +1,3 @@
-KrubyRails4::Application.routes.draw do
+Parkgroup4::Application.routes.draw do
 
 end

@@ -5,7 +5,7 @@ require 'brightbox/passenger'
 
 # The name of your application.  Used for deployment directory and filenames
 # and Apache configs. Should be unique on the Brightbox
-set :application, "kruby_rails_4"
+set :application, "parkgroup_4"
 
 # Primary domain name of your application. Used in the Apache configs
 set :domain, "www.rails4.kruby.dk"
@@ -22,7 +22,7 @@ set(:deploy_to) { File.join("", "home", user, application) }
 # the local directory.  You should probably change this if you use
 # another repository, like git or subversion.
 
-set :repository, "git@github.com:kruby/kruby_rails_4.git"
+set :repository, "git@github.com:kruby/park_group_4.git"
 set :scm, :git
 set :deploy_via, :copy
 set :branch, "master"

@@ -7,7 +7,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: kruby4_development
+  database: parkgroup4_development
   pool: 5
   username: root
   password: kf1737
@@ -29,7 +29,7 @@ production:
   host: db01.mysql.vm.brightbox.net
   username: krsgrd
   password: Ee9Gohchai4i
-  database: krsgrd_kruby_rails_4_production
+  database: krsgrd_parkgroup_4_production
   
 
 old_production:
@@ -47,7 +47,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: kruby4_test
+  database: parkgroup4_test
   pool: 5
   username: root
   password: kf1737
