@@ -1,0 +1,200 @@
+body {
+  background-color: white; }
+
+.panel-default > .panel-heading {
+  background-color: #c1dbf0; }
+
+.panel-default {
+  border-color: #eaf3fa; }
+
+h3.forside-header {
+  color: white; }
+
+table.tabel_timer {
+  float: left;
+  margin-right: 20px;
+  width: 20%; }
+
+.move-left {
+  margin-left: -10px; }
+
+a.activated, a.passified {
+  width: 25px; }
+
+a.activated {
+  background-color: #c0e9bb; }
+
+a.passified {
+  background-color: #f2b3b8; }
+
+a {
+  color: #333333;
+  text-decoration: none; }
+
+tr.row-fluid td.year {
+  padding-left: 5%; }
+
+span.year_link {
+  padding-right: 10%; }
+
+tr.row-fluid td.month {
+  padding-left: 6%; }
+
+span.month_link {
+  padding-right: 20%; }
+
+tr.row-fluid td.hour, tr.row-fluid th.hour {
+  padding-left: 7%; }
+
+span.hour_date {
+  padding-right: 40%; }
+
+img.forside-img.img-thumbnail {
+  margin-right: 3px;
+  height: 24px;
+  padding: 2px; }
+
+h3.forside-header {
+  font-size: 3vw; }
+
+h4.panel-title a.link_forside {
+  text-decoration: none; }
+
+h4.panel-title a.link_forside:hover {
+  text-decoration: none;
+  color: #98c4e6; }
+
+h4.panel-title a.link_forside:visited {
+  text-decoration: none;
+  color: #84b8e1; }
+
+h4.panel-title a.forside:active {
+  text-decoration: none;
+  color: #84b8e1; }
+
+td div.btn-group {
+  margin-top: auto;
+  margin-bottom: auto; }
+
+div.btn-group.index {
+  margin-top: 8px;
+  margin-bottom: 8px; }
+
+div.table-responsive {
+  margin-top: 10px; }
+
+h1.forside {
+  font-size: 3vw; }
+
+small.forside {
+  font-size: 2vw; }
+
+.carousel-inner > .item > img {
+  margin: 0 auto; }
+
+div.carousel-caption h1 {
+  font-size: 3vw; }
+
+.carousel-inner {
+  height: auto; }
+
+div.panel.panel-default.blog_posts {
+  margin-bottom: 10px; }
+
+div.panel.panel-default.blog_posts h3 {
+  margin-top: 6px;
+  margin-bottom: 8px; }
+
+.date_and_author {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: normal; }
+
+.table > tbody > tr > td {
+  vertical-align: middle; }
+
+.container .jumbotron {
+  background-color: #d6e7f5; }
+
+.alert {
+  border-radius: 0px; }
+
+label {
+  margin-bottom: 2px; }
+
+.btn-info {
+  background-color: #6facdc;
+  border-color: #c1dbf0; }
+  .btn-info:hover {
+    background-color: #4694d2; }
+  .btn-info a {
+    color: white; }
+    .btn-info a:visited {
+      color: white; }
+
+a:active {
+  color: #6facdc; }
+
+.navbar {
+  margin-bottom: 1px;
+  border-radius: 0px; }
+  .navbar li a:visited {
+    color: black; }
+
+.navbar-inverse .navbar-toggle {
+  border-color: #6facdc; }
+
+.navbar-inverse {
+  background-color: #84b8e1;
+  border: 0px;
+  border-top: 1px solid white; }
+  .navbar-inverse:hover {
+    color: #84b8e1; }
+  .navbar-inverse:visited {
+    color: #adcfeb; }
+  .navbar-inverse:active {
+    color: #adcfeb; }
+  .navbar-inverse .navbar-nav .open a:focus {
+    background-color: #98c4e6; }
+  .navbar-inverse .navbar-nav .open a:visited {
+    background-color: #98c4e6; }
+  .navbar-inverse .navbar-nav li a {
+    color: white; }
+    .navbar-inverse .navbar-nav li a:hover {
+      background-color: #98c4e6; }
+  .navbar-inverse .navbar-nav li .dropdown-menu {
+    background-color: #6facdc; }
+    .navbar-inverse .navbar-nav li .dropdown-menu a:hover {
+      background-color: #98c4e6; }
+  .navbar-inverse .navbar-nav .active a {
+    background-color: #98c4e6; }
+    .navbar-inverse .navbar-nav .active a:hover {
+      background-color: #adcfeb; }
+    .navbar-inverse .navbar-nav .active a:focus {
+      background-color: #98c4e6; }
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+  color: white; }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {
+    background-color: #98c4e6; }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:active {
+    background-color: #98c4e6; }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:visited {
+    background-color: #98c4e6; }
+
+li.dropdown, li.open {
+  background-color: #84b8e1; }
+
+header {
+  background-color: #6facdc;
+  /*	background-image: url(kruby-background_sky.jpg);*/ }
+
+.navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+  background-color: white; }
+
+.navbar-inverse .navbar-collapse {
+  border-color: white; }
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+  background-color: #6facdc; }

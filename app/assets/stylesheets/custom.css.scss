@@ -1,4 +1,4 @@
-$kruby-pick-100: #ba1f2c;
+$kruby-pick-100: #6facdc;
 $kruby-blue-100: #6facdc;
 $kruby-green-100:#40a236;
 $kruby-red-100:#ba1f2c;
@@ -20,9 +20,27 @@ $kruby-55:lighten($kruby-pick-100, 45%);
 $kruby-50:lighten($kruby-pick-100, 50%);
 $kruby-45:lighten($kruby-pick-100, 55%);
 $kruby-40:lighten($kruby-pick-100, 60%);
+
+$kruby-background: $kruby-white;
+
 //$kruby-blue-medium: #93bee3;
 //$kruby-blue-light: #C9E9FF;
 
+body {
+	background-color: $kruby-background;
+}
+
+.panel-default > .panel-heading {
+	background-color: $kruby-80;
+}
+
+.panel-default {
+	border-color: $kruby-70;
+}
+
+h3.forside-header {
+	color: $kruby-40;
+}
 
 table.tabel_timer {
 	float: left;
