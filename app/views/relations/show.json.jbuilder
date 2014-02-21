@@ -1,1 +1,0 @@
-json.extract! @relation, :id, :company, :address, :postno, :city, :log, :category, :responsible, :phone, :next_action, :lock_version, :user_id, :type, :search_lock, :homepage, :email, :created_at, :updated_at
