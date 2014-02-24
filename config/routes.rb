@@ -2,65 +2,20 @@ Parkgroup4::Application.routes.draw do
 
 	resources :contacts
 
-	resources :partners do
-		resources :hours
-	end
-
-	get '/klip' => 'partners#all_partner_hours', as: :all_partner_hours
-
-	get '/timeliste' => 'partners#timeliste', as: :timeliste
-	get '/monthly' => 'hours#monthly', as: :monthly
-
-	get 'partners/years_show/:partner_id' => 'partners#show_years', as: :show_years
-	get 'partners/months_show/:partner_id/:year' => 'partners#show_months', as: :show_months
-	get 'partners/months/days_show/:partner_id/:year/:month' => 'partners#show_days', as: :show_days
-	# get 'partners/partners/:partner_id/edit/:id' => 'partners#edit', as: :edit_hour
-	# get 'partners/years_hide/:partner_id' => 'partners#hide_years', as: :hide_years
-	# get 'partners/months_hide/:partner_id' => 'partners#hide_months', as: :hide_months
-	# get 'partners/months/days_hide/:partner_id' => 'partners#hide_days', as: :hide_days
-  
-	# PUBLIC
-	get 'partners/months_show_public/:partner_id/:year' => 'partners#show_months_public', as: :show_months_public
-	get 'partners/months/days_show_public/:partner_id/:month' => 'partners#show_days_public', as: :show_days_public
-	# get 'partners/months_hide_public/:partner_id' => 'partners#hide_months_public', as: :hide_months_public
-	# get 'partners/months/days_hide_public/:partner_id' => 'partners#hide_days_public', as: :hide_days_public
+	resources :partners
 
 	resources :preferences
-
-	resources :vouchers
 
 	resources :users
 	get 'users/active/:id' => 'users#active', as: :user_active
 	
-
-	resources :relations
-	
-	# resources :relations do
-	# 	resources :hours
-	# end
-
-	# resources :hours, except: :edit
-	# get '/timeliste' => 'hours#timeliste', as: :timeliste
-	# get '/monthly' => 'hours#monthly', as: :monthly
-	
-	resources :hours
-	#resources :hours, except: :edit
-	
-	# resources :hours, except: :edit do
-	# 	collection do
-	# 		match 'search' => 'hours#search', via: [:get, :post], as: :search
-	# 	end
-	# end
- 
-
 	resources :attachments do
 		collection do
 			delete 'destroy_from_post'
 		end
 	end
-	
+
 	get '/attachments/destroy_from_post/:id/:post_id' => 'attachments#destroy_from_post', :as => :destroy_from_post
-	
 
 	resources :assets do
 		collection do
@@ -78,7 +33,6 @@ Parkgroup4::Application.routes.draw do
 	resources :posts
 	get '/bloggen' => 'posts#blog', :as => :bloggen
 	get 'posts/active/:id' => 'posts#active', as: :post_active
-	
 
 	resources :contents  
 	get 'contents/active/:id' => 'contents#active', as: :content_active
