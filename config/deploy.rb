@@ -22,7 +22,7 @@ set(:deploy_to) { File.join("", "home", user, application) }
 # the local directory.  You should probably change this if you use
 # another repository, like git or subversion.
 
-set :repository, "git@github.com:kruby/park_group_4.git"
+set :repository, "git@github.com:kruby/parkgroup_4.git"
 set :scm, :git
 set :deploy_via, :copy
 set :branch, "master"
