@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 90000000000002) do
+ActiveRecord::Schema.define(version: 20140224210725) do
 
   create_table "assets", force: true do |t|
     t.string   "description"
@@ -61,17 +61,7 @@ ActiveRecord::Schema.define(version: 90000000000002) do
     t.string   "action_redirect"
     t.integer  "position"
     t.string   "controller_name"
-    t.string   "category",            default: "Admin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "hours", force: true do |t|
-    t.string   "description"
-    t.decimal  "number",      precision: 10, scale: 2
-    t.date     "date"
-    t.integer  "user_id"
-    t.integer  "partner_id"
+    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -134,26 +124,6 @@ ActiveRecord::Schema.define(version: 90000000000002) do
     t.datetime "updated_at"
   end
 
-  create_table "relations", force: true do |t|
-    t.string   "company"
-    t.string   "address"
-    t.string   "postno"
-    t.string   "city"
-    t.text     "log"
-    t.string   "category"
-    t.string   "responsible"
-    t.text     "phone"
-    t.datetime "next_action"
-    t.integer  "lock_version"
-    t.integer  "user_id"
-    t.string   "type"
-    t.integer  "search_lock"
-    t.string   "homepage"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -170,17 +140,6 @@ ActiveRecord::Schema.define(version: 90000000000002) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-  end
-
-  create_table "vouchers", force: true do |t|
-    t.string   "description"
-    t.decimal  "number",      precision: 10, scale: 2
-    t.integer  "partner_id"
-    t.date     "date"
-    t.integer  "user_id"
-    t.integer  "hourly_rate"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end

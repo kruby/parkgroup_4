@@ -47,8 +47,8 @@ Parkgroup4::Application.routes.draw do
 	#Single resources map to plural controllers (/session => sessions_controller.rb)
   
 	resources :viewer
-	get 'projekter' => 'viewer#show', :as => :projekter, name: 'projekter'
-	get 'produkter' => 'viewer#show', :as => :produkter, name: 'produkter'
+	# get 'projekter' => 'viewer#show', :as => :projekter, name: 'projekter'
+	# get 'produkter' => 'viewer#show', :as => :produkter, name: 'produkter'
 	get 'kontakt' => 'viewer#show', :as => :kontakt, name: 'kontakt'
   
 	get 'logoff' => 'sessions#destroy', as: 'logoff'

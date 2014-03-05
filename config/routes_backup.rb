@@ -2,62 +2,20 @@ Parkgroup4::Application.routes.draw do
 
 	resources :contacts
 
-	resources :partners do
-		resources :hours
-	end
-	get '/kundetimer' => 'partners#all_partner_hours', as: :all_partner_hours
+	resources :partners
 
 	resources :preferences
 
-	resources :vouchers
-
 	resources :users
-
-	resources :relations
+	get 'users/active/:id' => 'users#active', as: :user_active
 	
-	# resources :relations do
-	# 	resources :hours
-	# end
-
-	# resources :hours, except: :edit
-	# get '/timeliste' => 'hours#timeliste', as: :timeliste
-	# get '/monthly' => 'hours#monthly', as: :monthly
-	
-	
-	resources :hours, except: :edit
-	
-	# resources :hours, except: :edit do
-	# 	collection do
-	# 		match 'search' => 'hours#search', via: [:get, :post], as: :search
-	# 	end
-	# end
-  
-	get '/timeliste' => 'hours#timeliste', as: :timeliste
-	get '/monthly' => 'hours#monthly', as: :monthly
-
-	get 'hours/years_show/:relation_id' => 'hours#show_years', as: :show_years
-	get 'hours/months_show/:relation_id/:year' => 'hours#show_months', as: :show_months
-	get 'hours/months/days_show/:relation_id/:year/:month' => 'hours#show_days', as: :show_days
-	get 'hours/relations/:relation_id/edit/:id' => 'hours#edit', as: :edit_hour
-	get 'hours/years_hide/:relation_id' => 'hours#hide_years', as: :hide_years
-	get 'hours/months_hide/:relation_id' => 'hours#hide_months', as: :hide_months
-	get 'hours/months/days_hide/:relation_id' => 'hours#hide_days', as: :hide_days
-  
-	# PUBLIC
-	get 'hours/months_show_public/:relation_id/:year' => 'hours#show_months_public', as: :show_months_public
-	get 'hours/months/days_show_public/:relation_id/:month' => 'hours#show_days_public', as: :show_days_public
-	get 'hours/months_hide_public/:relation_id' => 'hours#hide_months_public', as: :hide_months_public
-	get 'hours/months/days_hide_public/:relation_id' => 'hours#hide_days_public', as: :hide_days_public
-  
-
 	resources :attachments do
 		collection do
 			delete 'destroy_from_post'
 		end
 	end
-	
+
 	get '/attachments/destroy_from_post/:id/:post_id' => 'attachments#destroy_from_post', :as => :destroy_from_post
-	
 
 	resources :assets do
 		collection do
@@ -70,11 +28,11 @@ Parkgroup4::Application.routes.draw do
 	get '/assets/add_to_post/:id' => 'assets#add_to_post', :as => :add_to_post
 
 	resources :menus
+	get 'menus/active/:id' => 'menus#active', as: :menu_active
 
 	resources :posts
 	get '/bloggen' => 'posts#blog', :as => :bloggen
 	get 'posts/active/:id' => 'posts#active', as: :post_active
-	
 
 	resources :contents  
 	get 'contents/active/:id' => 'contents#active', as: :content_active
@@ -89,8 +47,8 @@ Parkgroup4::Application.routes.draw do
 	#Single resources map to plural controllers (/session => sessions_controller.rb)
   
 	resources :viewer
-	get 'projekter' => 'viewer#show', :as => :projekter, name: 'projekter'
-	get 'produkter' => 'viewer#show', :as => :produkter, name: 'produkter'
+	# get 'projekter' => 'viewer#show', :as => :projekter, name: 'projekter'
+	# get 'produkter' => 'viewer#show', :as => :produkter, name: 'produkter'
 	get 'kontakt' => 'viewer#show', :as => :kontakt, name: 'kontakt'
   
 	get 'logoff' => 'sessions#destroy', as: 'logoff'

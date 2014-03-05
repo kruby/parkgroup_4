@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Kruby on Rails 4 and Ruby 2" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Kruby on Rails 4 and Ruby 2" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Park Group" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Park Group" %>">
 	<link href="/assets/mini.gif" rel="shortcut icon"/>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="backend">
 	<header>
 		<%= image_tag "kruby_logo_top.png", :class => 'img-responsive', :alt => 'Responsive image' %>		
 		<%= render 'menusystem/navigation' %>

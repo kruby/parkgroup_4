@@ -6,8 +6,9 @@ class ApplicationController < ActionController::Base
 	before_filter :set_search
 
 	def set_search
-		@q = Hour.search(params[:q])
+		@q = Post.search(params[:q])
 	end
+	# Denne skal sættes så du kan anvende @q i alle dine controllere, og det er ok den hedder Post.
   
   helper_method :active
   helper_method :route_exists

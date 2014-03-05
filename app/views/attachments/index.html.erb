@@ -1,6 +1,11 @@
 <div class="container">
 
-	<h1>Viser attachments</h1>
+	<h1>
+		Viser attachments
+		<div class="btn-group index">
+			<%= link_to 'Ny Attachment', new_attachment_path, class: 'btn btn-default btn-xs' %>
+		</div>
+	</h1>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
@@ -24,9 +29,9 @@
 						<td class="visible-lg"><%= attachment.image_size %></td>
 						<td class="visible-lg"><%= attachment.priority %></td>
 						<td class="visible-lg"><%= attachment.asset_id %></td>
-						<td colspan="3" class="right">
+						<td colspan="3" class="text-right">
 							<div class="btn-group">
-								<%= link_to 'Vis', attachment, class: 'btn btn-default btn-xs' %>
+								<%#= link_to 'Vis', attachment, class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Ret', edit_attachment_path(attachment), class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Slet', attachment, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
 							</div>
@@ -36,8 +41,4 @@
 			</tbody>
 		</table>
 	</div>
-	<br>
-	
-	<%= link_to 'Ny Attachment', new_attachment_path %>
-
 </div>

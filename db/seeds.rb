@@ -6,10 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if !User.find_by_login('thomas')
-  User.create(:name => 'Thomas Schmidt', :email => 'ts@kruby.dk',
-  :password => 'kf1737', :password_confirmation => 'kf1737', :category => 'Admin', :blogname => 'TKS')
-end
+
+User.create(name: 'Thomas Schmidt', email: 'ts@kruby.dk', password: 'kf1737', password_confirmation: 'kf1737', category: 'Admin', blogname: 'TKS')
+User.create(name: 'Claus Trampedach', email: 'ct@parkgroup.dk', password: 'huskdetnu', password_confirmation: 'huskdetnu', category: 'Admin', blogname: 'CT')
 
 Menu.create(name: 'Pages', title: 'Pages', body: 'Link til Pages', active: true)
 Menu.create(name: 'Contents', title: 'Contents', body: 'Link til Contents', active: true)
@@ -24,3 +23,10 @@ Menu.create(name: 'Preferences', title: 'Preferences', body: 'Link til Preferenc
 
 Page.create(name: 'Forside', title: 'Velkommen til Park Group', headline: 'h1. Velkommen til Park Group', body: 'Park Group beskæftiger sig med...', active: true)
 Page.create(name: 'Kontakt', title: 'Park Group kontakt informationer', headline: 'h1. Kontakt information', body: 'Park Group kan kontaktes på:', active: true)
+
+c = Content.where(navlabel: 'Forside').first
+c.controller_name = ''
+c.save
+c = Content.where(navlabel: 'Kontakt').first
+c.controller_name = 'kontakt'
+c.save

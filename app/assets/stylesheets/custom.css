@@ -1,19 +1,33 @@
-body {
+body.frontend {
+  background-color: black; }
+
+body.backend {
   background-color: white; }
 
 .panel-default > .panel-heading {
-  background-color: #c1dbf0; }
+  background-color: #333333; }
 
 .panel-default {
-  border-color: #eaf3fa; }
+  border-color: #4d4d4d; }
+
+.panel-body {
+  background-color: white; }
 
 h3.forside-header {
-  color: white; }
+  color: #999999; }
 
 table.tabel_timer {
   float: left;
   margin-right: 20px;
   width: 20%; }
+
+.btn-primary {
+  background-color: #1a1a1a;
+  border-color: black; }
+
+.btn-primary:hover {
+  background-color: #595959;
+  border-color: black; }
 
 .move-left {
   margin-left: -10px; }
@@ -62,15 +76,15 @@ h4.panel-title a.link_forside {
 
 h4.panel-title a.link_forside:hover {
   text-decoration: none;
-  color: #98c4e6; }
+  color: #1a1a1a; }
 
 h4.panel-title a.link_forside:visited {
   text-decoration: none;
-  color: #84b8e1; }
+  color: #0d0d0d; }
 
 h4.panel-title a.forside:active {
   text-decoration: none;
-  color: #84b8e1; }
+  color: #0d0d0d; }
 
 td div.btn-group {
   margin-top: auto;
@@ -115,7 +129,7 @@ div.panel.panel-default.blog_posts h3 {
   vertical-align: middle; }
 
 .container .jumbotron {
-  background-color: #d6e7f5; }
+  background-color: #404040; }
 
 .alert {
   border-radius: 0px; }
@@ -124,70 +138,71 @@ label {
   margin-bottom: 2px; }
 
 .btn-info {
-  background-color: #6facdc;
-  border-color: #c1dbf0; }
+  background-color: black;
+  border-color: #333333; }
   .btn-info:hover {
-    background-color: #4694d2; }
+    background-color: black; }
   .btn-info a {
     color: white; }
     .btn-info a:visited {
       color: white; }
 
 a:active {
-  color: #6facdc; }
+  color: black; }
 
 .navbar {
   margin-bottom: 1px;
   border-radius: 0px; }
   .navbar li a:visited {
-    color: black; }
+    color: #0d0d0d; }
 
 .navbar-inverse .navbar-toggle {
-  border-color: #6facdc; }
+  border-color: #0d0d0d; }
 
 .navbar-inverse {
-  background-color: #84b8e1;
+  background-color: #0d0d0d;
   border: 0px;
-  border-top: 1px solid white; }
+  border-top: 1px solid #262626;
+  border-bottom: 1px solid #262626; }
   .navbar-inverse:hover {
-    color: #84b8e1; }
+    color: #262626; }
   .navbar-inverse:visited {
-    color: #adcfeb; }
+    color: #262626; }
   .navbar-inverse:active {
-    color: #adcfeb; }
+    color: #262626; }
   .navbar-inverse .navbar-nav .open a:focus {
-    background-color: #98c4e6; }
+    background-color: #262626; }
   .navbar-inverse .navbar-nav .open a:visited {
-    background-color: #98c4e6; }
+    background-color: #262626; }
   .navbar-inverse .navbar-nav li a {
     color: white; }
     .navbar-inverse .navbar-nav li a:hover {
-      background-color: #98c4e6; }
+      background-color: #262626; }
   .navbar-inverse .navbar-nav li .dropdown-menu {
-    background-color: #6facdc; }
+    background-color: #0d0d0d; }
     .navbar-inverse .navbar-nav li .dropdown-menu a:hover {
-      background-color: #98c4e6; }
+      background-color: #262626; }
   .navbar-inverse .navbar-nav .active a {
-    background-color: #98c4e6; }
+    background-color: #262626; }
     .navbar-inverse .navbar-nav .active a:hover {
-      background-color: #adcfeb; }
+      background-color: #262626; }
     .navbar-inverse .navbar-nav .active a:focus {
-      background-color: #98c4e6; }
+      background-color: #262626; }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
   color: white; }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {
-    background-color: #98c4e6; }
+    background-color: #404040; }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:active {
-    background-color: #98c4e6; }
+    background-color: #404040; }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:visited {
-    background-color: #98c4e6; }
+    background-color: #404040; }
 
 li.dropdown, li.open {
-  background-color: #84b8e1; }
+  background-color: #0d0d0d; }
 
 header {
-  background-color: #6facdc;
+  background-color: #4B4B4B;
   /*	background-image: url(kruby-background_sky.jpg);*/ }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
@@ -197,4 +212,4 @@ header {
   border-color: white; }
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-  background-color: #6facdc; }
+  background-color: black; }

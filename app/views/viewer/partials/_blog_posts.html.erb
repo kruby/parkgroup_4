@@ -8,7 +8,7 @@
 				<a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=@counter%>" class="link_forside">
 					<h3 class="forside-header"><%= post.title %>
 						<span class="date_and_author text-muted pull-right visible-sm visible-md visible-lg">
-							<%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <%= User.find(post.user_id).blogname rescue 'Kruby' %>
+							<%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <%= User.find(post.user_id).blogname rescue 'Park Group' %>
 						</span>
 					</h3>	
 					<% post.attachments.each do |attachment| %>

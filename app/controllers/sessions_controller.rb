@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
       @partner = Partner.find_by_user_id(user.id)
       if @partner != nil
         session[:partner_id] = @partner.id
-        redirect_to :controller => 'hours', :action => 'timeliste'
+        redirect_to :controller => 'contents', :action => 'index'
       else
-        redirect_to :controller => session[:current_controller] || 'hours'
+        redirect_to :controller => session[:current_controller] || 'contents'
       end
         session[:current_controller] = nil
         flash[:notice] = "Du er nu logget ind!"
