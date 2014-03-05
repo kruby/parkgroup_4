@@ -5,7 +5,7 @@ require 'brightbox/passenger'
 
 # The name of your application.  Used for deployment directory and filenames
 # and Apache configs. Should be unique on the Brightbox
-set :application, "parkgroup"
+set :application, "parkgroup4"
 
 # Primary domain name of your application. Used in the Apache configs
 set :domain, "www.parkgroup.dk"
@@ -27,13 +27,13 @@ set :scm, :git
 set :deploy_via, :copy
 set :branch, "master"
 
-namespace :deploy do
- namespace :rake_tasks do
-   task :singleton, :roles => :db, :only => {:primary => true} do
-     run rake_task("db:seed")
-   end
- end
-end
+# namespace :deploy do
+#  namespace :rake_tasks do
+#    task :singleton, :roles => :db, :only => {:primary => true} do
+#      run rake_task("db:seed")
+#    end
+#  end
+# end
 
 ### Other options you can set ###
 # Comma separated list of additional domains for Apache

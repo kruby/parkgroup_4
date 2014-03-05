@@ -19,7 +19,7 @@ production:
   host: db01.mysql.vm.brightbox.net
   username: krsgrd
   password: Ee9Gohchai4i
-  database: krsgrd_parkgroup_4_production
+  database: krsgrd_parkgroup4_production
   
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
