@@ -32,7 +32,7 @@ gem 'mini_magick'
 gem 'RedCloth', :require => 'redcloth'
 
 # Fancybox - kommerciel licens
-gem 'fancybox2-rails', '~> 0.2.6'
+gem 'fancybox2-rails', '~> 0.2.8'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
