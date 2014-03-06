@@ -25,6 +25,7 @@ class ViewerController < ApplicationController
     @page = Page.find_by_name('Forside')
     @posts = Post.latest.activated.limit(6)
     @assets = Asset.forside_fotos
+		@forside_titel = Preference.find_by_name('Forside titel').value rescue "Bloggen"
     
     #   
     # @pagetitle = @page.title rescue 'Indhold følger snarest'

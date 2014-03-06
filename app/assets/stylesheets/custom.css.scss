@@ -20,6 +20,14 @@ $kruby-55:lighten($kruby-pick-100, 45%);
 $kruby-50:lighten($kruby-pick-100, 50%);
 $kruby-45:lighten($kruby-pick-100, 55%);
 $kruby-40:lighten($kruby-pick-100, 60%);
+$kruby-35:lighten($kruby-pick-100, 65%);
+$kruby-30:lighten($kruby-pick-100, 70%);
+$kruby-25:lighten($kruby-pick-100, 75%);
+$kruby-20:lighten($kruby-pick-100, 80%);
+$kruby-15:lighten($kruby-pick-100, 85%);
+$kruby-10:lighten($kruby-pick-100, 90%);
+$kruby-5:lighten($kruby-pick-100, 95%);
+
 
 $kruby-background-frontend: $kruby-white;
 $kruby-background-backend: $kruby-white;
@@ -36,7 +44,7 @@ body.backend {
 }
 
 .panel-default > .panel-heading {
-	background-color: $kruby-80;
+	background-color: $kruby-30;
 }
 
 .panel-default {
@@ -48,7 +56,7 @@ body.backend {
 }
 
 h3.forside-header {
-	color: $kruby-40;
+	color: $kruby-white;
 }
 
 table.tabel_timer {
@@ -120,7 +128,7 @@ img.forside-img.img-thumbnail {
 }
 
 h3.forside-header {
-	font-size: 3vw;
+	font-size: 2.2vw;
 }
 
 h4.panel-title a.link_forside {
@@ -158,10 +166,15 @@ div.table-responsive {
 }
 
 h1.forside {
+	margin-bottom:0px;
 	font-size: 3vw;
 }
-small.forside {
-	font-size: 2vw;
+h2.forside {
+	margin: 0px;
+}
+h2 .small.forside {	
+	margin: 0px;
+	font-size: 1.75vw;
 }
 
 .carousel-inner > .item > img { margin: 0 auto; }
@@ -187,6 +200,7 @@ div.panel.panel-default.blog_posts h3 {
 	margin-top: 10px;
 	margin-left: 10px;
 	font-weight: normal;
+	color: $kruby-white;
 }
 
 
@@ -300,7 +314,7 @@ li.dropdown, li.open {
 }
 
 header {
-	background-color: $kruby-70;
+	background-color: $kruby-50;
 	/*	background-image: url(kruby-background_sky.jpg);*/
 }
 

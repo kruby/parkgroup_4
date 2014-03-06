@@ -1,13 +1,17 @@
 <div class="container">
 
-	<h1>Viser preferences</h1>
+	<h1>Viser indstillinger
+		<div class="btn-group index">
+			<%= link_to 'Ny indstilling', new_preference_path, class: 'btn btn-default btn-xs' %>
+		</div>
+	</h1>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="visible-lg">Name</th>
-					<th class="visible-lg">Value</th>
-					<th class="visible-lg">User</th>
+					<th class="visible-lg">Navn</th>
+					<th class="visible-lg">Værdi</th>
+					<th class="visible-lg">Oprettet af</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -17,10 +21,10 @@
 					<tr>
 						<td class="visible-lg"><%= preference.name %></td>
 						<td class="visible-lg"><%= preference.value %></td>
-						<td class="visible-lg"><%= preference.user_id %></td>
+						<td class="visible-lg"><%= User.find(preference.user_id).name %></td>
 						<td colspan="3" class="right">
 							<div class="btn-group">
-								<%= link_to 'Vis', preference, class: 'btn btn-default btn-xs' %>
+								<%#= link_to 'Vis', preference, class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Ret', edit_preference_path(preference), class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Slet', preference, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
 							</div>
@@ -30,8 +34,4 @@
 			</tbody>
 		</table>
 	</div>
-	<br>
-	
-	<%= link_to 'Ny Preference', new_preference_path %>
-
 </div>

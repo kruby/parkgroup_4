@@ -1,5 +1,7 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+	before_filter :current_controller #Findes i application_controller.rb
+	before_filter :logged_in_as_admin?
 
   # GET /contacts
   # GET /contacts.json

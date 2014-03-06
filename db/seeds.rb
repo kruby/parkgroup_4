@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(name: 'Thomas Schmidt', email: 'ts@kruby.dk', password: 'kf1737', password_confirmation: 'kf1737', category: 'Admin', blogname: 'TKS')
-User.create(name: 'Claus Trampedach', email: 'ct@parkgroup.dk', password: 'huskdetnu', password_confirmation: 'huskdetnu', category: 'Admin', blogname: 'CT')
+User.create(name: 'Thomas Schmidt', email: 'ts@kruby.dk', password: 'kf1737', password_confirmation: 'kf1737', category: 'Admin', blogname: 'TKS', active: true)
+User.create(name: 'Claus Trampedach', email: 'ct@parkgroup.dk', password: 'huskdetnu', password_confirmation: 'huskdetnu', category: 'Admin', blogname: 'CT', active: true)
 
 Menu.create(name: 'Pages', title: 'Pages', body: 'Link til Pages', active: true)
 Menu.create(name: 'Contents', title: 'Contents', body: 'Link til Contents', active: true)
