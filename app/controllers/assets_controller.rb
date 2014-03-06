@@ -32,8 +32,8 @@ class AssetsController < ApplicationController
 		respond_to do |format|
 			if @asset.save
 				# format.html { redirect_to @asset, notice: 'Asset was successfully created.' }
+				flash[:notice] = 'Asset was successfully created.'
 				format.html { redirect_to assets_url, notice: 'Asset was successfully created.' }
-				flash[:notice] = 'Content was successfully updated.'
 				format.json { render action: 'show', status: :created, location: @asset }
 			else
 				format.html { render action: 'new' }

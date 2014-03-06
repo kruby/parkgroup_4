@@ -45,7 +45,8 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to action: 'edit', notice: 'Page was successfully updated.' }
+				flash[:notice] = 'Siden blev opdateret.'
+        format.html { redirect_to action: 'index', notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
