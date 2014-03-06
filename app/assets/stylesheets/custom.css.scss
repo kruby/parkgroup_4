@@ -35,9 +35,16 @@ $kruby-background-backend: $kruby-white;
 //$kruby-blue-medium: #93bee3;
 //$kruby-blue-light: #C9E9FF;
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6 {
 	padding-left: 5px;
 	padding-right: 5px;
+	font-size: 2.5vh;
+}
+
+p {
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 1.5vh;
 }
 
 body.frontend {
@@ -133,7 +140,7 @@ img.forside-img.img-thumbnail {
 }
 
 h3.forside-header {
-	font-size: 2.2vw;
+//	font-size: 2.2vw;
 }
 
 h4.panel-title a.link_forside {
@@ -172,23 +179,27 @@ div.table-responsive {
 
 h1.forside {
 	margin-bottom:0px;
-	font-size: 3vw;
+//	font-size: 5vw;
 }
 h2.forside {
 	margin: 0px;
 }
-h2 .small.forside {	
+h2 small.forside {	
 	margin: 0px;
-	font-size: 1.75vw;
+//	font-size: 3vw;
 }
 
-.carousel-inner > .item > img { margin: 0 auto; }
+.carousel-inner > .item > img { 
+	margin: 0 auto; 
+}
 
 div.carousel-caption h1 {
-	font-size: 3vw;
+//	font-size: 3vw;
 }
 .carousel-inner {
 	height: auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
 }
 
 div.panel.panel-default.blog_posts {
