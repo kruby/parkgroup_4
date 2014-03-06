@@ -8,11 +8,11 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="visible-lg">Navn</th>
-					<th class="visible-lg">Beskrivelse</th>
-					<th class="visible-lg">Telefon</th>
-					<th class="visible-lg">Email</th>
-					<th class="visible-lg">Partner</th>
+					<th class="">Navn</th>
+					<th class="visible-lg visible-md visible-sm">Beskrivelse</th>
+					<th class="">Telefon</th>
+					<th class="visible-lg visible-md visible-sm">Email</th>
+					<th class="visible-lg visible-md visible-sm">Partner</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -20,14 +20,13 @@
 			<tbody>
 				<% @contacts.each do |contact| %>
 					<tr>
-						<td class="visible-lg"><%= contact.name %></td>
-						<td class="visible-lg"><%= contact.description %></td>
-						<td class="visible-lg"><%= contact.phone %></td>
-						<td class="visible-lg"><%= contact.email %></td>
-						<td class="visible-lg"><%= contact.partner_id %></td>
+						<td class=""><%= contact.name %></td>
+						<td class="visible-lg visible-md visible-sm"><%= contact.description %></td>
+						<td class=""><%= contact.phone %></td>
+						<td class="visible-lg visible-md visible-sm"><%= contact.email %></td>
+						<td class="visible-lg visible-md visible-sm"><%= contact.partner_id %></td>
 						<td colspan="3" class="text-right">
 							<div class="btn-group">
-								<%#= link_to 'Vis', contact, class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Ret', edit_contact_path(contact), class: 'btn btn-default btn-xs' %>
 								<%= link_to 'Slet', contact, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
 							</div>

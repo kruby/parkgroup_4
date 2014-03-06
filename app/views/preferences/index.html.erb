@@ -9,9 +9,9 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="visible-lg">Navn</th>
-					<th class="visible-lg">Værdi</th>
-					<th class="visible-lg">Oprettet af</th>
+					<th class="">Navn</th>
+					<th class="">Værdi</th>
+					<th class="visible-lg visible-md visible-sm">Oprettet af</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -19,9 +19,9 @@
 			<tbody>
 				<% @preferences.each do |preference| %>
 					<tr>
-						<td class="visible-lg"><%= preference.name %></td>
-						<td class="visible-lg"><%= preference.value %></td>
-						<td class="visible-lg"><%= User.find(preference.user_id).name %></td>
+						<td class=""><%= preference.name %></td>
+						<td class=""><%= preference.value %></td>
+						<td class="visible-lg visible-md visible-sm"><%= User.find(preference.user_id).name %></td>
 						<td colspan="3" class="right">
 							<div class="btn-group">
 								<%#= link_to 'Vis', preference, class: 'btn btn-default btn-xs' %>
