@@ -1,67 +1,69 @@
 class ViewerController < ApplicationController
   
   
-  def show
+	def show
     
-    if params[:name]
-      @page = Page.find_by_name(params[:name]) || Page.find_by_name('Forside')
-    else
-      @page = Page.find(params[:id]) || Page.find_by_name('Forside')
-    end
+		if params[:name]
+			@page = Page.find_by_name(params[:name]) || Page.find_by_name('Forside')
+		else
+			@page = Page.find(params[:id]) || Page.find_by_name('Forside')
+		end
     
-    # @pagetitle = 'Park Group - ' + @page.title rescue 'Indhold følger snarest'
-    @content = @page.body rescue 'Indhold følger snarest'
-    # @headline = @page.headline rescue 'Indhold følger snarest'
+		# @pagetitle = 'Park Group - ' + @page.title rescue 'Indhold følger snarest'
+		@content = @page.body rescue 'Indhold følger snarest'
+		# @headline = @page.headline rescue 'Indhold følger snarest'
 
-    @posts = Post.all(limit: 6)
-    @assets = Asset.forside_fotos
+		@posts = Post.all(limit: 6)
+		@assets = Asset.forside_fotos
+		@forside_titel = Preference.find_by_name('Forside titel').value rescue "Bloggen"
+	
     
-    render 'forside'
+		render 'forside'
 
-  end
+	end
 
-  def forside
+	def forside
 
-    @page = Page.find_by_name('Forside')
-    @posts = Post.latest.activated.limit(6)
-    @assets = Asset.forside_fotos
+		@page = Page.find_by_name('Forside')
+		@posts = Post.latest.activated.limit(6)
+		@assets = Asset.forside_fotos
 		@forside_titel = Preference.find_by_name('Forside titel').value rescue "Bloggen"
     
-    #   
-    # @pagetitle = @page.title rescue 'Indhold følger snarest'
-    @content = @page.body rescue 'Indhold følger snarest'
-    # @headline = @page.headline rescue 'Indhold følger snarest'
-    # @posts = Post.forside_blogs_active.all(:limit => 10) rescue nil
-    # 
-    # render :action => "show"
+		#   
+		# @pagetitle = @page.title rescue 'Indhold følger snarest'
+		@content = @page.body rescue 'Indhold følger snarest'
+		# @headline = @page.headline rescue 'Indhold følger snarest'
+		# @posts = Post.forside_blogs_active.all(:limit => 10) rescue nil
+		# 
+		# render :action => "show"
 
-  end
-
-
-  def index
-    @pagetitle = 'Overskrifter fra Viewercontroller!'
-  end
+	end
 
 
-  def product
-    @pagetitle="Her viser vi alle kort i databasen"
-    @fruit = Fruit.find_by_name(params[:name])
+	def index
+		@pagetitle = 'Overskrifter fra Viewercontroller!'
+	end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @fruit }
-    end
-  end
+
+	def product
+		@pagetitle="Her viser vi alle kort i databasen"
+		@fruit = Fruit.find_by_name(params[:name])
+
+		respond_to do |format|
+			format.html # show.html.erb
+			format.xml  { render :xml => @fruit }
+		end
+	end
   
-  private
+	private
 
-  def test_web_browser
-    catch(:match) do
-      ["Apple", "Firefox/3", "Firefox/2", "MSIE 6", "MSIE 7", "Opera"].each do |ua|
-        throw(:match, ua.gsub(/[^a-z0-9]/i, "")) if request.user_agent =~ Regexp.new(ua)
-      end
-      nil
-    end
-  end
+	def test_web_browser
+		catch(:match) do
+			["Apple", "Firefox/3", "Firefox/2", "MSIE 6", "MSIE 7", "Opera"].each do |ua|
+				throw(:match, ua.gsub(/[^a-z0-9]/i, "")) if request.user_agent =~ Regexp.new(ua)
+			end
+			nil
+		end
+	end
 
 end
