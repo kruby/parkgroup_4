@@ -25,5 +25,15 @@ module ApplicationHelper
 	def nice_time(tiden)
 		return tiden.strftime(' - %H:%M')
 	end
+	
+	def flowtype_1
+		return("<script>$('body').flowtype({  
+		minimum:450, 
+		maximum:850, 
+		minFont:12, 
+		maxFont:28, 
+		fontRatio:40 
+		});</script>")
+	end
   
 end

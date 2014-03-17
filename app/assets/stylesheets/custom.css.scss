@@ -35,21 +35,48 @@ $kruby-background-backend: $kruby-white;
 //$kruby-blue-medium: #93bee3;
 //$kruby-blue-light: #C9E9FF;
 
+body {
+   font-size: 14px;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+   line-height: 1.2;
+}
+
+p {
+	font-size: 14px;
+}
+h1 { font-size: 2.0em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.0em; }
+h4 { font-size: 0.5em; }
+h5 { font-size: 0.4em; }
+h6 { font-size: 0.3em; }
+
+
+a, a:active, a:hover, a:visited {
+	text-decoration: none;
+}
+
+.navbar-nav>li a {
+	font-size: 14px;
+}
+
 .fancybox-nav span {
     visibility: visible;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	padding-left: 5px;
-	padding-right: 5px;
-	font-size: 2.5vh;
-}
-
-p {
-	padding-left: 5px;
-	padding-right: 5px;
-	font-size: 1.5vh;
-}
+//h1, h2, h3, h4, h5, h6 {
+//	padding-left: 5px;
+//	padding-right: 5px;
+//	font-size: 2.5vh;
+//}
+//
+//p {
+//	padding-left: 5px;
+//	padding-right: 5px;
+//	font-size: 1.5vh;
+//}
 
 body.frontend {
 	background-color: $kruby-background-frontend;
@@ -61,6 +88,7 @@ body.backend {
 
 .panel-default > .panel-heading {
 	background-color: $kruby-30;
+	padding: 10px;
 }
 
 .panel-default {
@@ -71,8 +99,10 @@ body.backend {
 	background-color: $kruby-white;
 }
 
-h3.forside-header {
+.forside-header {
 	color: $kruby-white;
+	margin: 0px 0px 5px 0px;
+	font-size: 0.6;
 }
 
 table.tabel_timer {
@@ -107,7 +137,6 @@ a.passified {
 	background-color: lighten($kruby-red-100, 40%);
 }
 
-
 a {
 	color: $kruby-grey;
 	text-decoration: none;
@@ -141,10 +170,6 @@ img.forside-img.img-thumbnail {
 	margin-right: 3px;
 	height: 24px;
 	padding: 2px;
-}
-
-h3.forside-header {
-//	font-size: 2.2vw;
 }
 
 h4.panel-title a.link_forside {
@@ -183,14 +208,12 @@ div.table-responsive {
 
 h1.forside {
 	margin-bottom:0px;
-//	font-size: 5vw;
 }
 h2.forside {
 	margin: 0px;
 }
 h2 small.forside {	
 	margin: 0px;
-//	font-size: 3vw;
 }
 
 .carousel-inner > .item > img { 
@@ -198,8 +221,8 @@ h2 small.forside {
 }
 
 div.carousel-caption h1 {
-//	font-size: 3vw;
 }
+
 .carousel-inner {
 	height: auto;
 	margin-top: 2%;
@@ -253,7 +276,6 @@ label {
 		}
 	}
 }
- 
 
 a:active {
 	color: $kruby-100;   
