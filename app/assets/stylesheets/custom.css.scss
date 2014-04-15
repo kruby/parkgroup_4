@@ -229,8 +229,12 @@ div.carousel-caption h1 {
 	margin-bottom: 2%;
 }
 
-div.panel.panel-default.blog_posts {
+div.panel-group#accordion {
 	margin-bottom: 100px;
+}
+
+div.panel.panel-default.blog_posts {
+	margin-bottom: 20px;
 }
 
 div.panel.panel-default.blog_posts h3 {
