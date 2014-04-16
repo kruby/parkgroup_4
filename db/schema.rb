@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224210725) do
+ActiveRecord::Schema.define(version: 20140416095706) do
 
   create_table "assets", force: true do |t|
     t.string   "description"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140224210725) do
     t.integer  "attachable_id"
     t.string   "description"
     t.string   "image_size"
-    t.integer  "priority"
+    t.integer  "position"
     t.integer  "asset_id"
     t.datetime "created_at"
     t.datetime "updated_at"

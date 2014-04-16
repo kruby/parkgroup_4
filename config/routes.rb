@@ -11,6 +11,7 @@ Parkgroup4::Application.routes.draw do
 	
 	resources :attachments do
 		collection do
+			post :sort
 			delete 'destroy_from_post'
 		end
 	end

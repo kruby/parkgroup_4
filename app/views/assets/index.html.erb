@@ -13,6 +13,7 @@
 				<th class='visible-lg visible-md visible-sm text-left'>Navn</th>
 				<th class='text-left'>Beskrivelse</th>
 				<th class='visible-lg visible-md visible-sm text-left'>Foto tekst</th>
+				<th class='visible-lg visible-md visible-sm text-left'>Filnavn</th>
 				<th class='visible-lg visible-md visible-sm text-left'>Type</th>
 				<th class='visible-lg visible-md visible-sm text-right'>Kb</th>
 				<th class='visible-lg visible-md visible-sm text-left'>Opdat.</th>
@@ -30,6 +31,7 @@
 				<td class='visible-lg visible-md visible-sm text-left'><%= User.find(asset.user_id).blogname rescue nil %></td>
 				<td class='text-left'><%= truncate(asset.description, length: 25) %></td>
 				<td class='visible-lg visible-md visible-sm text-left'><%= asset.caption %></td>
+				<td class='visible-lg visible-md visible-sm text-left'><%= asset.photo_file_name%></td>
 				<td class='visible-lg visible-md visible-sm text-left'><%= asset.photo_content_type %></td>
 				<td class='visible-lg visible-md visible-sm text-right'><%= number_with_precision(asset.photo_file_size / 1000, precision: 0) rescue nil %></td>
 				<td class='visible-lg visible-md visible-sm text-left'><%= nice_date(asset.updated_at) rescue nil %></td>

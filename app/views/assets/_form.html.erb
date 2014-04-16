@@ -32,6 +32,19 @@
 		<%= f.text_field :caption, class: 'form-control' %>
 	</div>
 </div>
+
+<% if @asset.id? %>
+	<% @medium =  @asset.photo.url(:medium) %>
+	<% @image_show = @asset.photo.url(:original)%>
+	<% @title = @asset.description + ' (ID - ' + @asset.id.to_s + ')' %>
+	<div class="form-group">
+		<%= f.label :foto, class: 'col-sm-2 control-label' %>
+		<div class="col-sm-10">	
+			<%= link_to image_tag(@medium,{class: 'img-thumbnail', width: '200px' }), @image_show, {class: 'fancybox-button', rel: 'gallery', title: @title}%>
+		</div>
+	</div>
+<% end %>
+
 <!-- <div class="form-group">
 	<%= f.label :user_id, class: 'col-sm-2 control-label' %>
 	<div class="col-sm-10">	
@@ -76,3 +89,11 @@ $(document).ready(function() {
 	$('.file-inputs').bootstrapFileInput();
 });
 </script>
+
+<% content_for :javascript do %>
+	<script>
+		$(document).ready(function() {
+		  $("a.fancybox-button").fancybox();
+		});
+    </script>
+<% end %>

@@ -9,14 +9,25 @@
 						<span class="date_and_author text-muted pull-right visible-sm visible-md visible-lg">
 							<%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <%= User.find(post.user_id).blogname rescue 'Park Group' %>
 						</span>
-					</h2>	
-					<% post.attachments.each do |attachment| %>
-						<% @group = 'group'+post.id.to_s %>
-						<% @alt = Asset.find(attachment.asset_id).description rescue nil %>
-						<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil %>
-						<% @image_show = Asset.find(attachment.asset_id).photo.url(:original) rescue nil %> 
-						<%= link_to image_tag(@image, {class: 'img-thumbnail forside-img', alt: @alt}), @image_show, {class: 'fancybox-button', rel: @group, title: Asset.find(attachment.asset_id).description} rescue nil %>
-			
+					</h2>
+					<% if post.attachments.count > 0 %>
+						<div class="attachments">
+							<% if current_user and current_user.category == "Admin" %>
+								<ul id='sort_attachments' data-update-url="<%= sort_attachments_url %>">
+							<% else %>
+								<ul id='no_sort_attachments'>
+							<% end %>
+							<% post.attachments.order('position').each do |attachment| %>
+								<% @group = 'group'+post.id.to_s %>
+								<% @alt = Asset.find(attachment.asset_id).description rescue nil %>
+								<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil %>
+								<% @image_show = Asset.find(attachment.asset_id).photo.url(:original) rescue nil %>
+									<%= content_tag_for :li, attachment do %>
+										<%= link_to image_tag(@image, {class: 'img-thumbnail forside-img', alt: @alt}), @image_show, {class: 'fancybox-button', rel: @group, title: Asset.find(attachment.asset_id).description} rescue nil %>
+									<% end %> 
+							<% end %>
+							</ul>
+						</div>	
 					<% end %>
 				</a>
 		</div>

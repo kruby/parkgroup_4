@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require fancybox
 //= require jquery_ujs
 //= require_tree .

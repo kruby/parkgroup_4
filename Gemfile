@@ -22,8 +22,10 @@ gem 'coffee-rails', '~> 4.0.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 gem 'acts_as_tree'
+gem 'acts_as_list'
 gem 'rails-i18n', '~> 4.0.0'
 gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 gem "bcrypt-ruby", :require => "bcrypt"

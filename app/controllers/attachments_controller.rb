@@ -7,9 +7,17 @@ class AttachmentsController < ApplicationController
 	# GET /attachments
 	# GET /attachments.json
 	def index
-		@attachments = Attachment.all
+		#@attachments = Attachment.all
+		@attachments = Attachment.order('position')
 	end
-
+	
+	def sort
+	  params[:attachment].each_with_index do |id, index|
+	    Attachment.update_all({position: index+1}, {id: id})
+	  end
+	  render nothing: true
+	end
+	
 	# GET /attachments/1
 	# GET /attachments/1.json
 	def show
@@ -84,8 +92,6 @@ class AttachmentsController < ApplicationController
 		nil
 	end
 	
-	
-
 	private
 	# Use callbacks to share common setup or constraints between actions.
 	def set_attachment
@@ -94,6 +100,6 @@ class AttachmentsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def attachment_params
-		params.require(:attachment).permit(:attachable_type, :attachable_id, :description, :image_size, :priority, :asset_id)
+		params.require(:attachment).permit(:attachable_type, :attachable_id, :description, :image_size, :position, :asset_id)
 	end
 end
