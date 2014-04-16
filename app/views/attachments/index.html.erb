@@ -10,12 +10,12 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="visible-lg">Type</th>
-					<th class="visible-lg">Indlægsnr.</th>
-					<th class="visible-lg">Beskrivelse</th>
-					<th class="visible-lg">Størrelse</th>
-					<th class="visible-lg">Position</th>
-					<th class="visible-lg">ID</th>
+					<th class="visible-lg visible-md visible-sm text-center">Type</th>
+					<th class="visible-lg text-center">Indlæg nr.</th>
+					<th class="visible-lg visible-md visible-sm">Beskrivelse</th>
+					<th class="visible-lg text-right">Størrelse</th>
+					<th class="visible-lg text-center">Position</th>
+					<th class="visible-lg text-center">ID</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -23,12 +23,12 @@
 			<tbody>
 				<% @attachments.each do |attachment| %>
 					<tr>
-						<td class="visible-lg"><%= attachment.attachable_type %></td>
-						<td class="visible-lg"><%= attachment.attachable_id %></td>
+						<td class="visible-lg text-center"><%= attachment.attachable_type %></td>
+						<td class="visible-lg text-center"><%= attachment.attachable_id %></td>
 						<td class="visible-lg"><%= attachment.description %></td>
-						<td class="visible-lg"><%= attachment.image_size %></td>
-						<td class="visible-lg"><%= attachment.position %></td>
-						<td class="visible-lg"><%= attachment.asset_id %></td>
+						<td class="visible-lg text-right"><%= attachment.image_size %></td>
+						<td class="visible-lg text-center"><%= attachment.position %></td>
+						<td class="visible-lg text-center"><%= attachment.asset_id %></td>
 						<td colspan="3" class="text-right">
 							<div class="btn-group">
 								<%#= link_to 'Vis', attachment, class: 'btn btn-default btn-xs' %>

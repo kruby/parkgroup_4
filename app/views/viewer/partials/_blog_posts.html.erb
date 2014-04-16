@@ -23,7 +23,7 @@
 								<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil %>
 								<% @image_show = Asset.find(attachment.asset_id).photo.url(:original) rescue nil %>
 									<%= content_tag_for :li, attachment do %>
-										<%= link_to image_tag(@image, {class: 'img-thumbnail forside-img', alt: @alt}), @image_show, {class: 'fancybox-button', rel: @group, title: Asset.find(attachment.asset_id).description} rescue nil %>
+										<%= link_to image_tag(@image, {class: 'img-thumbnail forside-img', alt: @alt}), @image_show, {class: 'fancybox-button', rel: @group, title: Asset.find(attachment.asset_id).caption} rescue nil %>
 									<% end %> 
 							<% end %>
 							</ul>
