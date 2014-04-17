@@ -8,8 +8,15 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order('position')
   end
+
+	def sort
+	  params[:post].each_with_index do |id, index|
+	    Post.update_all({position: index+1}, {id: id})
+	  end
+	  render nothing: true
+	end
 
   # GET /posts/1
   # GET /posts/1.json
@@ -81,6 +88,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :priority, :parent_id, :user_id, :active)
+      params.require(:post).permit(:title, :body, :position, :parent_id, :user_id, :active)
     end
 end

@@ -13,19 +13,19 @@
 					<th class="visible-lg visible-md visible-sm">Indhold</th>
 					<th class="text-center visible-lg visible-md visible-sm">Forfatter</th>
 					<th class="text-center visible-lg visible-md visible-sm"><%= sort_link(@q, :updated_at, "Ændret") %></th>
-					<th class="text-center visible-lg visible-md visible-sm">Prioritet</th>
+					<th class="text-center visible-lg visible-md visible-sm">Position</th>
 					<th class="text-center">Aktiv</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id='sort_posts' data-update-url="<%= sort_posts_url %>">
 				<% @posts.each do |post| %>
-					<tr>
+					<%= content_tag_for :tr, post do %>
 						<td><%= truncate(post.title, length: 20) %></td>
 						<td class="visible-lg visible-md visible-sm"><%= truncate(post.body, length: 30) %></td>
 						<td class="text-center visible-lg visible-md visible-sm"><%= User.find(post.user_id).blogname rescue nil %></td>
 						<td class="text-center visible-lg visible-md visible-sm"><%= nice_timestamp(post.updated_at) %></td>
-						<td class="text-center visible-lg visible-md visible-sm"><%= post.priority %></td>
+						<td class="text-center visible-lg visible-md visible-sm"><%= post.position %></td>
 						<td class="text-center">
 							<% if post.active == true %>
 								<%= link_to('+', post_active_path(post.id), {class: 'btn btn-xs btn-default activated'}) %>
@@ -41,7 +41,7 @@
 								<%= link_to 'Slet', post, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
 							</div>
 						</td>
-					</tr>
+					<% end %>
 				<% end %>
 			</tbody>
 		</table>

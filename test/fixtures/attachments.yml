@@ -5,7 +5,7 @@ one:
   attachable_id: 1
   description: MyString
   image_size: MyString
-  priority: 1
+  position: 1
   asset_id: 1
 
 two:
@@ -13,5 +13,5 @@ two:
   attachable_id: 1
   description: MyString
   image_size: MyString
-  priority: 1
+  position: 1
   asset_id: 1

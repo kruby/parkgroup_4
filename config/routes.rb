@@ -31,7 +31,11 @@ Parkgroup4::Application.routes.draw do
 	resources :menus
 	get 'menus/active/:id' => 'menus#active', as: :menu_active
 
-	resources :posts
+	resources :posts do
+		collection do
+			post :sort
+		end
+	end
 	get '/bloggen' => 'posts#blog', :as => :bloggen
 	get 'posts/active/:id' => 'posts#active', as: :post_active
 

@@ -1,12 +1,13 @@
 class Post < ActiveRecord::Base
 	
-  default_scope { order('created_at DESC') }        
+  #default_scope { order('created_at DESC') }        
 	
   validates_presence_of :title
 	
 	has_many :attachments, :as => :attachable
 	has_many :subpages, :class_name => 'Post', :foreign_key => 'parent_id', :dependent => :destroy
   
+	acts_as_list #SÅSNART EN POST BLIVER OPRETTET VED SÅ FÅR POSITION EN VÆRDI.
 	acts_as_tree :order => 'created_at DESC'
   
 	#scope :forside_blogs_active, :conditions => ["active", true], :order => 'created_at DESC'
@@ -22,8 +23,8 @@ class Post < ActiveRecord::Base
 		order('created_at desc')
 	end
 	
-	def self.by_priority
-		order('priority asc')
+	def self.by_position
+		order('position')
 	end
 	
 	# def self.search(search, page)
