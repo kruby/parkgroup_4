@@ -19,7 +19,7 @@
 							<% if post.attachments.count > 0 %>
 								<div class="attachments">
 									<% if current_user and current_user.category == "Admin" %>
-										<ul id='sort_attachments' data-update-url="<%= sort_attachments_url %>">
+										<ul id='sort_attachments_<%=@counter%>' data-update-url="<%= sort_attachments_url %>">
 									<% else %>
 										<ul id='no_sort_attachments'>
 									<% end %>

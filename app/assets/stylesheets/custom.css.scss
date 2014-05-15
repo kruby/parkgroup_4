@@ -176,7 +176,7 @@ div.panel-heading div.attachments {
 	height: 30px;
 }
 
-div.panel-heading div.attachments ul#sort_attachments, div.panel-heading div.attachments ul#no_sort_attachments {
+div.panel-heading div.attachments ul[id^="sort_attachments"], div.panel-heading div.attachments ul#no_sort_attachments {
 	overflow: auto;
 	padding: 3px;
 }
