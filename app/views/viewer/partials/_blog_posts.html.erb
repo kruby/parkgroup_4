@@ -12,9 +12,11 @@
 				<div class="panel-heading">
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=@counter%>" class="link_forside">
 							<h2 class="forside-header"><%= post.title %>
+							<% if current_user and current_user.category == "Admin" %>
 								<span class="date_and_author text-muted pull-right visible-sm visible-md visible-lg">
 									<%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <%= User.find(post.user_id).blogname rescue 'Park Group' %>
 								</span>
+							<% end %>
 							</h2>
 							<% if post.attachments.count > 0 %>
 								<div class="attachments">
