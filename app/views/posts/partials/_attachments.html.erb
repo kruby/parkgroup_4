@@ -13,13 +13,13 @@
 
 			<% for attachment in @attachments %>
 
-			<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil%>
+			<% @thumb = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil%>
 			<% @image_show = Asset.find(attachment.asset_id).photo.url(:original) rescue nil%>
 			<% @description = Asset.find(attachment.asset_id).description rescue nil %>
 
 			<tr>
 				<td class="visible-lg visible-md visible-sm visible-xs" id='images'>
-					<%= link_to image_tag(@image, :alt => @description), @image_show, {class: "fancybox-button", rel: "fancybox-button", title: Asset.find(attachment.asset_id).description} rescue nil %>
+					<%= link_to image_tag(@thumb,{class: 'img-thumbnail', width: '40px' }), @image_show, {class: 'fancybox-button', rel: 'gallery', title: @title}%>
 				</td>
 				<td class="text-center visible-lg visible-md visible-sm"><%= attachment.attachable_type %></td>
 				<td class="visible-lg visible-md visible-sm visible-xs"><%= truncate(@description, length: 20) %></td>

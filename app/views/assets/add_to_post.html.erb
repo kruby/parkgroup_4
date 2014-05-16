@@ -18,13 +18,13 @@
 				<th></th>
 				<th>Foto</th>
 				<th>Beskrivelse</th>
-				<th class='center-text'>Tekst</th>
-				<th class='center-text'>Foto</th>
+				<th class='center-text'><%= sort_link(@search, :updated_at, "Opdat.") %></th>
+				<th class='center-text'>Foto opdat.</th>
 				<th class='center-text'>ID</th>
 	
 			</tr>
 			<% for asset in @assets %>
-			<% @image =  asset.photo.url(:thumb) %>
+			<% @thumb =  asset.photo.url(:thumb) %>
 			<% @image_show = asset.photo.url(:original) %>
 			<% @title = asset.description + ' (ID - ' + asset.id.to_s + ')' %>
 			<tr>
@@ -36,7 +36,7 @@
 					<% end %>
 				</td>
 				<td class='thumb' id='images'>
-					<%= link_to image_tag(@image), @image_show, {:class => "fancybox-button", :rel => "fancybox-button", :title => @title }%>
+					<%= link_to image_tag(@thumb,{class: 'img-thumbnail', width: '40px' }), @image_show, {class: 'fancybox-button', rel: 'gallery', title: @title}%>
 				</td>	
 				<td><%= asset.description %></td>
 				<td><%= nice_date(asset.updated_at) rescue nil %></td>

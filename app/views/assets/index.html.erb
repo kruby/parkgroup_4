@@ -1,53 +1,64 @@
 <div class='container'>
-	<h2>
-		Liste over uploadede filer
-		<div class="btn-group index">
-			<%= link_to 'Ny upload', new_asset_path, class: 'btn btn-default btn-xs' %>
-		</div>
-	</h2>
-	<%= form_tag edit_multiple_assets_path do %>
-	<div class='table-responsive'>
-		<table class='table table-striped table-hover'>
-			<tr>
-				<th class='visible-lg visible-md visible-sm text-left'>ID</th>
-				<th class='visible-lg visible-md visible-sm text-left'>Navn</th>
-				<th class='text-left'>Beskrivelse</th>
-				<th class='visible-lg visible-md visible-sm text-left'>Foto tekst</th>
-				<th class='visible-lg visible-md visible-sm text-left'>Filnavn</th>
-				<th class='visible-lg visible-md visible-sm text-left'>Type</th>
-				<th class='visible-lg visible-md visible-sm text-right'>Kb</th>
-				<th class='visible-lg visible-md visible-sm text-left'>Opdat.</th>
-				<th class='visible-lg visible-md visible-sm text-left'>Opdat.</th>
-				<th class='text-center'>Foto</th>
-				<th class='visible-lg visible-md visible-sm text-right' width='105px'>Handling</th>
-			</tr>
+  <h2>
+    Liste over uploadede filer
+    <div class="btn-group index">
+      <%= link_to 'Ny upload', new_asset_path, class: 'btn btn-default btn-xs' %>
+      <%= link_to 'Find alle', assets_path, class: 'btn btn-default btn-xs' %>
+    </div>
+  </h2>
 
-			<% for asset in @assets %>
-			<% @thumb =  asset.photo.url(:thumb) %>
-			<% @image_show = asset.photo.url(:original)%>
-			<% @title = asset.description + ' (ID - ' + asset.id.to_s + ')' %>
-			<tr>
-				<td class='visible-lg visible-md visible-sm text-left'><%= asset.id %></td>
-				<td class='visible-lg visible-md visible-sm text-left'><%= User.find(asset.user_id).blogname rescue nil %></td>
-				<td class='text-left'><%= truncate(asset.description, length: 25) %></td>
-				<td class='visible-lg visible-md visible-sm text-left'><%= asset.caption %></td>
-				<td class='visible-lg visible-md visible-sm text-left'><%= asset.photo_file_name%></td>
-				<td class='visible-lg visible-md visible-sm text-left'><%= asset.photo_content_type %></td>
-				<td class='visible-lg visible-md visible-sm text-right'><%= number_with_precision(asset.photo_file_size / 1000, precision: 0) rescue nil %></td>
-				<td class='visible-lg visible-md visible-sm text-left'><%= nice_date(asset.updated_at) rescue nil %></td>
-				<td class='visible-lg visible-md visible-sm text-left'><%= nice_date(asset.photo_updated_at) rescue nil %></td>
-				<td class='thumb text-center' width='20px'><%= link_to image_tag(@thumb,{class: 'img-thumbnail', width: '30px' }), @image_show, {class: 'fancybox-button', rel: 'gallery', title: @title}%></td>
-				<td colspan='3' class='visible-lg visible-md visible-sm text-right'>
-					<div class='btn-group'>
-						<%= link_to 'Ret', edit_asset_path(asset), class: 'btn btn-default btn-xs' %>
-						<%= link_to 'Slet', asset, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
-					</div>
-				</td>
-			</tr>
-			<% end %>
-		</table>
-		<% end %>
-	</div>
+  <%= search_form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :caption_cont, "Fototekst indeholder" %><br>
+    <%= f.text_field :caption_cont %>
+    <%= f.submit "Søg", class: 'btn btn-default btn-xs' %>
+  </div>
+  <!-- <div class="actions"><%#= f.submit "Søg", class: 'btn btn-default btn-xs' %></div> -->
+  <% end %>
+
+  <%= form_tag edit_multiple_assets_path do %>
+  <div class='table-responsive'>
+    <table class='table table-striped table-hover'>
+      <tr>
+        <th class='visible-lg visible-md visible-sm text-left'>ID</th>
+        <th class='visible-lg visible-md visible-sm text-left'>Navn</th>
+        <th class='text-left'>Beskrivelse</th>
+        <th class='visible-lg visible-md visible-sm text-left'>Foto tekst</th>
+        <th class='visible-lg visible-md visible-sm text-left'>Filnavn</th>
+        <th class='visible-lg visible-md visible-sm text-left'>Type</th>
+        <th class='visible-lg visible-md visible-sm text-right'>Kb</th>
+        <th class='visible-lg visible-md visible-sm text-left'><%= sort_link(@search, :updated_at, "Opdat.") %></th>
+        <th class='visible-lg visible-md visible-sm text-left'>Foto opdat.</th>
+        <th class='text-center'>Foto</th>
+        <th class='visible-lg visible-md visible-sm text-right' width='105px'>Handling</th>
+      </tr>
+
+      <% for asset in @assets %>
+      <% @thumb =  asset.photo.url(:thumb) %>
+      <% @image_show = asset.photo.url(:original)%>
+      <% @title = asset.description + ' (ID - ' + asset.id.to_s + ')' %>
+      <tr>
+        <td class='visible-lg visible-md visible-sm text-left'><%= asset.id %></td>
+        <td class='visible-lg visible-md visible-sm text-left'><%= User.find(asset.user_id).blogname rescue nil %></td>
+        <td class='text-left'><%= truncate(asset.description, length: 25) %></td>
+        <td class='visible-lg visible-md visible-sm text-left'><%= asset.caption %></td>
+        <td class='visible-lg visible-md visible-sm text-left'><%= asset.photo_file_name%></td>
+        <td class='visible-lg visible-md visible-sm text-left'><%= asset.photo_content_type %></td>
+        <td class='visible-lg visible-md visible-sm text-right'><%= number_with_precision(asset.photo_file_size / 1000, precision: 0) rescue nil %></td>
+        <td class='visible-lg visible-md visible-sm text-left'><%= nice_date(asset.updated_at) rescue nil %></td>
+        <td class='visible-lg visible-md visible-sm text-left'><%= nice_date(asset.photo_updated_at) rescue nil %></td>
+        <td class='thumb text-center' width='20px'><%= link_to image_tag(@thumb,{class: 'img-thumbnail', width: '30px' }), @image_show, {class: 'fancybox-button', rel: 'gallery', title: @title}%></td>
+        <td colspan='3' class='visible-lg visible-md visible-sm text-right'>
+          <div class='btn-group'>
+            <%= link_to 'Ret', edit_asset_path(asset), class: 'btn btn-default btn-xs' %>
+            <%= link_to 'Slet', asset, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-default btn-xs' %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <% end %>
+  </div>
 </div>
 
 
@@ -55,19 +66,19 @@
 
 <script>
 // $(document).ready(function() {
-// 	$('.fancybox-button').fancybox({
-// 		prevEffect		: 'none',
-// 		nextEffect		: 'none',
-// 		closeBtn		: false,
-// 		helpers		: {
-// 			title	: { type : 'inside' },
-// 			buttons	: {}
-// 		}
-// 	});
-// });
-$(document).ready(function() {
-  $("a.fancybox-button").fancybox();
-});
-</script>
+  // 	$('.fancybox-button').fancybox({
+    // 		prevEffect		: 'none',
+    // 		nextEffect		: 'none',
+    // 		closeBtn		: false,
+    // 		helpers		: {
+      // 			title	: { type : 'inside' },
+      // 			buttons	: {}
+      // 		}
+      // 	});
+      // });
+      $(document).ready(function() {
+        $("a.fancybox-button").fancybox();
+      });
+      </script>
 
-<% end %>
+      <% end %>
