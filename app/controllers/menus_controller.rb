@@ -41,7 +41,7 @@ class MenusController < ApplicationController
 
 		respond_to do |format|
 			if @menu.save
-				format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
+				format.html { redirect_to @menu, notice: 'Menuen blev oprettet.' }
 				format.json { render action: 'show', status: :created, location: @menu }
 			else
 				format.html { render action: 'new' }
@@ -55,7 +55,7 @@ class MenusController < ApplicationController
 	def update
 		respond_to do |format|
 			if @menu.update(menu_params)
-				format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
+				format.html { redirect_to @menu, notice: 'Menuen blev opdateret.' }
 				format.json { head :no_content }
 			else
 				format.html { render action: 'edit' }

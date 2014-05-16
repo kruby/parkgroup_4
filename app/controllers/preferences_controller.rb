@@ -31,7 +31,7 @@ class PreferencesController < ApplicationController
 
 		respond_to do |format|
 			if @preference.save
-				format.html { redirect_to action: 'index', notice: 'Preference was successfully updated.' }
+				format.html { redirect_to action: 'index', notice: 'Preferencen blev opdateret.' }
 				#format.html { redirect_to 'index', notice: 'Preference was successfully created.' }
 				format.json { render action: 'show', status: :created, location: @preference }
 			else
@@ -46,7 +46,7 @@ class PreferencesController < ApplicationController
 	def update
 		respond_to do |format|
 			if @preference.update(preference_params)
-				format.html { redirect_to action: 'index', notice: 'Preference was successfully updated.' }
+				format.html { redirect_to action: 'index', notice: 'Preferencen blev opdateret.' }
 				#format.html { redirect_to @preference, notice: 'Preference was successfully updated.' }
 				format.json { head :no_content }
 			else

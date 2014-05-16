@@ -31,7 +31,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to @page, notice: 'Siden blev oprettet' }
         format.json { render action: 'show', status: :created, location: @page }
       else
         format.html { render action: 'new' }
@@ -46,7 +46,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.update(page_params)
 				flash[:notice] = 'Siden blev opdateret.'
-        format.html { redirect_to action: 'index', notice: 'Page was successfully updated.' }
+        format.html { redirect_to action: 'index', notice: 'Siden blev opdateret.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

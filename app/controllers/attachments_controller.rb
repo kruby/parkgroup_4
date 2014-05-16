@@ -39,7 +39,7 @@ class AttachmentsController < ApplicationController
 
 		respond_to do |format|
 			if @attachment.save
-				format.html { redirect_to @attachment, notice: 'Attachment was successfully created.' }
+				format.html { redirect_to @attachment, notice: 'Vedhæftelsen blev oprettet.' }
 				format.json { render action: 'show', status: :created, location: @attachment }
 			else
 				format.html { render action: 'new' }
@@ -53,7 +53,7 @@ class AttachmentsController < ApplicationController
 	def update
 		respond_to do |format|
 			if @attachment.update(attachment_params)
-				format.html { redirect_to @attachment, notice: 'Attachment was successfully updated.' }
+				format.html { redirect_to @attachment, notice: 'Vedhæftelsen blev opdateret.' }
 				format.json { head :no_content }
 			else
 				format.html { render action: 'edit' }

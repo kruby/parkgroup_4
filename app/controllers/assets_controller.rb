@@ -32,8 +32,8 @@ class AssetsController < ApplicationController
 		respond_to do |format|
 			if @asset.save
 				# format.html { redirect_to @asset, notice: 'Asset was successfully created.' }
-				flash[:notice] = 'Asset was successfully created.'
-				format.html { redirect_to assets_url, notice: 'Asset was successfully created.' }
+				flash[:notice] = 'Fotoet blev oprettet.'
+				format.html { redirect_to assets_url, notice: 'Fotoet blev oprettet.' }
 				format.json { render action: 'show', status: :created, location: @asset }
 			else
 				format.html { render action: 'new' }
@@ -48,7 +48,7 @@ class AssetsController < ApplicationController
 		respond_to do |format|
 			if @asset.update(asset_params)
 				#format.html { redirect_to @asset, notice: 'Asset was successfully updated.' }
-				format.html { redirect_to assets_url, notice: 'Asset was successfully updated.' }
+				format.html { redirect_to assets_url, notice: 'Fotoet blev opdateret.' }
 				format.json { head :no_content }
 			else
 				format.html { render action: 'edit' }
