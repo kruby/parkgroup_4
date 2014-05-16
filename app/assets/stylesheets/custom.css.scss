@@ -167,18 +167,20 @@ span.hour_date {
 }
 
 img.forside-img.img-thumbnail {
-	margin-right: 3px;
+	margin: 3px 3px 0px 0px;
 	height: 24px;
 	padding: 2px;
 }
 
 div.panel-heading div.attachments {
-	height: 30px;
+	height: auto;
+    overflow: auto;
 }
 
 div.panel-heading div.attachments ul[id^="sort_attachments"], div.panel-heading div.attachments ul#no_sort_attachments {
 	overflow: auto;
 	padding: 3px;
+    margin-bottom: 0px;
 }
 
 div.panel-heading div.attachments li.attachment {
