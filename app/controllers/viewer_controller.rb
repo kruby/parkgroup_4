@@ -2,41 +2,24 @@ class ViewerController < ApplicationController
   
   
 	def show
-    
 		if params[:name]
 			@page = Page.find_by_name(params[:name]) || Page.find_by_name('Forside')
 		else
 			@page = Page.find(params[:id]) || Page.find_by_name('Forside')
 		end
-    
-		# @pagetitle = 'Park Group - ' + @page.title rescue 'Indhold følger snarest'
 		@content = @page.body rescue 'Indhold følger snarest'
-		# @headline = @page.headline rescue 'Indhold følger snarest'
-
-		@posts = Post.all(limit: 6)
+		@posts = Post.by_position.activated.limit(6)
 		@assets = Asset.forside_fotos
 		@forside_titel = Preference.find_by_name('Forside titel').value rescue "Bloggen"
-	
-    
 		render 'forside'
-
 	end
 
 	def forside
-
 		@page = Page.find_by_name('Forside')
 		@posts = Post.by_position.activated.limit(6)
 		@assets = Asset.forside_fotos
 		@forside_titel = Preference.find_by_name('Forside titel').value rescue "Bloggen"
-    
-		#   
-		# @pagetitle = @page.title rescue 'Indhold følger snarest'
 		@content = @page.body rescue 'Indhold følger snarest'
-		# @headline = @page.headline rescue 'Indhold følger snarest'
-		# @posts = Post.forside_blogs_active.all(:limit => 10) rescue nil
-		# 
-		# render :action => "show"
-
 	end
 
 
