@@ -8,7 +8,7 @@ class ViewerController < ApplicationController
 			@page = Page.find(params[:id]) || Page.find_by_name('Forside')
 		end
 		@content = @page.body rescue 'Indhold følger snarest'
-		@posts = Post.by_position.activated.limit(6)
+		@posts = Post.by_position.activated.limit(12)
 		@assets = Asset.forside_fotos
 		@forside_titel = Preference.find_by_name('Forside titel').value rescue "Bloggen"
 		render 'forside'
@@ -16,7 +16,7 @@ class ViewerController < ApplicationController
 
 	def forside
 		@page = Page.find_by_name('Forside')
-		@posts = Post.by_position.activated.limit(6)
+		@posts = Post.by_position.activated.limit(12)
 		@assets = Asset.forside_fotos
 		@forside_titel = Preference.find_by_name('Forside titel').value rescue "Bloggen"
 		@content = @page.body rescue 'Indhold følger snarest'
