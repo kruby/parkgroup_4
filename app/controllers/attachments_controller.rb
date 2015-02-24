@@ -79,8 +79,7 @@ class AttachmentsController < ApplicationController
 		#redirect_to (:controller => 'post', :id => params[:post_id], :action => 'edit' )
 		redirect_to edit_post_path(params[:post_id])
 	end
-  
-  
+
 	private
 
 	def find_attachment

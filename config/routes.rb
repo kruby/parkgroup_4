@@ -36,6 +36,7 @@ Parkgroup4::Application.routes.draw do
 			post :sort
 		end
 	end
+  
 	get '/bloggen' => 'posts#blog', :as => :bloggen
 	get 'posts/active/:id' => 'posts#active', as: :post_active
 
