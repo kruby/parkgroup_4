@@ -1,4 +1,7 @@
 Parkgroup4::Application.configure do
+  config.assets.prefix = '/pipeline_assets'
+  #Er lavet for at give asset pipeline et andet mount point så det ikke konflikter som reserved word i forhold til assets der bruges til fotos.
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
